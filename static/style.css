@@ -1,0 +1,456 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #e4f9ff;
+}
+/* --------------ScrollBar----------------- */
+::-webkit-scrollbar {
+  display: none;
+}
+/* -------------Header-------------------- */
+.header {
+  display: flex;
+  width: 1486px;
+  height: 60px;
+  justify-content: space-between;
+  padding: 25px;
+  align-items: center;
+  box-shadow: 0px 0px 4px 1px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: #55b8bf;
+}
+.aboutus {
+  padding-right: 55px;
+  font-size: 17px;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transition: all ease-in-out 0.2s;
+}
+.aboutus:hover {
+  cursor: pointer;
+  filter: invert(1);
+}
+.logo {
+  padding-left: 35px;
+  color: #ffe382;
+}
+.logo h1 {
+  font-size: 24px;
+}
+.logo h4 {
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+/* ----------------Navbar-------------------- */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  margin: 35px;
+  width: 300px;
+  top: 116px;
+  height: 449px;
+}
+.navbar ul {
+  list-style-type: none;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
+  padding-top: 46px;
+  justify-content: center;
+  align-items: center;
+}
+.navbar li {
+  width: 180px;
+  padding: 18px;
+  font-size: large;
+}
+.navbar img {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+}
+.imge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebebec;
+  border-radius: 20px;
+  transition: all ease-in-out 0.3s;
+  opacity: 50%;
+}
+.imge:hover {
+  background-color: #eef5ff;
+  box-shadow: 0px 0px 6px 0px;
+  cursor: pointer;
+  opacity: 100%;
+  color: #8abcfd;
+}
+.line {
+  width: 302px;
+  height: 1px;
+  margin-top: 22px;
+  opacity: 53%;
+  box-shadow: 0px 1px 7px 0px;
+}
+/* ----------------Footer-------------------- */
+.footer {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  margin: 14px;
+  width: 300px;
+  top: 613px;
+  height: 73px;
+}
+/* ------------Conatainer-------------------- */
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 116px;
+  width: 1040px;
+  left: 390px;
+  margin: 35px;
+  overflow: hidden;
+  border-radius: 25px 25px 0px 0px;
+  background-color: #e4f9ff;
+  transition: all 0.3s;
+}
+.container:hover {
+  box-shadow: 0px 0px 7px 0px;
+}
+.userinfo {
+  width: 1000px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.userinfo .userprofile {
+  margin-left: 7px;
+}
+.userprofile #date {
+  font-size: 13px;
+}
+.userinfo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all ease-in-out 0.3s;
+}
+.userinfo a:hover {
+  font-size: 17px;
+}
+.userinfo .btn-follow {
+  position: absolute;
+  left: 904px;
+  width: 100px;
+  display: flex;
+  font-size: 13px;
+  gap: 5px;
+  padding: 4px;
+  border-radius: 22px;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 70%;
+  transition: all ease-in 0.3s;
+}
+.userinfo .btn-follow:hover {
+  opacity: 100%;
+  box-shadow: 0px 0px 5px 0px;
+  background-color: #bdebee;
+}
+img.userprofilepic {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+}
+.postcard #post {
+  padding: 4px;
+  border-radius: 20px;
+  width: 1024px;
+  padding-left: 7px;
+}
+#post img,
+video {
+  border-radius: 20px;
+  width: 1024px;
+}
+.container .btn {
+  width: 761px;
+  height: 60px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 139px;
+}
+.btn .button {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebebec;
+  transition: all ease-in-out 0.3s;
+}
+.btn .button:hover {
+  box-shadow: 0px 0px 5px 0px;
+}
+.btn #like:hover {
+  background-color: rgb(248, 122, 122);
+}
+.btn #share:hover {
+  background-color: #bfa5f0;
+}
+.btn #comment:hover {
+  background-color: #e9a8f2;
+}
+.postcard .line {
+  width: 951px;
+  height: 1px;
+  margin-top: 4px;
+  opacity: 53%;
+  box-shadow: 0px 1px 7px 0px;
+  margin-left: 47px;
+}
+.container .commentbox {
+  height: 60px;
+  padding: 10px;
+  margin: 10px;
+  margin-top: 40px;
+  border-radius: 20px;
+  width: 900px;
+  margin-left: 73px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: inset 0px 0px 3px 0px;
+  transition: all ease-in-out 0.3s;
+}
+.commentbox a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(67, 67, 67);
+}
+.commentbox a:hover {
+  color: grey;
+  text-decoration: underline;
+}
+.container .commentbox:hover {
+  background-color: #def7ff;
+  box-shadow: inset 0px 0px 6px 0px;
+  cursor: pointer;
+}
+img.viewerprofilepic {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+}
+.brake {
+  width: 1003px;
+  margin-left: 20px;
+  margin-top: -14px;
+  opacity: 53%;
+  border: 1px solid #332941;
+  box-shadow: 0px 1px 7px 0px;
+}
+/* -------Search--------- */
+.search {
+  height: 600px;
+}
+.searchbar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 7px;
+  justify-content: center;
+}
+.inputsearch {
+  width: 600px;
+  padding: 8px;
+  padding-left: 14px;
+  border-radius: 14px 0px 0px 14px;
+  border: none;
+  box-shadow: 0px 0px 2px 0px;
+  transition: all ease-in-out 0.3s;
+  opacity: 80%;
+  outline: none;
+}
+
+.inputsearch:hover {
+  width: 617px;
+  padding-left: 22px;
+  border-radius: 18px 0px 0px 18px;
+  box-shadow: 0px 0px 8px 2px blueviolet;
+  margin-right: 6px;
+  cursor: pointer;
+  opacity: 100%;
+}
+.btn-cancel {
+  width: 36px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  opacity: 100%;
+  border: none;
+  background-color: #ebebec;
+  border-radius: 0px 14px 14px 0px;
+  padding: 6px;
+  box-shadow: 0px 0px 2px 0px black;
+  transition: all ease-in-out 0.3s;
+  opacity: 80%;
+}
+.btn-cancel:hover {
+  width: 40px;
+  opacity: 100%;
+  background-color: #eef5ff;
+  box-shadow: 0px 0px 8px 2px rgb(226, 43, 76);
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.search .line {
+  width: 987px;
+  height: 1px;
+  margin-top: 22px;
+  opacity: 53%;
+  border: 1px solid blueviolet;
+  height: 0px;
+  box-shadow: 0px 1px 7px 0px;
+  margin-left: 25px;
+}
+.searchoutput {
+  display: grid;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  grid-gap: 33px;
+  padding-top: 30px;
+}
+.searchoutput .accountbox {
+  width: 545px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ebebec;
+  border-radius: 20px;
+  transition: all ease-in-out 0.3s;
+  padding-left: 35px;
+}
+.searchoutput .accountbox:hover{
+    background-color: #eef5ff;
+    box-shadow: 0px 0px 6px 0px;
+    cursor: pointer;
+    opacity: 100%;
+    color: #8abcfd;
+}
+
+.accountbox .userinfo {
+  width: 1000px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.accountbox .userprofile {
+  margin-left: 7px;
+}
+
+.accountbox a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: all ease-in-out 0.3s;
+}
+.accountbox a:hover {
+  font-size: 17px;
+}
+/* -----Dashboard------- */
+
+
+.user-account{
+  height: 150px;
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  padding-left: 30px;
+  gap: 20px;
+}
+.user-account img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.user-account p{
+  font-size: 13px;
+}
+.user-account .followers-count{
+  font-size: 22px;
+  padding-left: 594px;
+}
+#posts-h3{
+  padding: 20px 37px ;
+}
+.post-section{
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; 
+  gap: 25px;
+}
+.post{
+  display: flex;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.user-account a{
+  text-decoration: none;
+  color: black;
+  transition: all ease .2s;
+}
+.user-account a:hover{
+  text-decoration: underline;
+  color: gray;
+}
+.post img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  transition: all ease-in-out .3s;
+}
+.post:hover img{
+  cursor: pointer;
+  transform: scale(1.1); 
+}
+
+/* responsive */

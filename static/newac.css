@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.color-change-2x {
+  background: linear-gradient(#19dcea, #b22cff);
+}
+
+.choose {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+}
+.choose a{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 300px;
+  width: 400px;
+  color: black;
+  background: rgba(204, 149, 149, 0.297);
+  backdrop-filter: blur(6.5px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all ease-in-out .2s;
+}
+.choose a:hover {
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+}
+.choose img {
+  width: 50px;
+  height: 50px;
+}
