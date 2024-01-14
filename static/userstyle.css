@@ -12,7 +12,7 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
-.container{
+.container {
   background-color: #fff;
   border: 1px solid #e6e6e6;
   padding: 20px;
@@ -20,7 +20,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
 }
-input[type=text], input[type=password],input[type=number],input[type=email] {
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -38,7 +41,7 @@ input[type=text], input[type=password],input[type=number],input[type=email] {
   width: 100%;
 }
 
-span{
+span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,14 +52,14 @@ span{
   opacity: 0.8;
 }
 
-h4{
+h4 {
   font-size: larger;
-    text-align: center;
-    font-family: "Trirong", sans-serif;  
-    margin: 12px;
-    margin-bottom: 17px;
+  text-align: center;
+  font-family: "Trirong", sans-serif;
+  margin: 12px;
+  margin-bottom: 17px;
 }
-.showpassword{
+.showpassword {
   cursor: pointer;
   display: flex;
   justify-content: flex-end;
@@ -64,9 +67,9 @@ h4{
   width: 25px;
   background: transparent;
   border: none;
-  transition: all ease-in .2s;
+  transition: all ease-in 0.2s;
 }
-.otp-send{
+.otp-send {
   cursor: pointer;
   display: flex;
   justify-content: flex-end;
@@ -74,6 +77,6 @@ h4{
   width: 25px;
   background: transparent;
 }
-.none{
+.none {
   display: none;
 }

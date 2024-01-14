@@ -359,12 +359,12 @@ img.viewerprofilepic {
   transition: all ease-in-out 0.3s;
   padding-left: 35px;
 }
-.searchoutput .accountbox:hover{
-    background-color: #eef5ff;
-    box-shadow: 0px 0px 6px 0px;
-    cursor: pointer;
-    opacity: 100%;
-    color: #8abcfd;
+.searchoutput .accountbox:hover {
+  background-color: #eef5ff;
+  box-shadow: 0px 0px 6px 0px;
+  cursor: pointer;
+  opacity: 100%;
+  color: #8abcfd;
 }
 
 .accountbox .userinfo {
@@ -393,8 +393,7 @@ img.viewerprofilepic {
 }
 /* -----Dashboard------- */
 
-
-.user-account{
+.user-account {
   height: 150px;
   display: flex;
   margin: 20px;
@@ -402,29 +401,29 @@ img.viewerprofilepic {
   padding-left: 30px;
   gap: 20px;
 }
-.user-account img{
+.user-account img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
 }
-.user-account p{
+.user-account p {
   font-size: 13px;
 }
-.user-account .followers-count{
+.user-account .followers-count {
   font-size: 22px;
   padding-left: 594px;
 }
-#posts-h3{
-  padding: 20px 37px ;
+#posts-h3 {
+  padding: 20px 37px;
 }
-.post-section{
+.post-section {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
   gap: 25px;
 }
-.post{
+.post {
   display: flex;
   width: 200px;
   height: 200px;
@@ -433,12 +432,12 @@ img.viewerprofilepic {
   align-items: center;
   overflow: hidden;
 }
-.user-account a{
+.user-account a {
   text-decoration: none;
   color: black;
-  transition: all ease .2s;
+  transition: all ease 0.2s;
 }
-.user-account a:hover{
+.user-account a:hover {
   text-decoration: underline;
   color: gray;
 }
@@ -446,11 +445,11 @@ img.viewerprofilepic {
   object-fit: cover;
   width: 200px;
   height: 200px;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
-.post:hover img{
+.post:hover img {
   cursor: pointer;
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 /* responsive */

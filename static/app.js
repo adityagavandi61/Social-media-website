@@ -6,10 +6,12 @@ let postcard = document.querySelector(".postcard");
 let container = document.querySelector(".container");
 
 // main();
-function main(){home.classList.add("imgeselected");
-home.classList.remove("imge");
-home.innerHTML = `<img src="/static/assets/svg/homeselected.svg" alt="" srcset="" /><li>Home</li>`;
-homesec()}
+function main() {
+  home.classList.add("imgeselected");
+  home.classList.remove("imge");
+  home.innerHTML = `<img src="/static/assets/svg/homeselected.svg" alt="" srcset="" /><li>Home</li>`;
+  homesec();
+}
 
 search.addEventListener("click", () => {
   searchselected = true;
@@ -73,7 +75,6 @@ follow.forEach((follow) => {
   });
 });
 
-
 function homesec() {
   container.innerHTML = `<div class="postcard">
   <div class="userinfo">
@@ -121,7 +122,6 @@ function homesec() {
   </div>
 </div>
 <div class="brake"></div>`;
-
 }
 
 function searchsec() {
@@ -160,6 +160,5 @@ function searchsec() {
       ><h4 id="username">UserName</h4>
     </a>
 </div>
-</div></div>`
+</div></div>`;
 }
-
