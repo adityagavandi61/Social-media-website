@@ -1,25 +1,73 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create account as user</title>
-    <!-- <link rel="stylesheet" href="{% static 'style.css' %}" /> -->
-</head>
-<body>
-    <form action="" method="get">
+    <link rel="stylesheet" href="{% static 'userstyle.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="" method="get">
         <div class="info">
-            <h4>Register as Drama Company</h4>
-            Name <input class="name" type="text" placeholder="Enter your full name...">
-            Gmail <input class="gmail" type="text" placeholder="Enter your gmail">
-            Address <input class="address" type="text" placeholder="Enter your Address">
-            Phone Number <input class="phone-number" type="text" placeholder="Enter your phone number">
-            Page Name <input class="page-name" type="text" placeholder="Enter your NatyaMandal name">
-            OTP <p>Code will send on your phone number</p><input class="otp" type="text" placeholder="Enter 4 digit code">
-            Password <input class="password" type="password" placeholder="Enter your password">
-            <input class="password-show" type="checkbox" name="show">
-        </div> 
-    </form>
-</body>
+          <h4>Register as Drama Company</h4>
+          <div>
+            <b>Name</b>
+            <input
+              class="name"
+              type="text"
+              placeholder="Enter your full name..." required
+            />
+            <b>Gmail</b>
+            <input class="gmail" type="email" placeholder="Enter your gmail" required/>
+            <b>Address</b>
+            <input
+              class="address"
+              type="text"
+              placeholder="Enter your Address" required
+            />
+            <b>Page Name</b>
+            <input
+              class="page-name"
+              type="text"
+              placeholder="Enter your NatyaMandal name" required
+            />
+            <b>Phone Number</b>
+            <span><input
+              id="phone-number"
+              class="phone-number"
+              type="number"
+              placeholder="Enter your phone number" required
+            />
+            <div id="otp-send" class="none"><img src="/static/assets/svg/otp-send.svg" alt="" srcset=""></div></span>
+            <b>OTP</b>
+            <p id="otp-send" class="none">Code will send on your phone number</p>
+            <input
+              class="otp"
+              type="password"
+              placeholder="Enter 4 digit code" required
+            />
+            <b>Password</b>
+            <span
+              ><input
+                id="password"
+                type="password"
+                placeholder="Enter your password" required
+              />
+              <div id="hide" class="showpassword">
+                <img
+                  src="/static/assets/svg/hidepassword.svg"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+            </span>
+          </div>
+          <button id="submit" type="submit">Create account</button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="{% static 'user.js' %}"></script>
 </html>
