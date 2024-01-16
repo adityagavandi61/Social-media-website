@@ -1,30 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create account as viewer</title>
-    <!-- <link rel="stylesheet" href="{% static 'style.css' %}" /> -->
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create account as viewer</title>
+  <link rel="stylesheet" href="{% static 'css/viewerstyle.css' %}" />
+</head>
+
+<body>
+  <div class="container">
     <form action="" method="get">
+      <h4>Register as Viewer</h4>
       <div class="info">
-        <h4>Register as Viewer</h4>
-        Name
+        <b>Name</b>
         <input class="name" type="text" placeholder="Enter your full name..." />
-        Gmail
-        <input class="gmail" type="text" placeholder="Enter your gmail" /> OTP
-        <p>Code will send on your phone number</p>
+        <b>Gmail</b>
+        <span><input class="gmail" id="gmail" type="email" placeholder="Enter your gmail" />
+          <div id="otp-send" class="otp-visible">
+            <img src="/static/assets/svg/otp-send.svg" alt="" srcset="" />
+          </div>
+        </span>
+        <b>OTP</b>
+        <p id="otp-sendmsg" class="none">Code will send on your gmail inbox</p>
         <input class="otp" type="text" placeholder="Enter 4 digit code" />
-        Password
-        <input
-          class="password"
-          type="password"
-          placeholder="Enter your password"
-        />
-        <input class="password-show" type="checkbox" name="show" />
+        <b>Password</b>
+        <span><input id="password" type="password" placeholder="Enter your password" required />
+          <div id="hide" class="showpassword">
+            <img src="/static/assets/svg/hidepassword.svg" alt="" srcset="" />
+          </div>
+        </span>
       </div>
+      <button id="submit" type="submit">Create account</button>
     </form>
-  </body>
+  </div>
+</body>
+<script src="{% static 'js/viewer.js' %}"></script>
+
 </html>

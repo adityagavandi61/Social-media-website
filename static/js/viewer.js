@@ -13,13 +13,3 @@ button.addEventListener("click", () => {
     btn = true;
   }
 });
-
-function disnone() {
-  let arr = document.getElementById("phone-number");
-  if (arr.length >= 10) {
-    displaynone.classList.add("otp-send");
-  } else {
-    displaynone.classList.add("none");
-  }
-}
-disnone();
