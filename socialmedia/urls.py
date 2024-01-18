@@ -23,5 +23,6 @@ urlpatterns = [
     path('newac',views.newac,name='newac'),
     path('userregister',views.userregister,name='userregister'),
     path('viewerregister',views.viewerregister,name='viewerregister'),
+    path('dashboard',views.dashboard,name='dashboard'),
     path('index',views.index, name='index')
 ]

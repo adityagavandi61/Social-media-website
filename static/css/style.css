@@ -396,7 +396,6 @@ img.viewerprofilepic {
 .user-account {
   height: 150px;
   display: flex;
-  margin: 20px;
   align-items: center;
   padding-left: 30px;
   gap: 20px;
@@ -420,7 +419,6 @@ img.viewerprofilepic {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   gap: 25px;
 }
 .post {
@@ -428,8 +426,6 @@ img.viewerprofilepic {
   width: 200px;
   height: 200px;
   border-radius: 20px;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 .user-account a {
@@ -451,5 +447,28 @@ img.viewerprofilepic {
   cursor: pointer;
   transform: scale(1.1);
 }
-
+.links{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.link{
+  width: 25px;
+  height: 25px;
+  filter: grayscale(30%);
+  transition: all ease-in-out .2s;
+}
+.link:hover{
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+.about{
+  padding-left: 25px;
+}
+.address{
+  display: flex;
+  align-items: center;
+}
 /* responsive */

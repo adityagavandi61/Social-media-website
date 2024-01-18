@@ -5,7 +5,7 @@ let setting = document.querySelector("#setting");
 let postcard = document.querySelector(".postcard");
 let container = document.querySelector(".container");
 
-// main();
+main();
 function main() {
   home.classList.add("imgeselected");
   home.classList.remove("imge");

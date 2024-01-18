@@ -18,3 +18,6 @@ def userregister(request):
 
 def viewerregister(request):
     return render(request,'viewerregister.html')
+
+def dashboard(request):
+    return render(request,'dashboard.html')
