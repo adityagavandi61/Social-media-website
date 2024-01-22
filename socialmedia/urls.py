@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from socialweb import views
+
+admin.site.site_header = "Dashavatar SocialMediaWebsite Admin"
+admin.site.site_title = "Dashavatar SocialMediaWebsite Admin Portal"
+admin.site.index_title = "Welcome to Dashavatar SocialMediaWebsite"
 
 urlpatterns = [
     path('admin/', admin.site.urls),

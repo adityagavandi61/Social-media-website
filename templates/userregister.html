@@ -10,7 +10,8 @@
 
   <body>
     <div class="container">
-      <form action="" method="get">
+      <form action="{% url "userregister" %}" method="POST">
+        {% csrf_token %}
         <div class="info">
           <h4>Register as Drama Company</h4>
           <div>
@@ -43,7 +44,7 @@
               class="page-name"
               type="text"
               placeholder="Enter your NatyaMandal name"
-              name="page-name"
+              name="page_name"
               required
             />
             <b>Phone Number</b>
@@ -53,7 +54,7 @@
                 class="phone-number"
                 type="text"
                 placeholder="Enter your phone number"
-                name="phone-number"
+                name="phone_number"
                 required
               />
               <div id="otp-send" class="otp-visible">
