@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from datetime import datetime 
 from .models import UserRegister, ViewerRegister
 from .forms import UserRegisterForm, ViewerRegisterForm
 
@@ -21,6 +20,7 @@ def userregister(request):
            user = UserRegister.objects.create(
                 name=request.POST['name'],
                 gmail=request.POST['gmail'],
+                address=request.POST['address'],
                 page_name=request.POST['page_name'],
                 phone_number=request.POST['phone_number'],
                 password=request.POST['password']
