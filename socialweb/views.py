@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime 
-from .forms import UserRegisterForm,ViewerRegisterForm
+from .models import UserRegister, ViewerRegister
+from .forms import UserRegisterForm, ViewerRegisterForm
 
 
 def index(request):
@@ -15,25 +16,33 @@ def newac(request):
 
 def userregister(request):
     if request.method == "POST":
-        userform = UserRegisterForm(request.POST)
-        if userform.is_valid():
-            userform.save()
-            return redirect('success') 
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+           user = UserRegister.objects.create(
+                name=request.POST['name'],
+                gmail=request.POST['gmail'],
+                page_name=request.POST['page_name'],
+                phone_number=request.POST['phone_number'],
+                password=request.POST['password']
+            )
     else:
-        userform = UserRegisterForm()
+        form = UserRegisterForm()
 
-    return render(request, 'userregister.html', {'form': userform})
+    return render(request, 'userregister.html')
 
 def viewerregister(request):
     if request.method=="POST":
-        viewerform = ViewerRegisterForm(request.POST)
-        if viewerform.is_valid():
-            viewerform.save() 
-            return redirect('success')
+        form = ViewerRegisterForm(request.POST)
+        if form.is_valid():
+            viewer = ViewerRegister.objects.create(
+                name=request.POST['name'],
+                gmail=request.POST['gmail'],
+                password=request.POST['password']
+            )
     else:
-        viewerform = ViewerRegisterForm()
+        form = ViewerRegisterForm()
 
-    return render(request, 'viewerregister.html', {'form': viewerform})
+    return render(request, 'viewerregister.html')
 
 def dashboard(request):
     return render(request,'dashboard.html')

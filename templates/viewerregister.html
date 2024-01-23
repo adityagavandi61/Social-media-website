@@ -11,7 +11,7 @@
 
 <body>
   <div class="container">
-    <form action="{% url "viewerregister" %}" method="POST">
+    <form action="{% url 'viewerregister' %}" method="post">
       {% csrf_token %}
       <h4>Register as Viewer</h4>
       <div class="info">

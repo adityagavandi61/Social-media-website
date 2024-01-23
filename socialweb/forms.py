@@ -5,11 +5,11 @@ from .models import UserRegister,ViewerRegister
 
 class UserRegisterForm(forms.Form):
     class user:
-        model1 = UserRegister
+        model = UserRegister
         fields = ['name', 'gmail', 'address', 'page_name', 'phone_number', 'password']
 
 class ViewerRegisterForm(forms.Form):
     class viewer:
-        model2 = ViewerRegister
+        model = ViewerRegister
         fields = ['name', 'gmail','password']
 
