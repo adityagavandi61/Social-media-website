@@ -1,13 +1,28 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
+from django.contrib.auth.models import User, auth
 from .models import UserRegister, ViewerRegister
 from .forms import UserRegisterForm, ViewerRegisterForm
+from django.template import loader
 
 
-def index(request):
-    return render(request,'index.html')
+def home(request):
+    return render(request,'home.html')
+
+def search(request):
+    return render(request,'search.html')
 
 def login(request):
+    if request.method == "POST":
+        gmail=request.POST['gmail'],
+        password=request.POST['password'],
+        user=auth.authenticate(gmail=gmail,password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return HttpResponse("User not found")
+        
+
     return render(request,'login.html')
     
 def newac(request):
@@ -25,6 +40,7 @@ def userregister(request):
                 phone_number=request.POST['phone_number'],
                 password=request.POST['password']
             )
+        return HttpResponseRedirect('/dashboard')
     else:
         form = UserRegisterForm()
 
@@ -39,6 +55,7 @@ def viewerregister(request):
                 gmail=request.POST['gmail'],
                 password=request.POST['password']
             )
+        return HttpResponseRedirect('/home')
     else:
         form = ViewerRegisterForm()
 
@@ -46,3 +63,4 @@ def viewerregister(request):
 
 def dashboard(request):
     return render(request,'dashboard.html')
+

@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+{% block title %}Home{% endblock title %}
+
+    {% block contain %}
+    <div class="postcard">
+        <div class="userinfo">
+          <a href="#"><img
+            class="userprofilepic"
+            src="/static/assets/img/pp.webp"
+            alt=""
+            srcset=""
+          />
+          <span class="userprofile"
+            ><h4 id="username">UserName</h4>
+            <p id="date">Date:</p></span>
+          </a>
+          <button class="btn-follow" id="follow">
+            <img src="/static/assets/svg/follow.svg" alt="" srcset="" />
+            Follow
+          </button>
+        </div>
+        <div id="post"><img
+          src="/static/assets/img/peakpx (11).jpg"
+          alt=""
+          srcset=""
+        /></div>
+        <div class="btn">
+          <button class="button" id="like">
+            <img src="/static/assets/svg/like.svg" alt="" srcset="" />
+          </button>
+          <button class="button" id="comment">
+            <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
+          </button>
+          <button class="button" id="share">
+            <img src="/static/assets/svg/share.svg" alt="" srcset="" />
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="commentbox">
+          <a href="#"><img
+            class="viewerprofilepic"
+            src="/static/assets/img/pp.webp"
+            alt=""
+            srcset=""
+          />
+          <h4 class="viewername">@viewername</h4></a>
+          <p class="ctext">Hi Hello how are you</p>
+        </div>
+      </div>
+      <div class="brake"></div>
+    {% endblock %}
+   

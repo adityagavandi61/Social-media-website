@@ -28,5 +28,7 @@ urlpatterns = [
     path('userregister',views.userregister,name='userregister'),
     path('viewerregister',views.viewerregister,name='viewerregister'),
     path('dashboard',views.dashboard,name='dashboard'),
-    path('index',views.index, name='index')
+    path('home',views.home, name='home'),
+    path('search',views.search, name='search')
+
 ]

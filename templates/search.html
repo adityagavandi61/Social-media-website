@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block title %}Search{% endblock title %}
+
+    {% block contain %}
+    <div class="search">
+        <div class="searchbar">
+        <input class="inputsearch" id="searchtext" type="text" placeholder="Search...">
+        <button class="btn-cancel" id="cancel"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
+        </div>
+        <div class="line"></div>
+        <div class="searchoutput">
+          <div class="accountbox"><a href="#"><img
+            class="userprofilepic"
+            src="/static/assets/img/pp.webp"
+            alt=""
+            srcset=""
+          />
+          <span class="userprofile"
+            ><h4 id="username">UserName</h4>
+          </a></div>
+          <div class="accountbox"><a href="#"><img
+            class="userprofilepic"
+            src="/static/assets/img/pp.webp"
+            alt=""
+            srcset=""
+          />
+          <span class="userprofile"
+            ><h4 id="username">UserName</h4>
+          </a></div>
+          <div class="accountbox"><a href="#"><img
+            class="userprofilepic"
+            src="/static/assets/img/pp.webp"
+            alt=""
+            srcset=""
+          />
+          <span class="userprofile"
+            ><h4 id="username">UserName</h4>
+          </a>
+      </div>
+      </div></div>
+    {% endblock %}

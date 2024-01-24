@@ -11,8 +11,9 @@
       href="/static/assets/svg/icon.svg"
       type="image/x-icon"
     />
-    <title>DASHAVATAR | Social media Website</title>
+    <title>{% block title %}{% endblock title %} | Dashavatar Social media Website</title>
   </head>
+
 
   <body>
     <div class="header">
@@ -42,11 +43,14 @@
       <div class="line"></div>
     </div>
     <!-- post1 -->
-    <div class="container"></div>
+    <div class="container">
+      {% block contain %}
+      {% endblock %}
+    </div>
     <!-- Footer  -->
     <div class="footer">
       <p>&copy; 2024 Dashavatar Social Media Website.</p>
     </div>
   </body>
   <script src="{% static 'js/app.js' %}"></script>
-</html>
+  </html>

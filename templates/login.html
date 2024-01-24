@@ -4,17 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rangostav-Login</title>
+    <title>Login | Dashavatar Social media Website</title>
+    <link
+    rel="shortcut icon"
+    href="/static/assets/svg/icon.svg"
+    type="image/x-icon"
+  />
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body class="color-change-2x">
-        <form method="get" action="">
+        <form method="post" action="">
+            {% csrf_token %}
             <div class="container">
                 <div>
                     <h1>LOGIN FORM</h1>
                 </div>
                 <label for="uname"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="Email" required>
+                <input type="text" placeholder="Enter Email" name="gmail" required>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
                 <div>
