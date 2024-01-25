@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'media.apps.MediaConfig',
     'socialweb.apps.SocialwebConfig', 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,6 +123,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+MEDIA_ROOT=BASE_DIR/"Gallery"
+MEDIA_URL="/Gallery/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

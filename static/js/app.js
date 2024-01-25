@@ -22,6 +22,7 @@ search.addEventListener("click", () => {
   account.classList.add("imge");
   search.innerHTML = `<img src="/static/assets/svg/searchselected.svg" alt="" srcset="" /><li>Search</li>`;
   home.innerHTML = `<img src="/static/assets/svg/home.svg" alt="" srcset="" /><li>Home</li>`;
+  account.innerHTML = `<img src="/static/assets/svg/profile.svg" alt="" srcset="" /><li>My Account</li>`;
   homeselected = false;
 });
 
@@ -35,6 +36,7 @@ home.addEventListener("click", () => {
   account.classList.add("imge");
   home.innerHTML = `<img src="/static/assets/svg/homeselected.svg" alt="" srcset="" /><li>Home</li>`;
   search.innerHTML = `<img src="/static/assets/svg/search.svg" alt="" srcset="" /><li>Search</li>`;
+  account.innerHTML = `<img src="/static/assets/svg/profile.svg" alt="" srcset="" /><li>My Account</li>`;
   searchselected = false;
 });
 account.addEventListener("click", () => {

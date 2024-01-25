@@ -1,9 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User, auth
-from .models import UserRegister, ViewerRegister
-from .forms import UserRegisterForm, ViewerRegisterForm
-from django.template import loader
+from socialweb.models import UserRegister, ViewerRegister
+from socialweb.forms import UserRegisterForm, ViewerRegisterForm
 
 
 def home(request):
@@ -16,12 +15,13 @@ def login(request):
     if request.method == "POST":
         gmail=request.POST['gmail'],
         password=request.POST['password'],
-        user=auth.authenticate(gmail=gmail,password=password)
+        user=authenticate(gmail=gmail,password=password)
 
         if user is not None:
             auth.login(request, user)
-            return HttpResponse("User not found")
-        
+            return HttpResponse("account created")
+        else:
+            return HttpResponse("username and password incorrect")
 
     return render(request,'login.html')
     

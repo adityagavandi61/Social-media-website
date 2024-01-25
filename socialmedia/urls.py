@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from socialweb import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 admin.site.site_header = "Dashavatar SocialMediaWebsite Admin"
 admin.site.site_title = "Dashavatar SocialMediaWebsite Admin Portal"
@@ -30,5 +32,7 @@ urlpatterns = [
     path('dashboard',views.dashboard,name='dashboard'),
     path('home',views.home, name='home'),
     path('search',views.search, name='search')
-
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

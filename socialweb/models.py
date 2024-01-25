@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class ViewerRegister(models.Model):
@@ -13,3 +14,4 @@ class UserRegister(models.Model):
     page_name = models.CharField(max_length=100, default='default_value')
     phone_number = models.CharField(max_length=15,default='default_value')
     password = models.CharField(max_length=255)
+
