@@ -11,6 +11,9 @@ def home(request):
 def search(request):
     return render(request,'search.html')
 
+def account(request):
+    return render(request,'myaccount.html')
+
 def login(request):
     if request.method == "POST":
         gmail=request.POST['gmail'],
@@ -40,7 +43,7 @@ def userregister(request):
                 phone_number=request.POST['phone_number'],
                 password=request.POST['password']
             )
-        return HttpResponseRedirect('/dashboard')
+        return HttpResponseRedirect('/static')
     else:
         form = UserRegisterForm()
 
@@ -61,6 +64,12 @@ def viewerregister(request):
 
     return render(request, 'viewerregister.html')
 
-def dashboard(request):
-    return render(request,'dashboard.html')
+def static(request):
+    return render(request,'dashboardstatic.html')
+
+def seepost(request):
+    return render(request,'dashboardpost.html')
+
+def editaccount(request):
+    return render(request,'dashboardeditaccount.html')
 

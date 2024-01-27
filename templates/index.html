@@ -16,7 +16,7 @@
 
 
   <body>
-    <div class="header">
+    <header class="header">
       <div class="logo">
         <h1 id="wname">DASHAVATAR</h1>
         <h4 id="wtagline">Social Media Website</h4>
@@ -24,33 +24,39 @@
       <div class="aboutus">
         <img src="/static/assets/svg/aboutus.svg" alt="" srcset="" />About us
       </div>
-    </div>
-    <div class="navbar">
+    </header>
+    <nav class="navbar">
       <ul>
-        <div class="imge" id="home">
+        {% block Home %}
+        <a href="/home"><div class="imge" id="home">
           <img src="/static/assets/svg/home.svg" alt="" srcset="" />
           <li>Home</li>
-        </div>
-        <div class="imge" id="search">
+        </div></a>
+        {% endblock %}
+        {% block Search %}
+        <a href="/search"><div class="imge" id="search">
           <img src="/static/assets/svg/search.svg" alt="" srcset="" />
           <li>Search</li>
-        </div>
-        <div class="imge" id="account">
+        </div></a>
+        {% endblock %}
+        {% block my-ac %}
+        <a href="/myaccount"><div class="imge" id="account">
           <img src="/static/assets/svg/profile.svg" alt="" srcset="" />
           <li>My Account</li>
-        </div>
+        </div></a>
+        {% endblock %}
       </ul>
       <div class="line"></div>
-    </div>
+    </nav>
     <!-- post1 -->
     <div class="container">
       {% block contain %}
       {% endblock %}
     </div>
     <!-- Footer  -->
-    <div class="footer">
+    <footer class="footer">
       <p>&copy; 2024 Dashavatar Social Media Website.</p>
-    </div>
+    </footer>
   </body>
   <script src="{% static 'js/app.js' %}"></script>
   </html>

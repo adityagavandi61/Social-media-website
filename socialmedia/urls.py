@@ -29,9 +29,12 @@ urlpatterns = [
     path('newac',views.newac,name='newac'),
     path('userregister',views.userregister,name='userregister'),
     path('viewerregister',views.viewerregister,name='viewerregister'),
-    path('dashboard',views.dashboard,name='dashboard'),
     path('home',views.home, name='home'),
-    path('search',views.search, name='search')
+    path('search',views.search, name='search'),
+    path('myaccount',views.account, name='account'),
+    path('static',views.static, name='static'),
+    path('editaccount',views.editaccount, name='editaccount'),
+    path('seepost',views.seepost, name='seepost')
 ]
 
 if settings.DEBUG:

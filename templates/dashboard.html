@@ -11,11 +11,11 @@
       href="/static/assets/svg/icon.svg"
       type="image/x-icon"
     />
-    <title>Dashboard | Dashavatar Social media Website</title>
+    <title>Dashboard {% block title %}{% endblock title %} | Dashavatar Social media Website</title>
   </head>
 
   <body>
-    <div class="header">
+    <header class="header">
       <div class="logo">
         <h1 id="wname">DASHAVATAR</h1>
         <h4 id="wtagline">Social Media Website</h4>
@@ -23,173 +23,38 @@
       <div class="aboutus">
         <img src="/static/assets/svg/aboutus.svg" alt="" srcset="" />About us
       </div>
-    </div>
-    <div class="navbar">
+    </header>
+    <nav class="navbar">
       <ul>
-        <div class="imge" id="dashboard">
+        {% block static %}
+        <a href="/static"><div class="imge" id="dashboard">
           <img src="/static/assets/svg/dashboard.svg" alt="" srcset="" />
           <li>Dashboard</li>
-        </div>
-        <div class="imge" id="upload-post">
-          <img src="/static/assets/svg/uploadpost.svg" alt="" srcset="" />
-          <li>Upload post</li>
-        </div>
-        <div class="imge" id="account">
+        </div></a>
+        {% endblock %}
+        {% block seeposts %}
+        <a href="/seepost"><div class="imge" id="upload-post">
+          <img src="/static/assets/svg/seeposts.svg" alt="" srcset="" />
+          <li>See Posts</li>
+        </div></a>
+        {% endblock %}
+        {% block editaccount %}
+        <a href="/editaccount"><div class="imge" id="account">
           <img src="/static/assets/svg/profile.svg" alt="" srcset="" />
-          <li>My Account</li>
-        </div>
+          <li>Edit Account</li>
+        </div></a>
+        {% endblock %}
       </ul>
       <div class="line"></div>
-    </div>
+    </nav>
     <div class="container">
       <div class="dashboard">
-        <div class="user-account">
-          <img
-            src="/static/assets/img/pp.webp"
-            alt=""
-            srcset=""
-            class="Page-profile"
-          />
-          <h3 class="Page-name">
-            PageName
-            <p class="user-name">created by <a href="#">@username</a></p>
-          </h3>
-          <span class="followers-count"
-            >135K+
-            <h6>Followers</h6>
-          </span>
-        </div>
-        <div class="about">
-          <div class="bio">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Doloribus, voluptates quae. Accusamus perferendis neque inventore,
-              eaque voluptas molestiae praesentium impedit.
-            </p>
-          </div>
-          <div id="links" class="links">
-            <a href="mailto:" target="_blank"
-              ><div id="Gmail" class="link">
-                <img
-                  src="/static/assets/svg/gmaillogo.svg"
-                  alt=""
-                  srcset=""
-                /></div
-            ></a>
-            <a href="tel:+" target="_blank"
-              ><div id="whatsapp" class="link">
-                <img
-                  src="/static/assets/svg/whatsapp.svg"
-                  alt=""
-                  srcset=""
-                /></div
-            ></a>
-            <a href="http://" target="_blank"
-              ><div id="Instagram" class="link">
-                <img
-                  src="/static/assets/svg/instagramlogo.svg"
-                  alt=""
-                  srcset=""
-                /></div
-            ></a>
-            <a href="http://" target="_blank"
-              ><div id="Youtube" class="link">
-                <img
-                  src="/static/assets/svg/youtubelogo.svg"
-                  alt=""
-                  srcset=""
-                /></div
-            ></a>
-          </div>
-          <div class="address">
-            <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-            <h4 id="location" class="location">Redi,Vengurla</h4>
-          </div>
-        </div>
-        <h3 id="posts-h3">Posts</h3>
-        <div class="post-section">
-          <div class="post">
-            <img
-              src="/static/assets/img/free-photo-of-a-close-up-of-a-br (1).jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/pexels-photo-13387004.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/free-photo-of-a-close-up-of-a-br.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/free-photo-of-a-photo-of-a-house.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/pexels-wandering-bo-17673409.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/pexels-photo-13387004.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/free-photo-of-a-photo-of-a-house.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/pexels-wandering-bo-17673409.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/pexels-wandering-bo-17673409.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/pexels-photo-13387004.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="post">
-            <img
-              src="/static/assets/img/free-photo-of-a-photo-of-a-house.jpg"
-              alt=""
-              srcset=""
-            />
-          </div>
-        </div>
-      </div>
+      {% block dashboard %}
+      {% endblock %}
     </div>
-    <div class="footer">
+    </div>
+    <footer class="footer">
       <p>&copy; 2024 Dashavatar Social Media Website.</p>
-    </div>
+    </footer>
   </body>
 </html>

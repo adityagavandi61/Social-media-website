@@ -57,6 +57,10 @@ body {
   top: 116px;
   height: 449px;
 }
+.navbar a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
 .navbar ul {
   list-style-type: none;
   gap: 30px;
@@ -291,11 +295,11 @@ img.viewerprofilepic {
   padding: 8px;
   padding-left: 14px;
   border-radius: 14px 0px 0px 14px;
-  border: none;
+  background: transparent;
   box-shadow: 0px 0px 2px 0px;
   transition: all ease-in-out 0.3s;
   opacity: 80%;
-  outline: none;
+  border: none;
 }
 
 .inputsearch:hover {
@@ -306,6 +310,16 @@ img.viewerprofilepic {
   margin-right: 6px;
   cursor: pointer;
   opacity: 100%;
+}
+.inputsearch:focus{
+  width: 617px;
+  padding-left: 22px;
+  border-radius: 18px 0px 0px 18px;
+  box-shadow: 0px 0px 8px 2px blueviolet;
+  margin-right: 6px;
+  cursor: pointer;
+  opacity: 100%;
+  outline: none;
 }
 .btn-cancel {
   width: 36px;
@@ -392,6 +406,8 @@ img.viewerprofilepic {
   font-size: 17px;
 }
 /* -----Dashboard------- */
+
+
 
 .user-account {
   height: 150px;
