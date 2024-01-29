@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'media.apps.MediaConfig',
     'socialweb.apps.SocialwebConfig', 
     'django.contrib.admin',
     'django.contrib.auth',

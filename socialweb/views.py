@@ -6,13 +6,16 @@ from socialweb.forms import UserRegisterForm, ViewerRegisterForm
 
 
 def home(request):
-    return render(request,'home.html')
+    user=UserRegister.objects.all()
+    return render(request,'home.html',{'User':user})
 
 def search(request):
-    return render(request,'search.html')
+    user=UserRegister.objects.all()
+    return render(request,'search.html',{'User':user})
 
 def account(request):
-    return render(request,'myaccount.html')
+    user=UserRegister.objects.all()
+    return render(request,'myaccount.html',{'User':user})
 
 def login(request):
     if request.method == "POST":
@@ -64,11 +67,13 @@ def viewerregister(request):
 
     return render(request, 'viewerregister.html')
 
-def static(request):
-    return render(request,'dashboardstatic.html')
+def dashboard(request):
+    user=UserRegister.objects.all()
+    return render(request,'dashboardstatic.html',{'User':user})
 
 def seepost(request):
-    return render(request,'dashboardpost.html')
+    user=UserRegister.objects.all()
+    return render(request,'dashboardpost.html',{'User':user})
 
 def editaccount(request):
     return render(request,'dashboardeditaccount.html')

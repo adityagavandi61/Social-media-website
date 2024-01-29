@@ -10,16 +10,18 @@
 
 
 {% block dashboard %}
+<div class="dashboard">
+  {% for u in User %}
 <div class="user-account">
     <img
-      src="/static/assets/img/pp.webp"
+      src="{{ u.profile_pic.url }}"
       alt=""
       srcset=""
       class="Page-profile"
     />
     <h3 class="Page-name">
-      PageName
-      <p class="user-name">created by <a href="#">@username</a></p>
+      {{ u.page_name }}
+      <p class="user-name">created by @{{ u.name }}</p>
     </h3>
     <span class="followers-count"
       >135K+
@@ -73,4 +75,6 @@
       <h4 id="location" class="location">Redi,Vengurla</h4>
     </div>
   </div>
+  {% endfor %}
+</div>
 {% endblock %}

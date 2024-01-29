@@ -27,7 +27,7 @@
     <nav class="navbar">
       <ul>
         {% block static %}
-        <a href="/static"><div class="imge" id="dashboard">
+        <a href="/dashboard"><div class="imge" id="dashboard">
           <img src="/static/assets/svg/dashboard.svg" alt="" srcset="" />
           <li>Dashboard</li>
         </div></a>
@@ -48,10 +48,9 @@
       <div class="line"></div>
     </nav>
     <div class="container">
-      <div class="dashboard">
       {% block dashboard %}
+
       {% endblock %}
-    </div>
     </div>
     <footer class="footer">
       <p>&copy; 2024 Dashavatar Social Media Website.</p>
