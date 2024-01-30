@@ -15,10 +15,8 @@ class UserRegister(models.Model):
     phone_number = models.CharField(max_length=15,default='default_value')
     password = models.CharField(max_length=10)   
     profile_pic=models.FileField(upload_to="profile_pic/",max_length=250,null=True,default=None)
-    post=models.FileField(upload_to="posts/",max_length=250,null=True,default=None)
+
+
+class Post(models.Model):
     caption=models.CharField(max_length=250)
-
-
-# class Post(models.Model):
-#     desc=models.CharField(max_length=250)
-#     media=models.FileField(upload_to="posts/",max_length=250,null=True,default=None)
+    post=models.FileField(upload_to="posts/",max_length=250,null=True,default=None)

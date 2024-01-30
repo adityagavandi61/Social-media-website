@@ -31,7 +31,9 @@
       </div>
       <b>{{ u.caption }}</b>
       <div id="post">
-        <img src="{{ u.post.url}}" alt="img" srcset="" />
+        {% if p in Post %}
+        <img src="{{ p.post.url}}" alt="img" srcset="" />
+        {% endif %}
       </div>
       <div class="btn">
         <button class="button" id="like">
@@ -57,7 +59,7 @@
         >
         <p class="ctext">Hi Hello how are you</p>
       </div>
-    {% endfor %}
+      {% endfor %}
   </div>
   <div class="brake"></div>
 {% endblock %}

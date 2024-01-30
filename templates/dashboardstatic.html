@@ -1,5 +1,7 @@
 {% extends "dashboard.html" %}
-{% block title %}static{% endblock title %}
+{% block title %}
+{% for u in User %}{{u.page_name}}{% endfor %}
+{% endblock title %}
 
 {% block static %}
 <div class="imgeselected" id="dashboard">

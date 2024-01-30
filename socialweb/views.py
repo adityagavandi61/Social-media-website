@@ -1,13 +1,15 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User, auth
-from socialweb.models import UserRegister, ViewerRegister
+from socialweb.models import UserRegister, ViewerRegister,Post
 from socialweb.forms import UserRegisterForm, ViewerRegisterForm
+
 
 
 def home(request):
     user=UserRegister.objects.all()
-    return render(request,'home.html',{'User':user})
+    post=Post.objects.all()
+    return render(request,'home.html',{'User':user,'Post':post})
 
 def search(request):
     user=UserRegister.objects.all()
@@ -77,4 +79,8 @@ def seepost(request):
 
 def editaccount(request):
     return render(request,'dashboardeditaccount.html')
+
+def useraccount(request):
+    user=UserRegister.objects.all()
+    return render(request,'userac.html',{'User':user})
 

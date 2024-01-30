@@ -34,7 +34,8 @@ urlpatterns = [
     path('myaccount',views.account, name='account'),
     path('dashboard',views.dashboard, name='dashboard'),
     path('editaccount',views.editaccount, name='editaccount'),
-    path('seepost',views.seepost, name='seepost')
+    path('seepost',views.seepost, name='seepost'),
+    path('useraccount',views.useraccount, name='useraccount')
 ]
 
 if settings.DEBUG:
