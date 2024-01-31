@@ -3,6 +3,7 @@
 from django import forms
 from .models import UserRegister,ViewerRegister
 
+
 class UserRegisterForm(forms.Form):
     class user:
         model = UserRegister
@@ -13,4 +14,7 @@ class ViewerRegisterForm(forms.Form):
     class viewer:
         model = ViewerRegister
         fields = ['name', 'gmail','password','date']
+
+
+
 

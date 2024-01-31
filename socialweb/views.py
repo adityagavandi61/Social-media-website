@@ -1,10 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User, auth
+from datetime import datetime
 from socialweb.models import UserRegister, ViewerRegister,Post
 from socialweb.forms import UserRegisterForm, ViewerRegisterForm
-
-
 
 def home(request):
     user=UserRegister.objects.all()
@@ -24,6 +23,7 @@ def login(request):
         gmail=request.POST['gmail'],
         password=request.POST['password'],
         user=authenticate(gmail=gmail,password=password)
+          
 
         if user is not None:
             auth.login(request, user)
@@ -46,7 +46,8 @@ def userregister(request):
                 address=request.POST['address'],
                 page_name=request.POST['page_name'],
                 phone_number=request.POST['phone_number'],
-                password=request.POST['password']
+                password=request.POST['password'],
+                date=datetime.today()
             )
         return HttpResponseRedirect('/dashboard')
     else:
@@ -61,7 +62,8 @@ def viewerregister(request):
             viewer = ViewerRegister.objects.create(
                 name=request.POST['name'],
                 gmail=request.POST['gmail'],
-                password=request.POST['password']
+                password=request.POST['password'],
+                date=datetime.today()
             )
         return HttpResponseRedirect('/home')
     else:
