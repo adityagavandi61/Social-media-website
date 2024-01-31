@@ -31,8 +31,8 @@
       </div>
       <b>{{ u.caption }}</b>
       <div id="post">
-        {% if p in Post %}
-        <img src="{{ p.post.url}}" alt="img" srcset="" />
+        {% if Post != null %}
+        <img src="{{ Post.post.url }}" alt="img" srcset="" />
         {% endif %}
       </div>
       <div class="btn">

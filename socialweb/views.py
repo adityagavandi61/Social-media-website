@@ -48,7 +48,7 @@ def userregister(request):
                 phone_number=request.POST['phone_number'],
                 password=request.POST['password']
             )
-        return HttpResponseRedirect('/static')
+        return HttpResponseRedirect('/dashboard')
     else:
         form = UserRegisterForm()
 
@@ -75,7 +75,8 @@ def dashboard(request):
 
 def seepost(request):
     user=UserRegister.objects.all()
-    return render(request,'dashboardpost.html',{'User':user})
+    post=Post.objects.all()
+    return render(request,'dashboardpost.html',{'User':user,'Post':post})
 
 def editaccount(request):
     return render(request,'dashboardeditaccount.html')

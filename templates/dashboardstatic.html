@@ -33,9 +33,7 @@
   <div class="about">
     <div class="bio">
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Doloribus, voluptates quae. Accusamus perferendis neque inventore,
-        eaque voluptas molestiae praesentium impedit.
+        {{ u.bio }}
       </p>
     </div>
     <div id="links" class="links">
@@ -74,8 +72,11 @@
     </div>
     <div class="address">
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-      <h4 id="location" class="location">Redi,Vengurla</h4>
+      <h4 id="location" class="location">{{u.address}}</h4>
     </div>
+  </div>
+  <div class="statics">
+    
   </div>
   {% endfor %}
 </div>

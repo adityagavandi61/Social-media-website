@@ -8,10 +8,10 @@
 {% block dashboard %}
   <h3 id="posts-h3">Posts</h3>
   <div class="post-section">
-    {% for u in User %}
+    {% for p in Post %}
     <div class="post">
       <img
-        src="{{ u.post.url }}"
+        src="{{ p.post.url }}"
         alt=""
         srcset=""
       />
