@@ -9,5 +9,64 @@
 {% endblock %}
 
 {% block dashboard %}
-
+<div class="dashboard">
+    {% for u in User %}
+  <div class="user-account">
+      <img
+        src="{{ u.profile_pic.url }}"
+        alt=""
+        srcset=""
+        class="Page-profile"
+      />
+      <button class="editprofile"><img src="/static/assets/svg/changeprofile.svg" alt="" srcset=""></button>
+      <h3 class="Page-name">
+        {{ u.page_name }}
+        <p class="user-name">created by @{{ u.name }}</p>
+      </h3>
+      <span class="followers-count"
+        >135K+
+        <h6>Followers</h6>
+      </span>
+    </div>
+    <div class="aboutedit">
+      <div class="bio">
+        <p>
+          <textarea name="biobox" id="biobox" placeholder="Enter Bio upto 250 worlds."></textarea>
+        </p>
+        <button type="submit">add Bio</button>
+      </div>
+      <div id="links" class="tolinks">
+          <div id="Gmail" class="tolink">
+            <img
+              src="/static/assets/svg/gmaillogo.svg"
+              alt=""
+              srcset=""
+            /><input type="text" placeholder="Enter Gmail Link"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div>
+            <div id="whatsapp" class="tolink">
+            <img
+              src="/static/assets/svg/whatsapp.svg"
+              alt=""
+              srcset=""
+            /><input type="text" placeholder="Enter Whatsapp Number"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div>
+            <div id="Instagram" class="tolink">
+            <img
+              src="/static/assets/svg/instagramlogo.svg"
+              alt=""
+              srcset=""
+            /><input type="text" placeholder="Enter Instagram Link"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div>
+            <div id="Youtube" class="tolink">
+            <img
+              src="/static/assets/svg/youtubelogo.svg"
+              alt=""
+              srcset=""
+            /><input type="text" placeholder="Enter Youtube Link"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div
+        ></a>
+      </div>
+    </div>
+    <div class="address">
+        <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
+        <h4 id="location" class="location">{{u.address}}</h4>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

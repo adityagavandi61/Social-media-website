@@ -4,7 +4,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    
+    /* margin-right: 141px; */
 }
 ::-webkit-scrollbar {
   display: none;
@@ -42,7 +42,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.8;
+  opacity: 90%;
 }
 
 h1{

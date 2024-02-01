@@ -81,7 +81,9 @@ def seepost(request):
     return render(request,'dashboardpost.html',{'User':user,'Post':post})
 
 def editaccount(request):
-    return render(request,'dashboardeditaccount.html')
+    user=UserRegister.objects.all()
+    post=Post.objects.all()
+    return render(request,'dashboardeditaccount.html',{'User':user,'Post':post})
 
 def useraccount(request):
     user=UserRegister.objects.all()
