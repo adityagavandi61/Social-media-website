@@ -24,7 +24,7 @@ body {
   z-index: 1;
   background-color: #55b8bf;
 }
-.header a{
+.header a {
   text-decoration: none;
 }
 .aboutus {
@@ -130,6 +130,7 @@ body {
   left: 386px;
   margin: 35px;
   overflow: hidden;
+  padding-right: 20px;
   border-radius: 25px 25px 0px 0px;
   background-color: #e4f9ff;
   transition: all 0.3s;
@@ -144,6 +145,7 @@ body {
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
 }
@@ -164,8 +166,6 @@ body {
   font-size: 17px;
 }
 .userinfo .btn-follow {
-  position: absolute;
-  left: 904px;
   width: 100px;
   display: flex;
   font-size: 13px;
@@ -193,14 +193,14 @@ img.userprofilepic {
   padding: 4px;
   border-radius: 20px;
   padding-left: 7px;
-  object-fit: contain;
+  object-fit: cover;
   display: flex;
   justify-content: center;
 }
 #post img,
 video {
   border-radius: 20px;
-  height: 700px;
+  height: 450px;
 }
 .container .btn {
   width: 761px;
@@ -327,7 +327,7 @@ img.viewerprofilepic {
   opacity: 100%;
   outline: none;
 }
-.btn-cancel {
+.searchbar .btn-search {
   width: 36px;
   display: flex;
   justify-content: flex-start;
@@ -341,7 +341,7 @@ img.viewerprofilepic {
   transition: all ease-in-out 0.3s;
   opacity: 80%;
 }
-.btn-cancel:hover {
+.searchbar .btn-search:hover {
   width: 40px;
   opacity: 100%;
   background-color: #eef5ff;
@@ -417,8 +417,14 @@ img.viewerprofilepic {
   height: 150px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-left: 30px;
   gap: 20px;
+}
+.uinfo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .user-account img {
   width: 60px;
@@ -430,8 +436,9 @@ img.viewerprofilepic {
 }
 .user-account .followers-count {
   font-size: 22px;
-  padding-left: 594px;
 }
+
+/* postsection */
 #posts-h3 {
   padding: 20px 37px;
 }
@@ -457,6 +464,7 @@ img.viewerprofilepic {
   text-decoration: underline;
   color: gray;
 }
+
 .post img {
   object-fit: cover;
   width: 200px;
@@ -494,6 +502,11 @@ img.viewerprofilepic {
 
 /* editaccount */
 
+span .uedit {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
 .aboutedit {
   display: flex;
   align-items: center;
@@ -502,7 +515,7 @@ img.viewerprofilepic {
   padding: 15px;
   gap: 40px;
 }
-.aboutedit textarea{
+.aboutedit textarea {
   padding-left: 6px;
   width: 322px;
   height: 77px;
@@ -511,31 +524,29 @@ img.viewerprofilepic {
   border: 1px solid #ffdb00;
   box-shadow: 0px 0px 9px 1px #ff7c00;
 }
-.aboutedit textarea:focus{
+.aboutedit textarea:focus {
   outline-color: yellow;
 }
-.editprofile{
+.editprofile {
   display: flex;
-  position: absolute;
   background-color: white;
   width: 23px;
   height: 23px;
   justify-content: center;
   cursor: pointer;
-  left: 66px;
-  top:79px;
+  position: absolute;
   border: 1px solid yellowgreen;
   border-radius: 50%;
 }
-.editprofile:hover{
+.editprofile:hover {
   box-shadow: 0px 0px 4px 1px gray;
 }
-.editprofile>img{
+.editprofile > img {
   width: 20px;
   height: 20px;
 }
 
-.bio button{
+.bio button {
   margin-top: 10px;
   height: 30px;
   cursor: pointer;
@@ -544,133 +555,220 @@ img.viewerprofilepic {
   color: white;
   border: none;
   border-radius: 7px;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
-.bio button:hover{
+.bio button:hover {
   opacity: 90%;
   border-radius: 2px;
 }
-.tolinks{
+.tolinks {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.tolink{
+.tolink {
   display: flex;
   justify-content: flex-end;
   gap: 15px;
 }
-.tolink img{
+.tolink img {
   width: 23px;
   height: 23px;
 }
-.tolink input{
+.tolink input {
   padding-left: 6px;
   width: 270px;
   background-color: transparent;
   border: none;
 }
-.tolink>input:focus{
+.tolink > input:focus {
   outline-color: blue;
 }
-.tolink>button{
+.tolink > button {
   cursor: pointer;
   height: 27px;
   background-color: transparent;
-  border:none;
-  transition: all ease-in-out .2s;
+  border: none;
+  transition: all ease-in-out 0.2s;
 }
-.tolink>button:hover{
+.tolink > button:hover {
   opacity: 60%;
 }
 
-
 /* responsive */
-@media only screen and (max-width: 600px) {
-
+@media only screen and (max-width: 1200px) {
   /* header */
-  .header{
+  .header {
     display: flex;
     width: 100%;
     padding: 10px;
     justify-content: space-between;
   }
-  .aboutus{
+  .aboutus {
     font-size: 10px;
     letter-spacing: 2px;
   }
-  .logo{
+  .logo {
     padding-left: 8px;
   }
-  .logo h1{
+  .logo h1 {
     font-size: 17px;
   }
-  .logo h4{
+  .logo h4 {
     font-size: 9px;
   }
 
   /* navbar */
-  .navbar{
+  .navbar {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: end;
     top: 0;
-    height: auto;
+    height: 100%;
     width: 100%;
     position: fixed;
-    bottom: 5px;
-    z-index:auto;
-    transition: all ease-in-out .3s;
-}
-  .navbar div{
+    bottom: 10px;
+    transition: all ease-in-out 0.3s;
+  }
+  .navbar div {
     width: 80px;
     height: 50px;
   }
-  .imge>img{
+  .imge > img {
     margin: 0;
   }
-  .navbar ul{
+  .navbar ul {
     display: flex;
-    width: fit-content;
     padding: 8px;
     width: 100%;
-    background-color: #ebebec;
-    border-radius:0px 10px 10px 0px;
+    background-color: #e3e3e3;
+    border-radius: 0px 10px 10px 0px;
     justify-content: center;
     align-items: start;
     flex-direction: row;
   }
-  .navbar li{
+  .navbar li {
     display: none;
   }
-  .line{
-    display: none;
+  .navbar .line {
+   display: none;
   }
-  .imge{
+  .imge {
     text-align: center;
   }
 
   /* footer */
-  .footer{
+  .footer {
     display: none;
   }
-  
+
   /* conatiner */
-  .container{
-    width: 100%;
-    top: 80px;
-    height: auto;
+  .container {
+    width: 98%;
+    top: 76px;
     left: 0px;
-    margin: 7px;
-    border: 1px solid black;
+    height: 80vh;
+    overflow-y: scroll;
+    margin: 4px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
   }
-  .userinfo{
+  .container:hover{
+    box-shadow: none;
+  }
+  .userinfo {
+    display: flex;
+    justify-content: space-between;
     width: auto;
     height: auto;
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+  #post img,
+video {
+  border-radius: 20px;
+  height: 320px;
 }
+  .container .btn{
+    width: 94%;
+    margin-left: 0;
+  }
+  .container .commentbox{
+    width: 94%;
+    margin-top: 9px;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  .container .brake{
+    width: 96%;
+    margin-left: 5px;
+  }
+
+  /* search */
+  .searchbar{
+    justify-content: none;
+  }
+  .inputsearch{
+    width: 60%;
+  }
+  .inputsearch:focus{
+    width: 60%;
+    padding-left: 12px;
+  }
+  .inputsearch:hover{
+    width: 60%;
+    padding-left: 12px;
+  }
+  .searchbar .btn-search:hover{
+    margin-left: 2px;
+  }
+  .searchoutput .accountbox {
+    width: 40vh;
+  }
+  .search .line {
+    width: 90%;
+    margin-left: 15px;
+  }
+
+  /* Dashboard */
+  .user-account{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px;
+    height: 110px;
+  }
+
+  /* postsection */
+  .post-section {
+    gap: 17px;
+  }
+  .post{
+    width: 30%;
+    height: 60%;
+  }
+  .post img{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+  }
+  }
+  @media only screen and (max-width: 780px){
+    .aboutedit {
+      display: grid;
+      align-items: center;
+      text-align: center;
+      justify-content: space-evenly;
+      padding: 15px;
+      gap: 40px;
+  }
+  }
+
+
+  /* responsive for height under 750 */
+  @media screen and (max-height: 750px)  {
+   
+  }
+

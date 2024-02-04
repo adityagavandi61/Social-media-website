@@ -15,7 +15,7 @@
 <div class="dashboard">
   {% for u in User %}
 <div class="user-account">
-    <img
+    <span class="uinfo"><img
       src="{{ u.profile_pic.url }}"
       alt=""
       srcset=""
@@ -25,6 +25,7 @@
       {{ u.page_name }}
       <p class="user-name">created by @{{ u.name }}</p>
     </h3>
+  </span>
     <span class="followers-count"
       >135K+
       <h6>Followers</h6>

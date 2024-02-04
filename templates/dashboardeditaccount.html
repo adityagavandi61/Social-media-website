@@ -12,17 +12,17 @@
 <div class="dashboard">
     {% for u in User %}
   <div class="user-account">
-      <img
+      <span class="uinfo"><span class="uedit"><img
         src="{{ u.profile_pic.url }}"
         alt=""
         srcset=""
         class="Page-profile"
       />
-      <button class="editprofile"><img src="/static/assets/svg/changeprofile.svg" alt="" srcset=""></button>
+      <button class="editprofile"><img src="/static/assets/svg/changeprofile.svg" alt="" srcset=""></button></span>
       <h3 class="Page-name">
         {{ u.page_name }}
         <p class="user-name">created by @{{ u.name }}</p>
-      </h3>
+      </h3></span>
       <span class="followers-count"
         >135K+
         <h6>Followers</h6>

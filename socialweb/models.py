@@ -17,6 +17,7 @@ class UserRegister(models.Model):
     bio=models.CharField(max_length=100, default='add bio',null=True) 
     profile_pic=models.FileField(upload_to="profile_pic/",max_length=250,null=True,default='profile_pic/profilepic.svg')
     date=models.DateTimeField(null=True)
+    post=models.FileField(upload_to="posts/",max_length=250,null=True,default=None)
 
 class Post(models.Model):
     caption=models.CharField(max_length=250,null=True)
