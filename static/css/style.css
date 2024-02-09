@@ -437,6 +437,53 @@ img.viewerprofilepic {
 .user-account .followers-count {
   font-size: 22px;
 }
+/* -----static dashboard---- */
+
+.statics{
+  display: grid;
+  justify-content: center;
+  padding: 20px;
+  grid-gap: 3%;
+  grid-template-columns:29% 29% 29%;
+  grid-template-rows:30vh 30vh;
+}
+.statics>.box1, .box2, .box3, .box4{
+  background-color: #DCF2F1;
+  cursor: pointer;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+.box4{
+ grid-column: 1/3;
+}
+.box4>.btnadd{
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+.btnadd>button>img{
+  width: 40px;
+  height: 40px;
+}
+.btnadd>button{
+  cursor: pointer;
+  height: 60%;
+  width: 26%;
+  border: none;
+  border-radius: 10px;
+  transition: all ease-in-out .3s;
+}
+.btnadd>button:hover{
+  border: 1px solid blueviolet;
+  border-radius: 4px;
+  transform: scale(1.1);
+}
+.ucontent{
+  padding: 10px;
+}
 
 /* postsection */
 #posts-h3 {
@@ -594,6 +641,7 @@ span .uedit {
 .tolink > button:hover {
   opacity: 60%;
 }
+
 
 /* responsive */
 @media only screen and (max-width: 1200px) {

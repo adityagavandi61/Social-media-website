@@ -15,6 +15,3 @@ class ViewerRegisterForm(forms.Form):
         model = ViewerRegister
         fields = ['name', 'gmail','password','date']
 
-
-
-
