@@ -82,8 +82,36 @@
       <div class="box3">Top Videos <br></div>
       <div class="box4">Upload a Post
         <div class="btnadd">
-        <button class="addimage"><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>
-        <button class="addvideo"><img src="static/assets/svg/uploadvideo.svg" alt="" srcset=""></button>
+        <button onclick="openPopupimg()" class="addimage" ><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>
+        <button onclick="openPopupvideo()" class="addvideo" ><img src="static/assets/svg/uploadvideo.svg" alt="" srcset=""></button>
+        <div id="overlay"></div>
+        <div class="pop" id="pop">
+          <div class="popup">
+        <form action="" method="post">
+          {% csrf_token %}
+            <label>Upload an Image</label><br />
+            <input type="file" name="images" id="files" accept=".jpg" /><br />
+            <button type="submit">Upload</button>
+          </form>
+          <button class="close" id="close" onclick="closePopupimg()">Close</button>
+        </div>
+          </div>
+          <div class="pop" id="pop1">
+            <div class="popup">
+          <form action="" method="post">
+            {% csrf_token %}
+            <label>Upload an Video</label><br/>
+            <input type="file" name="videos" id="files" accept=".mp4" /><br />
+            <button type="submit">Upload</button>
+            </form>
+            <button class="close" id="close" onclick="closePopupvideo()">Close</button>
+          </div>
+            </div>
+          <!-- <div class="pop" id="pop">
+            <label>Upload an Video</label><br />
+            <input type="file" name="videos" id="files" accept=".mp4" /><br />
+            <button type="submit">Upload</button>
+          </div> -->
       </div>
       </div>
   </div>

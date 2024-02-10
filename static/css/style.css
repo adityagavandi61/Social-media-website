@@ -40,6 +40,10 @@ body {
   cursor: pointer;
   filter: invert(1);
 }
+.aboutus > .logout {
+  width: 30px;
+  height: 25px;
+}
 .logo {
   padding-left: 35px;
   color: #ffe382;
@@ -421,7 +425,7 @@ img.viewerprofilepic {
   padding-left: 30px;
   gap: 20px;
 }
-.uinfo{
+.uinfo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -439,51 +443,134 @@ img.viewerprofilepic {
 }
 /* -----static dashboard---- */
 
-.statics{
+.statics {
   display: grid;
   justify-content: center;
   padding: 20px;
   grid-gap: 3%;
-  grid-template-columns:29% 29% 29%;
-  grid-template-rows:30vh 30vh;
+  grid-template-columns: 29% 29% 29%;
+  grid-template-rows: 30vh 30vh;
 }
-.statics>.box1, .box2, .box3, .box4{
-  background-color: #DCF2F1;
+.statics > .box1,
+.box2,
+.box3,
+.box4 {
+  background-color: #dcf2f1;
   cursor: pointer;
   padding: 12px;
   border: 1px solid black;
   border-radius: 20px;
 }
-.box4{
- grid-column: 1/3;
+.box4 {
+  grid-column: 1/3;
 }
-.box4>.btnadd{
+.box4 > .btnadd {
   display: flex;
   gap: 35px;
   justify-content: center;
   align-items: center;
   height: 80%;
 }
-.btnadd>button>img{
+.btnadd > button > img {
   width: 40px;
   height: 40px;
 }
-.btnadd>button{
+.btnadd > button {
   cursor: pointer;
   height: 60%;
   width: 26%;
   border: none;
   border-radius: 10px;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
-.btnadd>button:hover{
+.btnadd > button:hover {
   border: 1px solid blueviolet;
   border-radius: 4px;
   transform: scale(1.1);
 }
-.ucontent{
+.ucontent {
   padding: 10px;
 }
+/* -----pop-up window----- */
+.pop {
+  display: none;
+  position: fixed;
+  width: 30vh;
+  height: 20vh;
+  border: 3px solid rgb(130, 200, 241);
+  background-color: rgb(189, 224, 244);
+  padding: 40px;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1%;
+  align-items: center;
+}
+.popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form > label {
+  font-size: large;
+}
+form > #files {
+  width: 90px;
+}
+form > button {
+  width: 130px;
+  height: 35px;
+  background-color: #9344dc;
+  color: beige;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all ease-in-out 0.3s;
+}
+form > button:hover {
+  opacity: 0.8;
+  border-radius: 3px;
+}
+.pop > .close {
+  margin: 5px;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  cursor: pointer;
+}
+/* {
+position: absolute;
+display: flex;
+justify-content: flex-end; 
+align-items: flex-end;
+left: 70%;
+top: 10%;} */
 
 /* postsection */
 #posts-h3 {
@@ -642,7 +729,6 @@ span .uedit {
   opacity: 60%;
 }
 
-
 /* responsive */
 @media only screen and (max-width: 1200px) {
   /* header */
@@ -700,7 +786,7 @@ span .uedit {
     display: none;
   }
   .navbar .line {
-   display: none;
+    display: none;
   }
   .imge {
     text-align: center;
@@ -722,7 +808,7 @@ span .uedit {
     /* border: 1px solid black; */
     border-radius: 10px;
   }
-  .container:hover{
+  .container:hover {
     box-shadow: none;
   }
   .userinfo {
@@ -735,41 +821,41 @@ span .uedit {
     margin-right: 10px;
   }
   #post img,
-video {
-  border-radius: 20px;
-  height: 320px;
-}
-  .container .btn{
+  video {
+    border-radius: 20px;
+    height: 320px;
+  }
+  .container .btn {
     width: 94%;
     margin-left: 0;
   }
-  .container .commentbox{
+  .container .commentbox {
     width: 94%;
     margin-top: 9px;
     margin-left: 3px;
     margin-right: 3px;
   }
-  .container .brake{
+  .container .brake {
     width: 96%;
     margin-left: 5px;
   }
 
   /* search */
-  .searchbar{
+  .searchbar {
     justify-content: none;
   }
-  .inputsearch{
+  .inputsearch {
     width: 60%;
   }
-  .inputsearch:focus{
-    width: 60%;
-    padding-left: 12px;
-  }
-  .inputsearch:hover{
+  .inputsearch:focus {
     width: 60%;
     padding-left: 12px;
   }
-  .searchbar .btn-search:hover{
+  .inputsearch:hover {
+    width: 60%;
+    padding-left: 12px;
+  }
+  .searchbar .btn-search:hover {
     margin-left: 2px;
   }
   .searchoutput .accountbox {
@@ -781,7 +867,7 @@ video {
   }
 
   /* Dashboard */
-  .user-account{
+  .user-account {
     display: flex;
     gap: 20px;
     justify-content: space-between;
@@ -793,30 +879,27 @@ video {
   .post-section {
     gap: 17px;
   }
-  .post{
+  .post {
     width: 30%;
     height: 60%;
   }
-  .post img{
+  .post img {
     height: 100%;
     width: 100%;
     object-fit: fill;
   }
+}
+@media only screen and (max-width: 780px) {
+  .aboutedit {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    padding: 15px;
+    gap: 40px;
   }
-  @media only screen and (max-width: 780px){
-    .aboutedit {
-      display: grid;
-      align-items: center;
-      text-align: center;
-      justify-content: space-evenly;
-      padding: 15px;
-      gap: 40px;
-  }
-  }
+}
 
-
-  /* responsive for height under 750 */
-  @media screen and (max-height: 750px)  {
-   
-  }
-
+/* responsive for height under 750 */
+@media screen and (max-height: 750px) {
+}

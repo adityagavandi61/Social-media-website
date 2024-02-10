@@ -23,10 +23,14 @@
         {{ u.page_name }}
         <p class="user-name">created by @{{ u.name }}</p>
       </h3></span>
-      <span class="followers-count"
+      <!-- <span class="followers-count"
         >135K+
         <h6>Followers</h6>
-      </span>
+      </span> --> 
+    </div>
+    <div class="address">
+      <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
+      <h4 id="location" class="location">{{u.address}}</h4>
     </div>
     <div class="aboutedit">
       <div class="bio">
@@ -63,10 +67,6 @@
         ></a>
       </div>
     </div>
-    <div class="address">
-        <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-        <h4 id="location" class="location">{{u.address}}</h4>
-      </div>
     {% endfor %}
   </div>
 {% endblock %}

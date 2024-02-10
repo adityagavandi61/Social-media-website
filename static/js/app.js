@@ -40,7 +40,6 @@ let container = document.querySelector(".container");
 //   searchselected = false;
 // });
 
-
 // account.addEventListener("click", () => {
 //   accountselected = true;
 //   account.classList.add("imgeselected");
@@ -55,46 +54,61 @@ let container = document.querySelector(".container");
 //   accountselected = false;
 // });
 
+let follow = document.querySelectorAll("#follow");
+let like = document.querySelectorAll("#like");
+
+like.forEach((like) => {
+  let likecount = 0;
+  let liked = true;
+  like.addEventListener("click", () => {
+    if (liked) {
+      likecount++;
+      like.innerHTML = `<img src="/static/assets/svg/liked.svg" alt="" srcset="" />${likecount}`;
+      liked = false;
+    } else {
+      likecount--;
+      like.innerHTML = `<img src="/static/assets/svg/like.svg" alt="" srcset="" />`;
+      liked = true;
+    }
+  });
+});
 
 
+follow.forEach((follow) => {
+  let btn = true;
+  follow.addEventListener("click", () => {
+    if (btn) {
+      follow.classList.add("following1");
+      follow.classList.remove("btn-follow");
+      follow.innerHTML = `<img src="/static/assets/svg/followed.svg" alt="" srcset="" />Following`;
+      btn = false;
+    } else {
+      follow.innerHTML = `<img src="/static/assets/svg/follow.svg" alt="" srcset="" />Follow`;
+      follow.classList.add("btn-follow");
+      follow.classList.remove("following1");
+      btn = true;
+    }
+  });
+});
+
+// ----pop-up window----
 
 
-
-// let follow = document.querySelectorAll("#follow");
-// let like = document.querySelectorAll("#like");
-
-// like.forEach((like) => {
-//   let likecount = 0;
-//   let liked = true;
-//   like.addEventListener("click", () => {
-//     if (liked) {
-//       likecount++;
-//       like.innerHTML = `<img src="/static/assets/svg/liked.svg" alt="" srcset="" />${likecount}`;
-//       liked = false;
-//     } else {
-//       likecount--;
-//       like.innerHTML = `<img src="/static/assets/svg/like.svg" alt="" srcset="" />${
-//         likecount - 0
-//       }`;
-//       liked = true;
-//     }
-//   });
-// });
-
-// follow.forEach((follow) => {
-//   let btn = true;
-//   follow.addEventListener("click", () => {
-//     if (btn) {
-//       follow.classList.add("following1");
-//       follow.classList.remove("btn-follow");
-//       follow.innerHTML = `<img src="/static/assets/svg/followed.svg" alt="" srcset="" />Following`;
-//       btn = false;
-//     } else {
-//       follow.innerHTML = `<img src="/static/assets/svg/follow.svg" alt="" srcset="" />Follow`;
-//       follow.classList.add("btn-follow");
-//       follow.classList.remove("following1");
-//       btn = true;
-//     }
-//   });
-// });
-
+function openPopupimg() {
+    document.getElementById('pop').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  function openPopupvideo() {
+    document.getElementById('pop1').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  
+  
+  function closePopupimg() {
+    document.getElementById('pop').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+  function closePopupvideo() {
+    document.getElementById('pop1').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
