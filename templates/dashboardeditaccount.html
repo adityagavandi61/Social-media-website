@@ -10,34 +10,51 @@
 
 {% block dashboard %}
 <div class="dashboard">
-    {% for u in User %}
+  <div class="msgerror">
+      <style>
+          h5{
+              text-align: center;
+              color: red;
+          }
+      </style>
+      {% if messages %}
+      {% for message in messages %}
+      <h5>{{message}}</h5>
+      {% endfor %}
+      {% endif %}
+  </div>
   <div class="user-account">
-      <span class="uinfo"><span class="uedit"><img
-        src="{{ u.profile_pic.url }}"
+      <span class="uinfo"><img
+        src="Gallery/{{ user.profile_pic}}"
         alt=""
         srcset=""
         class="Page-profile"
       />
-      <button class="editprofile"><img src="/static/assets/svg/changeprofile.svg" alt="" srcset=""></button></span>
       <h3 class="Page-name">
-        {{ u.page_name }}
-        <p class="user-name">created by @{{ u.name }}</p>
+        &nbsp;{{ user.username }}
+        <p class="user-name">&nbsp;created by @{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
       </h3></span>
-      <!-- <span class="followers-count"
-        >135K+
-        <h6>Followers</h6>
-      </span> --> 
     </div>
-    <div class="address">
+    <div class="address">&nbsp;&nbsp;&nbsp;
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-      <h4 id="location" class="location">{{u.address}}</h4>
+      <h4 id="location" class="location">{{ user.location }}</h4>
     </div>
-    <div class="aboutedit">
+    <form action="{% url 'profileupdate' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h3>Change your details</h3>
+      <div class="aboutedit">
+      <div class="info">
+        <span>Natymandal Name <input type="text" name="username" id="username" placeholder="Update Natya Mandal Name" value="{{ user.username}}" ></span>
+        <span>First Name <input type="text" name="first_name" id="first_name" placeholder="Update First Name" value="{{ user.first_name}}" ></span>
+        <span>Last Name <input type="text" name="last_name" id="last_name" placeholder="Update Last Name" value="{{ user.last_name}}" >  </span>
+        <span>Profile Picture <input type="file"  name="profile_pic" id="profile_pic" accept=".jpg" ></span>
+        <span>Location <input type="text" name="location" id="location" placeholder="Update Location" value="{{ user.location}}"></span>
+      </div>
+      <div>
       <div class="bio">
         <p>
           <textarea name="biobox" id="biobox" placeholder="Enter Bio upto 250 worlds."></textarea>
         </p>
-        <button type="submit">add Bio</button>
       </div>
       <div id="links" class="tolinks">
           <div id="Gmail" class="tolink">
@@ -45,28 +62,29 @@
               src="/static/assets/svg/gmaillogo.svg"
               alt=""
               srcset=""
-            /><input type="text" placeholder="Enter Gmail Link"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div>
+            /><input type="text" placeholder="Enter Gmail Link"></div>
             <div id="whatsapp" class="tolink">
             <img
               src="/static/assets/svg/whatsapp.svg"
               alt=""
               srcset=""
-            /><input type="text" placeholder="Enter Whatsapp Number"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div>
+            /><input type="text" placeholder="Enter Whatsapp Number"></div>
             <div id="Instagram" class="tolink">
             <img
               src="/static/assets/svg/instagramlogo.svg"
               alt=""
               srcset=""
-            /><input type="text" placeholder="Enter Instagram Link"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div>
+            /><input type="text" placeholder="Enter Instagram Link"></div>
             <div id="Youtube" class="tolink">
             <img
               src="/static/assets/svg/youtubelogo.svg"
               alt=""
               srcset=""
-            /><input type="text" placeholder="Enter Youtube Link"><button type="submit"><img src="/static/assets/svg/next.svg" alt="" srcset=""></button></div
-        ></a>
+            /><input type="text" placeholder="Enter Youtube Link"></div>
       </div>
     </div>
-    {% endfor %}
+  </div>
+    <button type="submit">Update Profile</button>
+  </form>
   </div>
 {% endblock %}

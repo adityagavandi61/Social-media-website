@@ -10,18 +10,17 @@
 
 {% block contain %}
   <div class="postcard">
-    {% for u in User %}
       <div class="userinfo">
         <a href="#"
           ><img
             class="userprofilepic"
-            src="{{ u.profile_pic.url }}"
+            src=""
             alt=""
             srcset=""
           />
           <span class="userprofile"
-            ><h4 id="username">{{ u.page_name }}</h4>
-            <p id="date">{{ u.date }}</p></span
+            ><h4 id="username"></h4>
+            <p id="date"></p></span
           >
         </a>
         <button class="btn-follow" id="follow">
@@ -29,9 +28,9 @@
           Follow
         </button>
       </div>
-      <b>{{ u.caption }}</b>
+      <b></b>
       <div id="post">
-        <img src="{{ u.post.url }}" alt="img" srcset="" />
+        <img src="" alt="img" srcset="" />
       </div>
       <div class="btn">
         <button class="button" id="like">
@@ -57,7 +56,6 @@
         >
         <p class="ctext">Hi Hello how are you</p>
       </div>
-      {% endfor %}
   </div>
   <div class="brake"></div>
 {% endblock %}

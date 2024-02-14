@@ -13,20 +13,32 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body class="color-change-2x">
-        <form method="post" action="">
+        <form method="post" action="{% url 'dologin' %}">
             {% csrf_token %}
             <div class="container">
                 <div>
                     <h1>LOGIN FORM</h1>
                 </div>
+                <div>
+                    <style>
+                        h5{
+                            text-align: center;
+                            color: red;
+                        }
+                    </style>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h5>{{message}}</h5>
+                    {% endfor %}
+                    {% endif %}
+                </div>
                 <label for="uname"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="gmail" required>
+                <input type="text" placeholder="Enter Email" name="email" required>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
                 <div>
                     <span class="psw">Forgot <a href="forgotpass.html">password?</a></span>
                 </div>
-            
                 <button type="submit">Login</button>
             <span class="mac">
                 <label for="">Don't have an account?</label><a href="newac">Sign up</a>

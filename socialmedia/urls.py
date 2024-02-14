@@ -26,14 +26,18 @@ admin.site.index_title = "Welcome to Dashavatar SocialMediaWebsite"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.login,name='login'),
+    path('do',views.dologin,name='dologin'),
+    path('dologout',views.dologout,name='logout'),
     path('newac',views.newac,name='newac'),
     path('userregister',views.userregister,name='userregister'),
+    path('pagedetails',views.pagedetails,name='pagedetails'),
     path('viewerregister',views.viewerregister,name='viewerregister'),
     path('home',views.home, name='home'),
     path('search',views.search, name='search'),
     path('myaccount',views.account, name='account'),
     path('dashboard',views.dashboard, name='dashboard'),
     path('editaccount',views.editaccount, name='editaccount'),
+    path('profileupdate',views.profileupdate, name='profileupdate'),
     path('seepost',views.seepost, name='seepost'),
     path('useraccount',views.useraccount, name='useraccount')
 ]

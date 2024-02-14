@@ -1,6 +1,6 @@
 {% extends "dashboard.html" %}
 {% block title %}
-{% for u in User %}{{u.page_name}}{% endfor %}
+{% for u in Profile %}{{user.username}}{% endfor %}
 {% endblock title %}
 
 {% block static %}
@@ -12,18 +12,30 @@
 
 
 {% block dashboard %}
+<div class="msgsuccess">
+    <style>
+        h5{
+            text-align: center;
+            color: red;
+        }
+    </style>
+    {% if messages %}
+    {% for message in messages %}
+    <h5>{{message}}</h5>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="welname"><h3>Welcome&nbsp;{{ user.first_name }}</h3></div>
 <div class="dashboard">
-  {% for u in User %}
 <div class="user-account">
     <span class="uinfo"><img
-      src="{{ u.profile_pic.url }}"
+      src="Gallery/{{ user.profile_pic}}"
       alt=""
       srcset=""
       class="Page-profile"
     />
-    <h3 class="Page-name">
-      {{ u.page_name }}
-      <p class="user-name">created by @{{ u.name }}</p>
+    <h3 class="Page-name">&nbsp;{{ user.username }}
+      <p class="user-name">&nbsp;created by @{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
     </h3>
   </span>
     <span class="followers-count"
@@ -34,7 +46,6 @@
   <div class="about">
     <div class="bio">
       <p>
-        {{ u.bio }}
       </p>
     </div>
     <div id="links" class="links">
@@ -73,13 +84,12 @@
     </div>
     <div class="address">
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-      <h4 id="location" class="location">{{u.address}}</h4>
+      <h4 id="location" class="location"></h4>
     </div>
   </div>
   <div class="statics">
-      <div class="box1">Last Months Views <br><p class="ucontent">{{ u.bio}}</p></div>
-      <div class="box2">Last Months Followers <br><p class="ucontent">{{ u.bio }}</p></div>
-      <div class="box3">Top Videos <br></div>
+      <div class="box1">Last Months Views <br><p class="ucontent"></p></div>
+      <div class="box2">Last Months Followers <br><p class="ucontent"></p></div>
       <div class="box4">Upload a Post
         <div class="btnadd">
         <button onclick="openPopupimg()" class="addimage" ><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>
@@ -98,23 +108,17 @@
           </div>
           <div class="pop" id="pop1">
             <div class="popup">
-          <form action="" method="post">
-            {% csrf_token %}
-            <label>Upload an Video</label><br/>
-            <input type="file" name="videos" id="files" accept=".mp4" /><br />
-            <button type="submit">Upload</button>
-            </form>
-            <button class="close" id="close" onclick="closePopupvideo()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
-          </div>
+              <form action="{% url 'dashboard' %}" method="post">
+                {% csrf_token %}
+                <label>Upload an Video</label><br/>
+                <input type="file" name="videos" id="files" accept=".mp4" /><br />
+                <button type="submit">Upload</button>
+                </form>
+                <button class="close" id="close" onclick="closePopupvideo()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
             </div>
-          <!-- <div class="pop" id="pop">
-            <label>Upload an Video</label><br />
-            <input type="file" name="videos" id="files" accept=".mp4" /><br />
-            <button type="submit">Upload</button>
-          </div> -->
+          </div>
       </div>
       </div>
   </div>
-  {% endfor %}
 </div>
 {% endblock %}

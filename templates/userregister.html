@@ -15,17 +15,27 @@
 
   <body>
     <div class="container">
-      <form action="/userregister" method="post">
+      <div>
+        <style>
+            h5{
+                color: red;
+            }
+        </style>
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+    </div>
+      <form action="{% url 'userregister' %}" method="post">
         {% csrf_token %}
         <div class="info">
           <h4>Register as Drama Company</h4>
           <div>
-            <b>Name</b>
+            <b>NatyaMandal Name</b>
             <input
               class="name"
               type="text"
-              placeholder="Enter your full name..."
-              name="name"
+              placeholder="Enter your NatyaMandal name..."
+              name="username"
               required
             />
             <b>Gmail</b>
@@ -33,10 +43,10 @@
               class="gmail"
               type="email"
               placeholder="Enter your gmail"
-              name="gmail"
+              name="email"
               required
             />
-            <b>Address</b>
+            <!-- <b>Address</b>
             <input
               class="address"
               type="text"
@@ -76,14 +86,23 @@
               placeholder="Enter 4 digit code"
               name="otp"
               required
-            />
+            /> -->
             <b>Password</b>
+            <span
+              ><input
+                id="password1"
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                required
+              /></span>
+            <b>Confirm Password</b>
             <span
               ><input
                 id="password"
                 type="password"
-                placeholder="Enter your password"
-                name="password"
+                placeholder="Confirm password"
+                name="password2"
                 required
               />
               <div id="hide" class="showpassword">

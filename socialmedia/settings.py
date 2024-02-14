@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,13 +32,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'socialweb.apps.SocialwebConfig', 
+    'socialweb', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+     # Third-party apps
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -122,15 +127,17 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
-MEDIA_ROOT=BASE_DIR/"Gallery"
 MEDIA_URL="/Gallery/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Gallery')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL ='socialweb.CustomUser'
+
 
 # adminpanel password and username
 # username Aditya
-# password piyushped
+# password aditya90

@@ -5,7 +5,6 @@
 
 {% block contain %}
   <div class="dashboard">
-    {% for u in User %}
   <div class="user-account">
     <span class="uinfo"><img
         src="{{ u.profile_pic.url }}"
@@ -14,7 +13,6 @@
         class="Page-profile"
       />
       <h3 class="Page-name">
-        {{ u.page_name }}
         <p class="user-name">created by @{{ u.name }}</p>
       </h3></span>
       <span class="followers-count"
@@ -79,6 +77,5 @@
         />
       </div>
     </div>
-    {% endfor %}
   </div>
   {% endblock %}

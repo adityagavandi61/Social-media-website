@@ -1,16 +1,19 @@
 from django.contrib import admin
-from socialweb.models import UserRegister, ViewerRegister,Post
+from socialweb.models import *
+from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
-class Posts(admin.ModelAdmin):
-    list_display=('caption','post','date')
+# class Posts(admin.ModelAdmin):
+#     list_display=('id','caption','post')
 
-class UserRegisters(admin.ModelAdmin):
-    list_display=('name','gmail','phone_number','page_name','password','date')
+class UserModel(UserAdmin):
+    list_display=('username','user_type')
 
-class ViewerRegisters(admin.ModelAdmin):
-    list_display=('name','gmail','password','date')
+admin.site.register(CustomUser)
 
-admin.site.register(Post,Posts),
-admin.site.register(ViewerRegister,ViewerRegisters),
-admin.site.register(UserRegister,UserRegisters)
+# admin.site.register(viewer),
+
+# admin.site.register(Profile),
+# admin.site.register(Post,Posts)
+# admin.site.register(LikePost),
+# admin.site.register(FollowersCount)
