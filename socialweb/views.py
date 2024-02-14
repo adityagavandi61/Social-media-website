@@ -14,18 +14,17 @@ def login(request):
 
 def dologin(request):
     if request.method == 'POST':
-        # user_type = request.POST.get('user_type')
         user = EmailHandle.authenticate(request, username=request.POST.get('email'), password=request.POST.get('password'))
         if user is not None:
             auth_login(request, user)
             user_type = user.user_type
             if user_type == '1':
-                return redirect('home')
+                return render(request,'home.html')
             elif user_type == '2':
-                return redirect('dashboard')
+                return render(request,'dashboard.html')
             else:
                 messages.error(request, 'Email and Password are Invalid')
-                return redirect('login')
+                return render(request,'login.html')
     
     else:
         messages.error(request, 'Email and Password are Invalid')
@@ -59,12 +58,15 @@ def userregister(request):
 def viewerregister(request):
     return render(request, 'viewerregister.html')
 
+@login_required(login_url='/')
 def dashboard(request):
     return render(request,'dashboardstatic.html')
 
+@login_required(login_url='/')
 def seepost(request):
     return render(request,'dashboardpost.html')
 
+@login_required(login_url='/')
 def editaccount(request):
     user=CustomUser.objects.get(id=request.user.id)
     context={
@@ -72,13 +74,13 @@ def editaccount(request):
     }
     return render(request,'dashboardeditaccount.html',context)
 
+@login_required(login_url='/')
 def profileupdate(request):
     if request.method == "POST":
         profile_pic=request.FILES.get('profile_pic')
         bio=request.POST.get('bio')
         username=request.POST.get('username')
         location=request.POST.get('location')
-        print(profile_pic)
         
         try:
             customuser=CustomUser.objects.get(id=request.user.id)
@@ -88,20 +90,22 @@ def profileupdate(request):
             customuser.username=username
             customuser.location=location
 
+            customuser.save()
             if username !=None and username !="":
                 customuser.set_username(username)
-            if profile_pic !=None and profile_pic !="":
+            if profile_pic !=None:
                 customuser.set_profile_pic(profile_pic)
             if bio !=None and bio !="":
                 customuser.set_bio(bio)
             if location !=None and location !="":
                 customuser.set_location(location)
 
-            customuser.svae()
             messages.success(request,'Profile Update Successfully.')
-            redirect('/dashboardeditaccount')
+            return redirect('editaccount')
         except:
             messages.error(request,'Failed to update profile')
+            return redirect('editaccount')
+            
 
     return render(request,'dashboardeditaccount.html')
 

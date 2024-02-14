@@ -7,9 +7,9 @@ from django.contrib.auth.admin import UserAdmin
 #     list_display=('id','caption','post')
 
 class UserModel(UserAdmin):
-    list_display=('username','user_type')
+    list_display=('username','user_type','profile_pic')
 
-admin.site.register(CustomUser)
+admin.site.register(CustomUser,UserModel)
 
 # admin.site.register(viewer),
 

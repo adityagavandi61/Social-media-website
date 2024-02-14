@@ -1,6 +1,6 @@
 {% extends "dashboard.html" %}
 {% block title %}
-{% for u in Profile %}{{user.username}}{% endfor %}
+{{user.username}}
 {% endblock title %}
 
 {% block static %}
@@ -12,19 +12,6 @@
 
 
 {% block dashboard %}
-<div class="msgsuccess">
-    <style>
-        h5{
-            text-align: center;
-            color: red;
-        }
-    </style>
-    {% if messages %}
-    {% for message in messages %}
-    <h5>{{message}}</h5>
-    {% endfor %}
-    {% endif %}
-</div>
 <div class="welname"><h3>Welcome&nbsp;{{ user.first_name }}</h3></div>
 <div class="dashboard">
 <div class="user-account">

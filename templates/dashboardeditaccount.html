@@ -11,6 +11,21 @@
 {% block dashboard %}
 <div class="dashboard">
   <div class="msgerror">
+    <style>
+        h5{
+            text-align: center;
+            color: rgb(0, 255, 26);
+        }
+    </style>
+    {% if messages %}
+    {% for message in massages %}
+      {% if messages == 'success'%}
+    <h5>{{message}}</h5>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+  <div class="msgerror">
       <style>
           h5{
               text-align: center;
@@ -18,9 +33,9 @@
           }
       </style>
       {% if messages %}
-      {% for message in messages %}
+        {% if messages == 'error'%}
       <h5>{{message}}</h5>
-      {% endfor %}
+      {% endif %}
       {% endif %}
   </div>
   <div class="user-account">
@@ -44,9 +59,9 @@
       <h3>Change your details</h3>
       <div class="aboutedit">
       <div class="info">
-        <span>Natymandal Name <input type="text" name="username" id="username" placeholder="Update Natya Mandal Name" value="{{ user.username}}" ></span>
-        <span>First Name <input type="text" name="first_name" id="first_name" placeholder="Update First Name" value="{{ user.first_name}}" ></span>
-        <span>Last Name <input type="text" name="last_name" id="last_name" placeholder="Update Last Name" value="{{ user.last_name}}" >  </span>
+        <span>Natymandal Name <input type="text" name="username" id="username" placeholder="Update Natya Mandal Name" value="{{ user.username}} " ></span>
+        <span>First Name <input disabled type="text" name="first_name" id="first_name" placeholder="Update First Name" value="{{ user.first_name}} " ></span>
+        <span>Last Name <input disabled type="text" name="last_name" id="last_name" placeholder="Update Last Name" value="{{ user.last_name}} " > </span>
         <span>Profile Picture <input type="file"  name="profile_pic" id="profile_pic" accept=".jpg" ></span>
         <span>Location <input type="text" name="location" id="location" placeholder="Update Location" value="{{ user.location}}"></span>
       </div>
