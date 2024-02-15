@@ -25,7 +25,7 @@
         <h5>{{message}}</h5>
         {% endfor %}
     </div>
-      <form action="{% url 'userregister' %}" method="post">
+      <form action="{% url 'adduser' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="info">
           <h4>Register as Drama Company</h4>
@@ -38,6 +38,22 @@
               name="username"
               required
             />
+            <b>First Name</b>
+            <input
+              class="first_name"
+              type="text"
+              placeholder="Enter your NatyaMandal name..."
+              name="first_name"
+              required
+            />
+            <b>Last Name</b>
+            <input
+              class="last_name"
+              type="text"
+              placeholder="Enter your NatyaMandal name..."
+              name="last_name"
+              required
+            />
             <b>Gmail</b>
             <input
               class="gmail"
@@ -46,63 +62,31 @@
               name="email"
               required
             />
-            <!-- <b>Address</b>
+            <b>Location</b>
             <input
-              class="address"
+              class="location"
               type="text"
               placeholder="Enter your Address"
-              name="address"
+              name="location"
               required
             />
-            <b>Page Name</b>
+            <b>Bio</b>
             <input
-              class="page-name"
+              class="bio"
               type="text"
               placeholder="Enter your NatyaMandal name"
-              name="page_name"
+              name="bio"
               required
             />
-            <b>Phone Number</b>
-            <span
-              ><input
-                id="phone-number"
-                class="phone-number"
-                type="text"
-                placeholder="Enter your phone number"
-                name="phone_number"
-                required
-              />
-              <div id="otp-send" class="otp-visible">
-                <img src="/static/assets/svg/otp-send.svg" alt="" srcset="" />
-              </div>
-            </span>
-            <b>OTP</b>
-            <p id="otp-sendmsg" class="none">
-              Code will send on your phone number
-            </p>
-            <input
-              class="otp"
-              type="text"
-              placeholder="Enter 4 digit code"
-              name="otp"
-              required
-            /> -->
+            <b>Profile Picture</b>
+            <input type="file" name="profile_pic" id="profile_pic" accept=".jpg">
             <b>Password</b>
-            <span
-              ><input
-                id="password1"
-                type="password"
-                placeholder="Enter your password"
-                name="password"
-                required
-              /></span>
-            <b>Confirm Password</b>
             <span
               ><input
                 id="password"
                 type="password"
-                placeholder="Confirm password"
-                name="password2"
+                placeholder="Enter a password"
+                name="password"
                 required
               />
               <div id="hide" class="showpassword">

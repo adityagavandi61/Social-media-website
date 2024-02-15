@@ -16,3 +16,15 @@
 #         model = ViewerRegister
 #         fields = ['name', 'gmail','password','date']
 
+from django import forms
+from .models import Post
+
+
+class PostForm(forms.ModelForm):
+	class Meta:
+		model = Snippet
+		fields = ['blogname',
+				'img',
+				'blogauth',
+				'blogdes'
+				]

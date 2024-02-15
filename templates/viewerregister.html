@@ -16,18 +16,22 @@
 
 <body>
   <div class="container">
-    <form action="{% url 'viewerregister' %}" method="post">
+    <form action="{% url 'addviewer' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <h4>Register as Viewer</h4>
       <div class="info">
-        <b>Name</b>
-        <input class="name" type="text" placeholder="Enter your full name..." name="username" />
+        <b>Username</b>
+        <input class="name" type="text" placeholder="Enter username" name="username" />
+        <b>First Name</b>
+        <input class="name" type="text" placeholder="Enter first name" name="first_name" />
+        <b>Last Name</b>
+        <input class="name" type="text" placeholder="Enter last name" name="last_name" />
         <b>Gmail</b>
         <input class="gmail" id="gmail" type="email" placeholder="Enter your gmail" name="email" />
+        <b>Profile Picture</b>
+        <input type="file" name="profile_pic" id="profile_pic" accept=".jpg">
         <b>Password</b>
-        <input id="password" type="password" placeholder="Enter your password" required name="password" />
-        <b>Confirm Password</b>
-        <span><input id="password" type="password" placeholder="Enter your password" required name="password2" />
+        <span><input id="password" type="password" placeholder="Enter your password" required name="password" />
           <div id="hide" class="showpassword">
             <img src="/static/assets/svg/hidepassword.svg" alt="" srcset="" />
           </div>

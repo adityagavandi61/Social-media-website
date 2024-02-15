@@ -12,7 +12,7 @@
 
 
 {% block dashboard %}
-<div class="welname"><h3>Welcome&nbsp;{{ user.first_name }}</h3></div>
+<div class="welname"><h3>Welcome&nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}</h3></div>
 <div class="dashboard">
 <div class="user-account">
     <span class="uinfo"><img
@@ -32,7 +32,7 @@
   </div>
   <div class="about">
     <div class="bio">
-      <p>
+      <p> {% for i in profile %}{{i.bio}} {% endfor %} 
       </p>
     </div>
     <div id="links" class="links">
@@ -71,12 +71,12 @@
     </div>
     <div class="address">
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-      <h4 id="location" class="location"></h4>
+      <h4 id="location" class="location">{% for i in profile %}{{i.location}} {% endfor %}</h4>
     </div>
   </div>
   <div class="statics">
-      <div class="box1">Last Months Views <br><p class="ucontent"></p></div>
-      <div class="box2">Last Months Followers <br><p class="ucontent"></p></div>
+      <!-- <div class="box1">Last Months Views <br><p class="ucontent"></p></div>
+      <div class="box2">Last Months Followers <br><p class="ucontent"></p></div> -->
       <div class="box4">Upload a Post
         <div class="btnadd">
         <button onclick="openPopupimg()" class="addimage" ><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>
@@ -84,10 +84,11 @@
         <div id="overlay"></div>
         <div class="pop" id="pop">
           <div class="popup">
-        <form action="" method="post">
+        <form action="{% url 'uploadpost' %}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
             <label>Upload an Image</label><br />
-            <input type="file" name="images" id="files" accept=".jpg" /><br />
+            <label for="">Caption for Photo </label><textarea name="caption" id="caption" cols="24" rows="3"></textarea>
+            <input type="file" name="content" id="files" accept=".jpg" /><br/>
             <button type="submit">Upload</button>
           </form>
           <button class="close" id="close" onclick="closePopupimg()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
@@ -95,10 +96,11 @@
           </div>
           <div class="pop" id="pop1">
             <div class="popup">
-              <form action="{% url 'dashboard' %}" method="post">
+              <form action="{% url 'uploadpost' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label>Upload an Video</label><br/>
-                <input type="file" name="videos" id="files" accept=".mp4" /><br />
+                <label for="">Caption for Video </label><textarea name="caption" id="caption" cols="24" rows="3"></textarea>
+                <input type="file" name="content" id="files" accept=".mp4" /><br />
                 <button type="submit">Upload</button>
                 </form>
                 <button class="close" id="close" onclick="closePopupvideo()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>

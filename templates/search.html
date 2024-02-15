@@ -12,24 +12,17 @@
 {% block contain %}
 <div class="search">
   <div class="searchbar">
-    <input class="inputsearch" id="searchtext" type="text" placeholder="Search...">
+    <input class="inputsearch" id="searchtext" type="search" placeholder="Search...">
     <button class="btn-search" id="search"><img src="/static/assets/svg/search.svg" alt="" srcset=""></button>
   </div>
   <div class="line"></div>
   <div class="searchoutput">
-    <div class="accountbox"><a href="#"><img class="userprofilepic" src="/static/assets/img/pp.webp" alt="" srcset="" />
+    {% for i in profile %}
+    <div class="accountbox"><a href="{{i.user}}"><img class="userprofilepic" src="{{ i.user.profile_pic.url }}" alt="" srcset="" />
         <span class="userprofile">
-          <h4 id="username">UserName</h4>
+          <h4 id="username">{{i.user.username}}</h4>
       </a></div>
-    <div class="accountbox"><a href="#"><img class="userprofilepic" src="/static/assets/img/pp.webp" alt="" srcset="" />
-        <span class="userprofile">
-          <h4 id="username">UserName</h4>
-      </a></div>
-    <div class="accountbox"><a href="#"><img class="userprofilepic" src="/static/assets/img/pp.webp" alt="" srcset="" />
-        <span class="userprofile">
-          <h4 id="username">UserName</h4>
-      </a>
+      {% endfor %}
     </div>
   </div>
-</div>
 {% endblock %}
