@@ -12,42 +12,18 @@
   />
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
-<body class="color-change-2x">
-        <form method="post" action="{% url 'pagedetails' %}">
-            {% csrf_token %}
-            <div class="container">
-                <div>
-                    <h1>Page Info</h1>
-                </div>
-                  <b>Location</b>
-              <input
-                class="address"
-                type="text"
-                placeholder="Enter your Address"
-                name="location"
-                required
-              />
-              <b>Bio</b>
-              <input
-                class="Bio"
-                type="text"
-                placeholder="Enter your Bio"
-                name="bio"
-              />
-              <b>Phone Number</b>
-              <span
-                ><input
-                  id="phone-number"
-                  class="phone-number"
-                  type="text"
-                  placeholder="Enter your phone number"
-                  name="phone_number"
-                  required
-                /> 
-                <b>Upload Profile Picture</b>
-                <input type="file" name="profile_pic" id="profile_pic" accept=".jpg">  
-              <button type="submit">Create</button>
-        </form>
+<body>
+      <div class="commentbox1">
+        <div class="incomment">
+          <input type="text" name="comment" id="com">
+          <button type="submit">Send</button>
+        </div>
+        <div class="othercomments">
+          <div class="user">
+            <span><a href="" id="usercom">viewername<p>comment</p></a></span>
+          </div>
+        </div>
+      </div>
 </body>
 <script src="{% static 'js/user.js' %}"></script>
 </html>

@@ -199,7 +199,6 @@ def profileupdate(request):
         
         try:
             customuser=CustomUser.objects.get(id=request.user.id)
-
             customuser.bio=bio
             customuser.profile_pic=profile_pic
             customuser.username=username

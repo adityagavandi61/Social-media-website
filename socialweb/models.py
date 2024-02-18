@@ -28,11 +28,10 @@ class Profile(models.Model):
     created_at=models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return self.user.first_name+" "+self.user.last_name
+        return self.user.username+" "+" Created by @ "+self.user.first_name+" "+self.user.last_name
 
 class Post(models.Model):
     user=models.ForeignKey(User,default=1,null=True,on_delete=models.SET_NULL)
-    post_id=models.IntegerField(default=0)
     content = models.FileField(upload_to='post',null=True)
     caption = models.TextField()
     created_at = models.DateTimeField(default=datetime.now)
