@@ -770,10 +770,7 @@ span .uedit {
 @media only screen and (max-width: 1200px) {
   /* header */
   .header {
-    display: flex;
-    width: 100%;
     padding: 10px;
-    justify-content: space-between;
   }
   .aboutus {
     margin-right: 30px;
@@ -799,7 +796,7 @@ span .uedit {
     top: 0;
     height: 100%;
     width: 100%;
-    position: fixed;
+    position:fixed;
     bottom: 10px;
     transition: all ease-in-out 0.3s;
   }
@@ -842,8 +839,7 @@ span .uedit {
     left: 0px;
     height: 80vh;
     overflow-y: scroll;
-    margin: 4px;
-    /* border: 1px solid black; */
+    margin: 0px;
     border-radius: 10px;
   }
   .container:hover {

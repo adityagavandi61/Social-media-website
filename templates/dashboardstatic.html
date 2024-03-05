@@ -32,7 +32,7 @@
   </div>
   <div class="about">
     <div class="bio">
-      <p> {% for i in profile %}{{i.bio}} {% endfor %} 
+      <p> {{ user.bio }}  
       </p>
     </div>
     <div id="links" class="links">
@@ -75,8 +75,8 @@
     </div>
   </div>
   <div class="statics">
-      <!-- <div class="box1">Last Months Views <br><p class="ucontent"></p></div>
-      <div class="box2">Last Months Followers <br><p class="ucontent"></p></div> -->
+      <div class="box1">Last Months Views <br><p class="ucontent"></p></div>
+      <div class="box2">Last Months Followers <br><p class="ucontent"></p></div>
       <div class="box4">Upload a Post
         <div class="btnadd">
         <button onclick="openPopupimg()" class="addimage" ><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>

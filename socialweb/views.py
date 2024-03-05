@@ -39,9 +39,9 @@ def dologout(request):
 
 @login_required(login_url='/')
 def home(request):
-    user=CustomUser.objects.get(id=request.user.id)
-    profile=Profile.objects.all()
-    post=Post.objects.all()
+    user=CustomUser.objects.get(username=request.user.username)
+    profile = Profile.objects.all()
+    post = Post.objects.all().order_by('-created_at')
     context={
         'profile':profile,
         'post':post,
@@ -144,8 +144,7 @@ def viewerregister(request):
 
 @login_required(login_url='/')
 def dashboard(request):
-    user=CustomUser.objects.get(id=request.user.id)
-    profile=Profile.objects.filter(user=user)
+    profile=Profile.objects.all()
     context={
         'profile':profile,
     }
@@ -161,9 +160,9 @@ def uploadpost(request):
             messages.warning(request,'Select Media')
             return redirect('dashboard')
         else:
-            user=CustomUser.objects.get(id=request.user.id)
+            profile=Profile.objects.get(user=request.user.id)
             media=Post(
-                user=user,
+                profile=profile,
                 caption=caption,
                 content=content,
             )
@@ -174,8 +173,11 @@ def uploadpost(request):
 
 @login_required(login_url='/')
 def seepost(request):
-    post=Post.objects.all()
+    user=CustomUser.objects.get(username=request.user.username)
+    profile = Profile.objects.get(user=user)
+    post = Post.objects.filter(profile=profile).order_by('-created_at')
     context={
+        'profile': profile,
         'post':post,
     }
     return render(request,'dashboardpost.html',context)

@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
 class Posts(admin.ModelAdmin):
-    list_display=('user','created_at')
+    list_display=('profile','created_at')
 
 class UserModel(UserAdmin):
     list_display=('username','user_type')
