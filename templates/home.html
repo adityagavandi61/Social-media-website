@@ -12,10 +12,10 @@
   <div class="postcard">
         {% for p in post %}
       <div class="userinfo">
-        <a href="#"
+        <a href="{{p.profile}}"
           ><img
             class="userprofilepic"
-            src="{{p.profile_pic.url}}"
+            src="Gallery/{{p.profile_pic}}"
             alt=""
             srcset=""
           />
@@ -34,9 +34,16 @@
       </div>
       <b class="biohome">{{p.caption}} </b>
       <div class="btn">
+        <a style="text-decoration: none;" href="/likepost?post_id={{p.id}}">
         <button class="button" id="like">
           <img src="/static/assets/svg/like.svg" alt="" srcset="" />
-        </button>
+          {% if p.no_of_likes == 0 %}
+          <p></p>
+          {% else %}
+          <p>{{p.no_of_likes}}</p>
+          {% endif %}
+
+        </button></a>
         <button class="button" id="comment">
           <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
         </button>

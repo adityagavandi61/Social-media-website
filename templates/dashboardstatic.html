@@ -32,7 +32,7 @@
   </div>
   <div class="about">
     <div class="bio">
-      <p> {{ user.bio }}  
+      <p> {{ profile.user.bio }}</p>  
       </p>
     </div>
     <div id="links" class="links">
@@ -71,7 +71,7 @@
     </div>
     <div class="address">
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
-      <h4 id="location" class="location">{% for i in profile %}{{i.location}} {% endfor %}</h4>
+      <h4 id="location" class="location">{% for i in profile %}{{i.location}}{% endfor %}</h4>
     </div>
   </div>
   <div class="statics">

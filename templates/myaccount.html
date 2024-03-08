@@ -1,14 +1,71 @@
 {% extends "index.html" %}
 {% block title %}My Account{% endblock title %}
 
-<!-- {% block my-ac %}
+{% block my-ac %}
 <div class="imgeselected" id="account">
   <img src="/static/assets/svg/profileselected.svg" alt="" srcset="" />
   <li>My Account</li>
 </div>
-{% endblock %} -->
+{% endblock %}
 
 {% block contain %}
-
+<div class="dashboard">
+  <div class="msgerror">
+    <style>
+        h5{
+            text-align: center;
+            color: rgb(0, 255, 26);
+        }
+    </style>
+    {% if messages %}
+    {% for message in massages %}
+      {% if messages == 'success'%}
+    <h5>{{message}}</h5>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+  <div class="msgerror">
+      <style>
+          h5{
+              text-align: center;
+              color: red;
+          }
+      </style>
+      {% if messages %}
+        {% if messages == 'error'%}
+      <h5>{{message}}</h5>
+      {% endif %}
+      {% endif %}
+  </div>
+  <div class="user-account">
+      <span class="uinfo"><img
+        src="Gallery/{{ user.profile_pic}}"
+        alt=""
+        srcset=""
+        class="Page-profile"
+      />
+      <h3 class="Page-name">
+        &nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}
+        <p class="user-name"></p>
+      </h3></span>
+    </div>
+    <form action="{% url 'profileupdate' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h3>Update Profile</h3>
+      <div class="aboutedit">
+      <div class="info">
+        <span>First Name <input disabled type="text" name="first_name" id="first_name" placeholder="Update First Name" value="{{ user.first_name}} " ></span>
+        <span>Last Name <input disabled type="text" name="last_name" id="last_name" placeholder="Update Last Name" value="{{ user.last_name}} " > </span>
+        <span>Profile Picture <input type="file"  name="profile_pic" id="profile_pic" accept=".jpg" ></span>
+      </div>
+  </div>
+    <button type="submit">Update Profile</button>
+  </form>
+  <div class="alogout">
+  <a href="{% url 'logout' %}">Logout</a>
+  <a href="">delete</a>
+  </div>
+  </div>
 {% endblock %}
 

@@ -450,9 +450,8 @@ img.viewerprofilepic {
 .user-account p {
   font-size: 13px;
 }
-.user-account .followers-count {
-  font-size: 22px;
-}
+
+
 /* -----static dashboard---- */
 
 .statics {
@@ -626,6 +625,7 @@ form > button:hover {
 }
 .post:hover img {
   cursor: pointer;
+  filter: blur(1px);
   transform: scale(1.1);
 }
 .links {
@@ -654,6 +654,26 @@ form > button:hover {
 }
 
 /* editaccount */
+
+.alogout{
+  display: flex;
+  gap: 2%;
+  margin-left: 3%;
+  margin-bottom: 2%;
+}
+.alogout>a{
+  text-decoration: none;
+  color: white;
+  background-color: red;
+  padding: 1.4vh;
+  border-radius: 10px;
+  transition: all ease-in-out 0.3s;
+}
+.alogout>a:hover{
+  color: black;
+  border-radius: 4px;
+}
+
 .info{
   display: flex;
   gap: 10px;
@@ -765,6 +785,7 @@ span .uedit {
 .tolink > button:hover {
   opacity: 60%;
 }
+
 
 /* responsive */
 @media only screen and (max-width: 1200px) {
@@ -918,8 +939,8 @@ span .uedit {
     height: 60%;
   }
   .post img {
-    height: 100%;
-    width: 100%;
+    height: 200px;
+    width: 200px;
     object-fit: fill;
   }
 }

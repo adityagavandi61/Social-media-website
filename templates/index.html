@@ -17,7 +17,7 @@
 
   <body>
     <header class="header">
-      <a href="/home"><div class="logo">
+      <a href="{% url 'home' %}"><div class="logo">
         <h1 id="wname">DASHAVATAR</h1>
         <h4 id="wtagline">Social Media Website</h4>
       </div></a>
@@ -27,23 +27,23 @@
     <nav class="navbar">
       <ul>
         {% block Home %}
-        <a href="/home"><div class="imge" id="home">
+        <a href="{% url 'home' %}"><div class="imge" id="home">
           <img src="/static/assets/svg/home.svg" alt="" srcset="" />
           <li>Home</li>
         </div></a>
         {% endblock %}
         {% block Search %}
-        <a href="/search"><div class="imge" id="search">
+        <a href="{% url 'search' %}"><div class="imge" id="search">
           <img src="/static/assets/svg/search.svg" alt="" srcset="" />
           <li>Search</li>
         </div></a>
         {% endblock %}
-        <!-- {% block my-ac %}
-        <a href="/myaccount"><div class="imge" id="account">
+        {% block my-ac %}
+        <a href="{% url 'account' %}"><div class="imge" id="account">
           <img src="/static/assets/svg/profile.svg" alt="" srcset="" />
           <li>My Account</li>
         </div></a>
-        {% endblock %} -->
+        {% endblock %}
       </ul>
       <div class="line"></div>
     </nav>

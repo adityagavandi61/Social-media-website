@@ -13,7 +13,7 @@ User = settings.AUTH_USER_MODEL
 class CustomUser(AbstractUser):
     user=((1,"viewer"),(2,'profile'))
     user_type = models.CharField(choices=user,max_length=255,default=1)
-    profile_pic=models.ImageField(upload_to='profilepic',default="static/assets/svg/profile.svg")
+    profile_pic=models.FileField(upload_to='profilepic',null=True)
 
 
 class viewer(models.Model):
@@ -35,15 +35,24 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    post_id=models.IntegerField(null=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     profile=models.ForeignKey(Profile,default=1,null=True,on_delete=models.SET_NULL)
     content = models.FileField(upload_to='post',null=True)
+    user = models.CharField(max_length=100)
     caption = models.TextField()
     created_at = models.DateTimeField(default=datetime.now)
     no_of_likes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user
+
+class LikePost(models.Model):
+    post_id = models.CharField(max_length=500)
+    username = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.username
+
 
 
 

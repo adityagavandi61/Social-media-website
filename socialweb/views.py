@@ -20,7 +20,7 @@ def dologin(request):
             auth_login(request, user)
             user_type = user.user_type
             if user_type == '1':
-                return redirect('home')
+                return redirect('/')
             elif user_type == '2':
                 return redirect('dashboard')
         else:
@@ -31,16 +31,36 @@ def dologin(request):
         messages.error(request, 'Email and Password are Invalid')
         return render(request,'login.html')
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def dologout(request):
     auth.logout(request)
     return redirect('login')
 
+@login_required(login_url='login')
+def likepost(request):
+    username = request.user.username
+    post_id = request.GET.get('post_id')
 
-@login_required(login_url='/')
+    post = Post.objects.get(id=post_id)
+
+    like_filter = LikePost.objects.filter(post_id=post_id, username=username).first()
+
+    if like_filter == None:
+        new_like = LikePost.objects.create(post_id=post_id, username=username)
+        new_like.save()
+        post.no_of_likes = post.no_of_likes+1
+        post.save()
+        return redirect('/')
+    else:
+        like_filter.delete()
+        post.no_of_likes = post.no_of_likes-1
+        post.save()
+        return redirect('/')
+
+@login_required(login_url='login')
 def home(request):
-    user=CustomUser.objects.get(username=request.user.username)
-    profile = Profile.objects.all()
+    user=CustomUser.objects.get(id=request.user.id)
+    profile=Profile.objects.filter(user=user)
     post = Post.objects.all().order_by('-created_at')
     context={
         'profile':profile,
@@ -48,8 +68,9 @@ def home(request):
     }
     return render(request,'home.html',context)
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def search(request):
+    user=CustomUser.objects.get(id=request.user.id)
     profile=Profile.objects.all()
     context={
         'profile':profile,
@@ -59,12 +80,29 @@ def search(request):
 def account(request):
     return render(request,'myaccount.html')
 
+@login_required(login_url='login')
+def pagedetails(request,pk):
+    user_object = CustomUser.objects.get(username=pk)
+    user_profile = Profile.objects.get(user=user_object)
+    user_posts = Post.objects.filter(user=pk)
+    user_post_length = len(user_posts)
 
-def pagedetails(request):
-    return render(request,'pagedetails.html')
+    context = {
+        'user_object': user_object,
+        'user_profile': user_profile,
+        'user_posts': user_posts,
+        'user_post_length': user_post_length,
+        # 'button_text': button_text,
+        # 'user_followers': user_followers,
+        # 'user_following': user_following,
+    }
+
+    return render(request,'pagedetails.html',context)
   
 def newac(request):
     return render(request,'newac.html')
+
+
 
 def adduser(request):
     if request.method=='POST':
@@ -142,17 +180,19 @@ def addviewer(request):
 def viewerregister(request):
     return render(request, 'viewerregister.html')
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def dashboard(request):
-    profile=Profile.objects.all()
+    user=CustomUser.objects.get(id=request.user.id)
+    profile=Profile.objects.filter(user=user)
     context={
         'profile':profile,
     }
     return render(request,'dashboardstatic.html',context)
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def uploadpost(request):
     if request.method=='POST':
+        user = request.user.username
         caption=request.POST.get('caption')
         content=request.FILES.get('content')
         
@@ -162,6 +202,7 @@ def uploadpost(request):
         else:
             profile=Profile.objects.get(user=request.user.id)
             media=Post(
+                user=user,
                 profile=profile,
                 caption=caption,
                 content=content,
@@ -171,7 +212,7 @@ def uploadpost(request):
 
     return render(request,'dashboardstatic.html')
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def seepost(request):
     user=CustomUser.objects.get(username=request.user.username)
     profile = Profile.objects.get(user=user)
@@ -182,7 +223,7 @@ def seepost(request):
     }
     return render(request,'dashboardpost.html',context)
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def editaccount(request):
     user=CustomUser.objects.get(id=request.user.id)
     profile=Profile.objects.filter(user=user)
@@ -191,7 +232,7 @@ def editaccount(request):
     }
     return render(request,'dashboardeditaccount.html',context)
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def profileupdate(request):
     if request.method == "POST":
         profile_pic=request.FILES.get('profile_pic')
