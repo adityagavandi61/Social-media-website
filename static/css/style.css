@@ -148,7 +148,7 @@ body {
 }
 .biohome{
   display: flex;
-  justify-content: center;
+  margin-left: 10px;
 }
 .userinfo {
   width: 1000px;
@@ -296,6 +296,31 @@ img.viewerprofilepic {
   opacity: 53%;
   border: 1px solid #332941;
   box-shadow: 0px 1px 7px 0px;
+}
+
+/* -------profile/user--------- */
+.btnfollow{
+  width: 100px;
+  display: flex;
+  font-size: 13px;
+  gap: 5px;
+  padding: 4px;
+  border-radius: 22px;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 70%;
+  transition: all ease-in 0.3s;
+}
+.btnfollow:hover {
+  opacity: 100%;
+  box-shadow: 0px 0px 5px 0px;
+  background-color: #bdebee;
+}
+.btnfollow .follow{
+  width: 25px;
+  height: 25px;
 }
 /* -------Search--------- */
 .search {
@@ -562,7 +587,7 @@ form>textarea{
 form > #files {
   width: 90px;
 }
-form > button {
+form > #uploadim {
   width: 130px;
   height: 35px;
   background-color: #9344dc;
@@ -572,7 +597,7 @@ form > button {
   border-radius: 7px;
   transition: all ease-in-out 0.3s;
 }
-form > button:hover {
+form > #uploadim:hover {
   opacity: 0.8;
   border-radius: 3px;
 }
@@ -933,10 +958,6 @@ span .uedit {
   /* postsection */
   .post-section {
     gap: 17px;
-  }
-  .post {
-    width: 30%;
-    height: 60%;
   }
   .post img {
     height: 200px;

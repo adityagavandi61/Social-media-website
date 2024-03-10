@@ -40,6 +40,7 @@ urlpatterns = [
     path('dashboard',views.dashboard, name='dashboard'),
     path('uploadpost',views.uploadpost, name='uploadpost'),
     path('likepost',views.likepost, name='likepost'),
+    path('follow',views.follow, name='follow'),
     path('editaccount',views.editaccount, name='editaccount'),
     path('profileupdate',views.profileupdate, name='profileupdate'),
     path('seepost',views.seepost, name='seepost'),

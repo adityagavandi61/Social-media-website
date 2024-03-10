@@ -12,10 +12,10 @@
   <div class="postcard">
         {% for p in post %}
       <div class="userinfo">
-        <a href="{{p.profile}}"
+        <a href="/profile/{{p.profile}}"
           ><img
             class="userprofilepic"
-            src="Gallery/{{p.profile_pic}}"
+            src="{{user_profile.user.profile_pic.url}}"
             alt=""
             srcset=""
           />
@@ -24,15 +24,11 @@
             <p id="date">{{ p.created_at }}</p></span
           >
         </a>
-        <button class="btn-follow" id="follow">
-          <img src="/static/assets/svg/follow.svg" alt="" srcset="" />
-          Follow 
-        </button>
+  
       </div>
       <div id="post">
         <img src="/Gallery/{{ p.content }}" alt="img" srcset="" />
       </div>
-      <b class="biohome">{{p.caption}} </b>
       <div class="btn">
         <a style="text-decoration: none;" href="/likepost?post_id={{p.id}}">
         <button class="button" id="like">
@@ -51,15 +47,14 @@
           <img src="/static/assets/svg/share.svg" alt="" srcset="" />
         </button>
       </div>
+      {% if p.caption != null  %}
+      <b class="biohome"><span style="opacity: 70%;">@{{p.profile}}&nbsp;&nbsp;</span>{{p.caption}} </b>
+      {% else %}
+      <b class="biohome"></b>
+      {% endif %}
       <div class="line"></div>
       <div class="commentbox">
-        <a href="#"
-          ><img
-            class="viewerprofilepic"
-            src="/static/assets/img/pp.webp"
-            alt=""
-            srcset=""
-          />
+        <a href="#">
           <h4 class="viewername">@viewername</h4></a
         >
         <p class="ctext">Hi Hello how are you</p>

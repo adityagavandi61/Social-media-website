@@ -50,7 +50,7 @@
         <p class="user-name"></p>
       </h3></span>
     </div>
-    <form action="{% url 'profileupdate' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'account' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <h3>Update Profile</h3>
       <div class="aboutedit">
@@ -60,7 +60,7 @@
         <span>Profile Picture <input type="file"  name="profile_pic" id="profile_pic" accept=".jpg" ></span>
       </div>
   </div>
-    <button type="submit">Update Profile</button>
+    <button id="uploadim" type="submit">Update Profile</button>
   </form>
   <div class="alogout">
   <a href="{% url 'logout' %}">Logout</a>

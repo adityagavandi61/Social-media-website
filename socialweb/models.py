@@ -36,7 +36,7 @@ class Profile(models.Model):
 
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    profile=models.ForeignKey(Profile,default=1,null=True,on_delete=models.SET_NULL)
+    profile=models.ForeignKey(Profile,null=True,on_delete=models.SET_NULL)
     content = models.FileField(upload_to='post',null=True)
     user = models.CharField(max_length=100)
     caption = models.TextField()
@@ -53,7 +53,9 @@ class LikePost(models.Model):
     def __str__(self):
         return self.username
 
+class FollowersCount(models.Model):
+    follower = models.CharField(max_length=100)
+    user = models.CharField(max_length=100)
 
-
-
-
+    def __str__(self):
+        return self.user

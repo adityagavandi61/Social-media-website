@@ -9,11 +9,11 @@ class Posts(admin.ModelAdmin):
 class UserModel(UserAdmin):
     list_display=('username','user_type')
 
+
 admin.site.register(CustomUser,UserModel)
 
 admin.site.register(viewer),
 admin.site.register(Profile),
 admin.site.register(LikePost),
-admin.site.register(Post,Posts)
-# admin.site.register(LikePost),
-# admin.site.register(FollowersCount)
+admin.site.register(Post,Posts),
+admin.site.register(FollowersCount)

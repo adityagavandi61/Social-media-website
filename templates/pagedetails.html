@@ -14,10 +14,16 @@
         <p class="user-name">&nbsp;created by @{{ user_profile.user.first_name }}&nbsp;{{ user_profile.user.last_name }}</p>
       </h3>
     </span>
-    <button class="btn-follow" id="follow">
-      <img src="/static/assets/svg/follow.svg" alt="" srcset="" />
-      Follow 
+    <form action="/follow" method="post">
+      {% csrf_token %}
+      <input type="hidden" value="{{user.first_name}}&nbsp;{{user.last_name}}" name="follower">
+      <input type="hidden" value="{{user_object.username}}" name="user">
+
+    <button type="submit" class="btnfollow" id="follow">
+      <img class="follow" src="/static/assets/svg/follow.svg" alt="" srcset="" />
+      {{button_text}}
     </button>
+    </form>
     </div>
     <div class="about">
       <div class="bio">
@@ -65,12 +71,12 @@
     </div>
     <div class="followers">
 
-      {% if user_post_length == 0 %}
+      {% if user_followers == 0 %}
       <b>No Follower</b>
-      {% elif user_post_length == 1 %}
-      <b>135 Follower</b>
+      {% elif user_followers == 1 %}
+      <b>{{user_followers}} Follower</b>
       {% else %}
-      <b>135 Followers</b>
+      <b>{{user_followers}} Followers</b>
       {% endif %}
       
 

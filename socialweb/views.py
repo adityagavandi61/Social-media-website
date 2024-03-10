@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,auth
 from datetime import datetime
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 from socialweb.emailhandle import EmailHandle
 from socialweb.models import *
 from django.contrib.auth import authenticate,logout
@@ -58,12 +59,33 @@ def likepost(request):
         return redirect('/')
 
 @login_required(login_url='login')
+def follow(request):
+    if request.method == 'POST':
+        follower = request.POST['follower']
+        user = request.POST['user']
+
+        if FollowersCount.objects.filter(follower=follower, user=user).first():
+            delete_follower = FollowersCount.objects.get(follower=follower, user=user)
+            delete_follower.delete() 
+            return redirect('/profile/'+user)
+        else:
+            new_follower = FollowersCount.objects.create(follower=follower, user=user)
+            new_follower.save()
+            return redirect('/profile/'+user)
+    else:
+        return redirect('/')
+
+        
+
+@login_required(login_url='login')
 def home(request):
-    user=CustomUser.objects.get(id=request.user.id)
-    profile=Profile.objects.filter(user=user)
+    user_object=CustomUser.objects.get(id=request.user.id)
+    user_profile = Profile.objects.filter(user=user_object)
     post = Post.objects.all().order_by('-created_at')
+    
     context={
-        'profile':profile,
+        'user_object': user_object,
+        'user_profile': user_profile,
         'post':post,
     }
     return render(request,'home.html',context)
@@ -87,14 +109,23 @@ def pagedetails(request,pk):
     user_posts = Post.objects.filter(user=pk)
     user_post_length = len(user_posts)
 
+    follower = request.user.username
+    user = pk
+
+    if FollowersCount.objects.filter(follower=follower, user=user).first():
+        button_text = 'Unfollow'
+    else:
+        button_text = 'Follow'
+
+    user_followers = len(FollowersCount.objects.filter(user=pk))
+
     context = {
         'user_object': user_object,
         'user_profile': user_profile,
         'user_posts': user_posts,
         'user_post_length': user_post_length,
-        # 'button_text': button_text,
-        # 'user_followers': user_followers,
-        # 'user_following': user_following,
+        'button_text': button_text,
+        'user_followers': user_followers,
     }
 
     return render(request,'pagedetails.html',context)
