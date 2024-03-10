@@ -26,13 +26,20 @@
     </h3>
   </span>
     <span class="followers-count"
-      >135K+
-      <h6>Followers</h6>
+      >{% if user_followers == 0 or user_followers == 1 %}
+      <b style="display: flex;
+      flex-direction: column;
+      text-align: center;">{{user_followers}} <span>Follower</span></b>
+      {% else %}
+      <b style="display: flex;
+      flex-direction: column;
+      text-align: center;">{{user_followers}} <span>Followers</span></b>
+      {% endif %}
     </span>
   </div>
   <div class="about">
     <div class="bio">
-      <p> {{ profile.user.bio }}</p>  
+      <p>{% for i in profile %}{{i.bio}}{% endfor %}</p>  
       </p>
     </div>
     <div id="links" class="links">

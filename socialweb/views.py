@@ -79,7 +79,7 @@ def follow(request):
 
 @login_required(login_url='login')
 def home(request):
-    user_object=CustomUser.objects.get(id=request.user.id)
+    user_object = CustomUser.objects.get(username=request.user.username)
     user_profile = Profile.objects.filter(user=user_object)
     post = Post.objects.all().order_by('-created_at')
     
@@ -215,8 +215,13 @@ def viewerregister(request):
 def dashboard(request):
     user=CustomUser.objects.get(id=request.user.id)
     profile=Profile.objects.filter(user=user)
+
+    follower = request.user.id
+    user_followers = len(FollowersCount.objects.filter(user=user))
+
     context={
         'profile':profile,
+        'user_followers': user_followers,
     }
     return render(request,'dashboardstatic.html',context)
 

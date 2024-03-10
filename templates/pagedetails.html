@@ -71,9 +71,7 @@
     </div>
     <div class="followers">
 
-      {% if user_followers == 0 %}
-      <b>No Follower</b>
-      {% elif user_followers == 1 %}
+      {% if user_followers == 0 or user_followers == 1 %}
       <b>{{user_followers}} Follower</b>
       {% else %}
       <b>{{user_followers}} Followers</b>
@@ -87,6 +85,7 @@
       {% else %}
       <b>{{user_post_length}} Posts</b>
       {% endif %}
+
     </div>
     <h3 id="posts-h3">Posts</h3>
   <div class="post-section">
