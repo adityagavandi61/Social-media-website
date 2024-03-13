@@ -1,0 +1,45 @@
+{% extends "index.html" %} 
+{% block title %}Comments{% endblock title %}
+
+{% block contain %}
+<style>
+    .postview{
+        width: 100%;
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+</style>
+
+<div class="postview" >
+    <div class="view" style="margin-bottom: 10px;">
+      <img style="width: 400px; border-radius: 10px;"
+        src="{{ user_posts.content.url }}"
+        alt=""
+        srcset=""
+      />
+      <form style="display: block;" action="/comment" method="post">
+        {% csrf_token %}
+      <div id="bcom" class="bcom">
+        <input type="hidden" value="{{user.first_name}}&nbsp;{{user.last_name}}" name="user">
+        <input type="hidden" value="{{user_posts.id}}" name="post_id">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;
+        <input placeholder="leave a comment" class="comment-b2" type="text" name="comment" id="comment">
+        <button type="submit"><img src="/static/assets/svg/comsend.svg" alt="" srcset=""></button>
+    </div>
+  </form>
+    </div>
+    <div class="com">
+    {% if post_comments %}
+    <p style="opacity: 50%;">Total comments:{{lencom}}</p>
+    <strong>Comments:</strong>
+    {% for comment in post_comments %}
+      <p><b style="opacity: 70%;">{{ comment.user }}</b>:&nbsp;&nbsp;{{ comment.comment }}</p>
+      {% endfor %}
+    {% else %}
+    <p>No comment yet</p>
+    {% endif %}
+</div>
+    </div>
+{% endblock %}

@@ -12,13 +12,13 @@
   <div class="postcard">
         {% for p in post %}
       <div class="userinfo">
-        <a href="/profile/{{p.profile}}"
-          ><img
+        <a href="/profile/{{p.profile}}">
+          <!-- <img
             class="userprofilepic"
-            src="{{user_profile.user.profile_pic.url}}"
+            src="{{ p.profile.user_profile.user.profile_pic.url }}"
             alt=""
             srcset=""
-          />
+          /> -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <span class="userprofile"
             ><h4 id="username">{{p.profile}}</h4>
             <p id="date">{{ p.created_at }}</p></span
@@ -40,25 +40,30 @@
           {% endif %}
 
         </button></a>
-        <button class="button" id="comment">
+        <a href="/postview/{{p.id}}"><button class="button" id="comment">
           <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
-        </button>
+        </button></a>
         <button class="button" id="share">
           <img src="/static/assets/svg/share.svg" alt="" srcset="" />
         </button>
       </div>
-      {% if p.caption != null  %}
-      <b class="biohome"><span style="opacity: 70%;">@{{p.profile}}&nbsp;&nbsp;</span>{{p.caption}} </b>
+      {% if p.caption  %}
+      <b class="biohome"><span style="opacity: 70%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@{{p.profile}}&nbsp;&nbsp;</span>{{p.caption}} </b>
       {% else %}
       <b class="biohome"></b>
       {% endif %}
       <div class="line"></div>
-      <div class="commentbox">
-        <a href="#">
-          <h4 class="viewername">@viewername</h4></a
-        >
-        <p class="ctext">Hi Hello how are you</p>
-      </div>
+      <form style="display: block;" action="/comment" method="post">
+        {% csrf_token %}
+      <div id="bcom" class="bcom">
+        <input type="hidden" value="{{user.first_name}}&nbsp;{{user.last_name}}" name="user">
+        <input type="hidden" value="{{p.id}}" name="post_id">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;
+        <input placeholder="leave a comment" class="comment-b2" type="text" name="comment" id="comment">
+        <button type="submit"><img src="/static/assets/svg/comsend.svg" alt="" srcset=""></button>
+    </div>
+  </form>
+      <div class="line"></div>
       {% endfor %}
   </div>
   <div class="brake"></div>

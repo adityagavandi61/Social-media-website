@@ -109,3 +109,49 @@ function openPopupimg() {
     document.getElementById('pop1').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
   }
+
+
+
+  // let comment = document.querySelectorAll('#comment');
+  // let comment1 = document.querySelectorAll('#bcom');
+ 
+//  function opencommentbox() {
+//    comment1.style.display = "block";
+//  }
+
+//  function closecommentbox() {
+//    comment1.style.display = "none";
+//  }
+
+// comment.forEach((comment) => {
+//   let comment2 = true;
+//   comment.addEventListener("click", () => {
+//     if (comment2) {
+//       comment1.classList.remove("hide");
+//       comment1.classList.add("bcom");
+//       comment2 = false;
+//     } else {
+//       comment1.classList.add("hide");
+//       comment1.classList.remove("bcom");
+//       comment2 = true;
+//     }
+//   });
+// });
+
+// let comments = document.querySelectorAll('#comment');
+// let comment1 = document.querySelectorAll('#bcom');
+
+// comments.forEach((comment, index) => {
+//   let comment2 = true;
+//   comment.addEventListener("click", () => {
+//     if (comment2) {
+//       comment1[index].classList.remove("hide");
+//       comment1[index].classList.add("bcom");
+//       comment2 = false;
+//     } else {
+//       comment1[index].classList.add("hide");
+//       comment1[index].classList.remove("bcom");
+//       comment2 = true;
+//     }
+//   });
+// });

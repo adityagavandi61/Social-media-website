@@ -220,7 +220,7 @@ video {
   padding: 7px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-left: 139px;
 }
 .btn .button {
@@ -603,6 +603,7 @@ form > #uploadim:hover {
   opacity: 0.8;
   border-radius: 3px;
 }
+
 .close {
   margin: 5px;
   background-color: #da0b0b00;
@@ -812,6 +813,7 @@ span .uedit {
 .tolink > button:hover {
   opacity: 60%;
 }
+
 
 
 /* responsive */

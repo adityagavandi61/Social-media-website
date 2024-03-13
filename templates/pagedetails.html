@@ -91,11 +91,11 @@
   <div class="post-section">
     {% for p in user_posts %}
     <div class="post">
-      <img style="height: 200px; width: 200px;"
+      <a href="/postview/{{p.id}}"><img style="height: 200px; width: 200px;"
         src="{{ p.content.url }}"
         alt=""
         srcset=""
-      />
+      /></a>
     </div>
     {% endfor %}
   </div>

@@ -15,5 +15,6 @@ admin.site.register(CustomUser,UserModel)
 admin.site.register(viewer),
 admin.site.register(Profile),
 admin.site.register(LikePost),
+admin.site.register(CommentPost),
 admin.site.register(Post,Posts),
 admin.site.register(FollowersCount)
