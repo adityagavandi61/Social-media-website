@@ -49,7 +49,7 @@
         &nbsp;{{ user.username }}
         <p class="user-name">&nbsp;created by @{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
       </h3></span>
-    </div><p>{{ profile.user.bio }}</p>
+    </div><p>&nbsp;&nbsp;&nbsp;{% for i in profile %}{{i.bio}} {% endfor %}</p>
     <div class="address">&nbsp;&nbsp;&nbsp;
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
       <h4 id="location" class="location">{% for i in profile %}{{i.location}} {% endfor %}</h4>

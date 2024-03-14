@@ -2,20 +2,24 @@
 {% block seeposts %}
   <div class="imgeselected" id="upload-post">
     <img src="/static/assets/svg/seepostselected.svg" alt="" srcset="" />
-    <li>See Posts</li>
+    <li>My Posts</li>
   </div>
 {% endblock %}
 {% block dashboard %}
+{% if post %}
   <h3 id="posts-h3">Posts</h3>
-  <div class="post-section">
+<div class="post-section">
     {% for p in post %}
     <div class="post">
-      <img
+      <a href="/userpost/{{p.id}}"><img
         src="/Gallery/{{ p.content }}"
         alt=""
         srcset=""
-      />
+      /></a>
     </div>
     {% endfor %}
+    {% else %}
+    <h3 id="posts-h3">No Posts</h3>
+    {% endif %}
   </div>
 {% endblock %}

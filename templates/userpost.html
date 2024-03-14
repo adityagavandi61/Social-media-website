@@ -1,0 +1,72 @@
+{% extends "dashboard.html" %}
+{% block title %}
+{{user.username}}
+{% endblock title %}
+
+{% block dashboard %}
+<style>
+    .postview{
+        width: 100%;
+        margin: 20px;
+        gap: 30px;
+    }
+    .view>img{
+        transform: translateX(70%);
+    }
+    .com{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+</style>
+
+<div class="postview" >
+    <div class="view" style="margin-bottom: 10px;">
+      <img style="width: 400px; border-radius: 10px;"
+        src="{{ user_posts.content.url }}"
+        alt=""
+        srcset=""
+      />
+    </div>
+
+    <div class="com">
+        <div class="likes">   
+        {% if postlikes %}
+    <p style="opacity: 50%;">Total Likes:{{postlike}}</p>
+    <strong>Likes by:</strong>
+    {% for pl in postlikes %}
+      <p><b style="opacity: 70%;">{{ pl.username }}</b></p>
+      {% endfor %}
+    {% else %}
+    <p>No likes</p>
+    {% endif %}
+</div> 
+
+<div class="shares">   
+    {% if shareposts %}
+<p style="opacity: 50%;">Total Shares:{{sharepost}}</p>
+<strong>Share by:</strong>
+{% for s in shareposts %}
+  <p><b style="opacity: 70%;">{{ s.username }}</b></p>
+  {% endfor %}
+{% else %}
+<p>No Shares</p>
+{% endif %}
+</div> 
+
+</div>
+<div class="commentss" style="transform: translateX(21%); margin-top: 10px;">
+{% if post_comments %}
+<p style="opacity: 50%;">Total comments:{{lencom}}</p>
+<strong>Comments:</strong>
+{% for comment in post_comments %}
+  <p><b style="opacity: 70%;">{{ comment.user }}</b>:&nbsp;&nbsp;{{ comment.comment }}</p>
+  {% endfor %}
+{% else %}
+<p>No comment yet</p>
+{% endif %}
+</div>
+
+    </div>
+{% endblock %}

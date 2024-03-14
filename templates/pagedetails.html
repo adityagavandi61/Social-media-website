@@ -16,10 +16,10 @@
     </span>
     <form action="/follow" method="post">
       {% csrf_token %}
-      <input type="hidden" value="{{user.first_name}}&nbsp;{{user.last_name}}" name="follower">
+      <input type="hidden" value="{{user.username}}" name="follower">
       <input type="hidden" value="{{user_object.username}}" name="user">
     <button type="submit" class="btnfollow" id="follow">
-      <img class="follow" src="/static/assets/svg/follow.svg" alt="" srcset="" />
+      <!-- <img class="follow" src="/static/assets/svg/follow.svg" alt="" srcset="" /> -->
       {{button_text}}
     </button>
     </form>

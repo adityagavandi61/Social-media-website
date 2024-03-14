@@ -213,9 +213,17 @@ def search(request):
     context={
         'profile':profile,
     }
+
+    if user.user_type =='2':
+        return redirect('dashboard')
+
+
     return render(request,'search.html',context)
 
 def account(request):
+    user_object=CustomUser.objects.get(id=request.user.id)
+    if user_object.user_type =='2':
+        return redirect('dashboard')
     return render(request,'myaccount.html')
 
 @login_required(login_url='login')
@@ -333,12 +341,25 @@ def dashboard(request):
     profile=Profile.objects.filter(user=user)
 
     follower = request.user.id
+    user_follower = FollowersCount.objects.filter(user=user)
     user_followers = len(FollowersCount.objects.filter(user=user))
 
+
+    user_posts = Post.objects.filter(user=user).order_by('-created_at')
+    postlikes = LikePost.objects.filter(post_id=id)
+    shareposts = SharePost.objects.filter(post_id=id)
+    postlike = len(LikePost.objects.filter(post_id=id))
+    sharepost = len(SharePost.objects.filter(post_id=id))
         
     context={
         'profile':profile,
+        'user_follower': user_follower,
         'user_followers': user_followers,
+        'user_posts': user_posts,
+        'postlike':postlike,
+        'postlikes':postlikes,
+        'sharepost':sharepost,
+        'shareposts':shareposts,
     }
 
     if user.user_type =='1':
@@ -378,6 +399,11 @@ def seepost(request):
         'profile': profile,
         'post':post,
     }
+
+    if user.user_type =='1':
+        return redirect('/')
+
+
     return render(request,'dashboardpost.html',context)
 
 @login_required(login_url='login')
@@ -387,6 +413,11 @@ def editaccount(request):
     context={
         'profile':profile,
     }
+
+    if user.user_type =='1':
+        return redirect('/')
+
+
     return render(request,'dashboardeditaccount.html',context)
 
 @login_required(login_url='login')
@@ -424,7 +455,23 @@ def profileupdate(request):
 
     return render(request,'dashboardeditaccount.html')
 
-
-def useraccount(request):
-    return render(request,'userac.html')
+@login_required(login_url='login')
+def userpost(request,id):
+    user_posts = Post.objects.get(id=id)
+    postlikes = LikePost.objects.filter(post_id=id)
+    shareposts = SharePost.objects.filter(post_id=id)
+    postlike = len(LikePost.objects.filter(post_id=id))
+    sharepost = len(SharePost.objects.filter(post_id=id))
+    post_comments = CommentPost.objects.filter(post_id=id).order_by('-created_at')
+    lencom=len(post_comments)
+    context = {
+        'user_posts': user_posts,
+        'post_comments': post_comments,
+        'lencom':lencom,
+        'postlike':postlike,
+        'postlikes':postlikes,
+        'sharepost':sharepost,
+        'shareposts':shareposts,
+    }
+    return render(request,'userpost.html',context)
 

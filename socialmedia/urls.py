@@ -50,7 +50,7 @@ urlpatterns = [
     path('editaccount',views.editaccount, name='editaccount'),
     path('profileupdate',views.profileupdate, name='profileupdate'),
     path('seepost',views.seepost, name='seepost'),
-    path('useraccount',views.useraccount, name='useraccount')
+    path('userpost/<str:id>',views.userpost, name='userpost')
 ]
 
 if settings.DEBUG:

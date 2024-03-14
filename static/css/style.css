@@ -539,9 +539,6 @@ img.viewerprofilepic {
   border-radius: 4px;
   transform: scale(1.1);
 }
-.ucontent {
-  padding: 10px;
-}
 /* -----pop-up window----- */
 .pop {
   display: none;
