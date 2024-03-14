@@ -19,7 +19,29 @@
         alt=""
         srcset=""
       />
-      <form style="display: block;" action="/comment" method="post">
+      <div class="btn" style="width: auto; margin: 0;">
+        <a style="text-decoration: none;" href="/plikepost?post_id={{user_posts.id}}">
+        <button class="button" id="like">
+          <img src="/static/assets/svg/like.svg" alt="" srcset="" />
+          {% if postlike %}
+          &nbsp;{{postlike}}
+          {% endif %}
+        </button></a>
+        <a style="text-decoration: none;" href="/postview/{{user_posts.id}}"><button class="button" id="comment">
+          <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
+          {% if lencom %}
+          &nbsp;{{lencom}}
+          {% endif %}
+        </button></a>
+        <a style="text-decoration: none;" href="/pshare?post_id={{user_posts.id}}"><button class="button" id="share">
+          <img src="/static/assets/svg/share.svg" alt="" srcset="" />
+          {% if sharepost %}
+          &nbsp;{{sharepost}}
+          {% endif %}
+        </button></a>
+      </div>
+      <!-------commentform---------->
+      <form style="display: block;" action="/pcomment" method="post">
         {% csrf_token %}
       <div id="bcom" class="bcom">
         <input type="hidden" value="{{user.first_name}}&nbsp;{{user.last_name}}" name="user">
@@ -29,6 +51,7 @@
         <button type="submit"><img src="/static/assets/svg/comsend.svg" alt="" srcset=""></button>
     </div>
   </form>
+  <!-------commentformEnd---------->
     </div>
     <div class="com">
     {% if post_comments %}

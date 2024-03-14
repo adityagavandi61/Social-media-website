@@ -13,12 +13,12 @@
         {% for p in post %}
       <div class="userinfo">
         <a href="/profile/{{p.profile}}">
-          <!-- <img
+          <img
             class="userprofilepic"
-            src="{{ p.profile.user_profile.user.profile_pic.url }}"
+            src="{{ p.profile.user.profile_pic.url }}"
             alt=""
             srcset=""
-          /> -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          />
           <span class="userprofile"
             ><h4 id="username">{{p.profile}}</h4>
             <p id="date">{{ p.created_at }}</p></span
@@ -36,16 +36,20 @@
           {% if p.no_of_likes == 0 %}
           <p></p>
           {% else %}
-          <p>{{p.no_of_likes}}</p>
+          <p>&nbsp;{{p.no_of_likes}}</p>
           {% endif %}
-
         </button></a>
         <a href="/postview/{{p.id}}"><button class="button" id="comment">
           <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
         </button></a>
-        <button class="button" id="share">
+        <a style="text-decoration: none;" href="/share?post_id={{p.id}}"><button class="button" id="share">
           <img src="/static/assets/svg/share.svg" alt="" srcset="" />
-        </button>
+          {% if p.no_of_share == 0 %}
+          <p></p>
+          {% else %}
+          <p>&nbsp;{{p.no_of_share}}</p>
+          {% endif %}
+        </button></a>
       </div>
       {% if p.caption  %}
       <b class="biohome"><span style="opacity: 70%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@{{p.profile}}&nbsp;&nbsp;</span>{{p.caption}} </b>
@@ -66,5 +70,5 @@
       <div class="line"></div>
       {% endfor %}
   </div>
-  <div class="brake"></div>
+  <!-- <div class="brake"></div> -->
 {% endblock %}

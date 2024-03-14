@@ -59,6 +59,27 @@ def likepost(request):
         return redirect('/')
 
 @login_required(login_url='login')
+def plikepost(request):
+    username = request.user.username
+    post_id = request.GET.get('post_id')
+
+    post = Post.objects.get(id=post_id)
+
+    like_filter = LikePost.objects.filter(post_id=post_id, username=username).first()
+
+    if like_filter == None:
+        new_like = LikePost.objects.create(post_id=post_id, username=username)
+        new_like.save()
+        post.no_of_likes = post.no_of_likes+1
+        post.save()
+        return redirect('postview/'+post_id)
+    else:
+        like_filter.delete()
+        post.no_of_likes = post.no_of_likes-1
+        post.save()
+        return redirect('postview/'+post_id)
+
+@login_required(login_url='login')
 def follow(request):
     if request.method == 'POST':
         follower = request.POST['follower']
@@ -92,18 +113,76 @@ def comment(request):
     else:
         return redirect('/')
 
+@login_required(login_url='login')
+def pcomment(request):
+    if request.method == 'POST':
+        user = request.POST['user']
+        post_id = request.POST['post_id']
+        comment = request.POST['comment']
+
+        if comment:
+            newcomment=CommentPost.objects.create(user=user, post_id=post_id,comment=comment)
+            newcomment.save()
+            return redirect('postview/'+post_id)
+        else:
+            messages.error(request, "Leave a comment")
+            return redirect('postview/'+post_id)
+    else:
+        return redirect('/')
+
+
+@login_required(login_url='login')
+def pshare(request):
+    username = request.user.username
+    post_id = request.GET.get('post_id')
+
+    post = Post.objects.get(id=post_id)
+
+    Share_filter = SharePost.objects.filter(post_id=post_id, username=username).first()
+
+    if Share_filter == None:
+        new_like = SharePost.objects.create(post_id=post_id, username=username)
+        new_like.save()
+        post.no_of_share = post.no_of_share+1
+        post.save()
+        return redirect('postview/'+post_id)
+    else:
+        return redirect('postview/'+post_id)
+
+@login_required(login_url='login')
+def share(request):
+    username = request.user.username
+    post_id = request.GET.get('post_id')
+
+    post = Post.objects.get(id=post_id)
+
+    Share_filter = SharePost.objects.filter(post_id=post_id, username=username).first()
+
+    if Share_filter == None:
+        new_like = SharePost.objects.create(post_id=post_id, username=username)
+        new_like.save()
+        post.no_of_share = post.no_of_share+1
+        post.save()
+        return redirect('/')
+    else:
+        return redirect('/')
+
+
 
 @login_required(login_url='login')   
 def postview(request,id):
     user_posts = Post.objects.get(id=id)
 
-
+    postlike = len(LikePost.objects.filter(post_id=id))
+    sharepost = len(SharePost.objects.filter(post_id=id))
     post_comments = CommentPost.objects.filter(post_id=id).order_by('-created_at')
     lencom=len(post_comments)
     context = {
         'user_posts': user_posts,
         'post_comments': post_comments,
         'lencom':lencom,
+        'postlike':postlike,
+        'sharepost':sharepost,
     }
 
     return render(request,'postview.html',context)
@@ -115,7 +194,7 @@ def home(request):
     user_profile = Profile.objects.filter(user=user_object)
     post = Post.objects.all().order_by('-created_at')
     
-    
+
     context={
         'user_object': user_object,
         'user_profile': user_profile,
