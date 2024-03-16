@@ -29,6 +29,11 @@ class Profile(models.Model):
     location=models.CharField(max_length=50)
     bio=models.TextField()
     created_at=models.DateTimeField(default=datetime.now)
+    whatsapp=models.CharField(max_length=100,null=True, blank=True)
+    facebook=models.URLField(blank=True,null=True)
+    gmail=models.URLField(blank=True,null=True)
+    instagram=models.URLField(blank=True,null=True)
+    youtube=models.URLField(blank=True,null=True)
 
     def __str__(self):
         return self.user.username
@@ -77,3 +82,4 @@ class SharePost(models.Model):
 
     def __str__(self):
         return self.username
+

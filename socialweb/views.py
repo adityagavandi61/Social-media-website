@@ -433,20 +433,15 @@ def profileupdate(request):
     if request.method == "POST":
         profile_pic=request.FILES.get('profile_pic')
         bio=request.POST.get('bio')
-        username=request.POST.get('username')
         location=request.POST.get('location')
+        instagram=request.POST.get('instagram')
         
         try:
             customuser=CustomUser.objects.get(id=request.user.id)
-            customuser.username=username
             customuser.profile_pic=profile_pic
-            profile=Profile.objects.get(id=customuser)
-            profile.bio=bio
-            profile.location=location
 
             customuser.save()
-            if username !=None and username !="":
-                customuser.set_username(username)
+
             if profile_pic != None and profile_pic !="":
                 customuser.set_profile_pic=profile_pic
             if bio !=None and bio !="":
@@ -485,4 +480,3 @@ def userpost(request,id):
     if user.user_type =='1':
         return redirect('/')
     return render(request,'userpost.html',context)
-

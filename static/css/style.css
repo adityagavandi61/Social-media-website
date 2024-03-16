@@ -829,10 +829,9 @@ span .uedit {
   width: auto;
   margin: 0;
 }
-.com{
+.postview>.view>.com{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
   margin-top: 10px;
 }
 .commentss{
@@ -1061,7 +1060,6 @@ span .uedit {
   margin-left: -28px;
 }
 .com {
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
 }
 }

@@ -102,6 +102,7 @@
     </div>
   </div>
   <div class="statics">
+    {% if user_posts  %}
       <div class="box1">Recent Posts<br>
         <table>
           <tr>
@@ -119,9 +120,16 @@
           {% endfor%}
       </table>
     </div>
+    {% else %}
+    <div class="box1">No Posts</div>
+    {% endif %}
+    {% if user_follower %}
       <div class="box2">New Followers <br>
         <b>{% for f in user_follower %}{{ f.follower }}{% endfor %}</b>
       </div>
+      {% else %}
+      <div class="box2">No Followers</div>
+      {% endif %}
       <div class="box4">Upload a Post
         <div class="btnadd">
         <button onclick="openPopupimg()" class="addimage" ><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>

@@ -30,7 +30,7 @@
         </p>
       </div>
       <div id="links" class="links">
-        <a href="mailto:" target="_blank"
+        <a href="https://mail.google.com/mail/u/0/?fs=1&to={{user_profile.user.email}}&su=Booking Request for Show on [Date] at [Time]&body=Dear {{user_profile.user.username}},&tf=cm" target="_blank"
           ><div id="Gmail" class="link">
             <img
               src="/static/assets/svg/gmaillogo.svg"
@@ -38,6 +38,7 @@
               srcset=""
             /></div
         ></a>
+        {% if user_profile.whatsapp %}
         <a href="tel:+" target="_blank"
           ><div id="whatsapp" class="link">
             <img
@@ -46,7 +47,9 @@
               srcset=""
             /></div
         ></a>
-        <a href="http://" target="_blank"
+        {% endif %}
+        {% if user_profile.instagram %}
+        <a href="{{ user_profile.instagram }}" target="_blank"
           ><div id="Instagram" class="link">
             <img
               src="/static/assets/svg/instagramlogo.svg"
@@ -54,6 +57,8 @@
               srcset=""
             /></div
         ></a>
+        {% endif %}
+        {% if user_profile.youtube %}
         <a href="http://" target="_blank"
           ><div id="Youtube" class="link">
             <img
@@ -61,7 +66,7 @@
               alt=""
               srcset=""
             /></div
-        ></a>
+        ></a>{% endif %}
       </div>
       <div class="address">
         <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />

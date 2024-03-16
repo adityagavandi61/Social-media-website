@@ -42,7 +42,7 @@
         <a href="/postview/{{p.id}}"><button class="button" id="comment">
           <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
         </button></a>
-        <a style="text-decoration: none;" href="/share?post_id={{p.id}}"><button class="button" id="share">
+        <a style="text-decoration: none;" href="/share?post_id={{p.id}}"><button onclick="openPopupimg()" class="button" id="share">
           <img src="/static/assets/svg/share.svg" alt="" srcset="" />
           {% if p.no_of_share == 0 %}
           <p></p>
@@ -57,6 +57,13 @@
       <b class="biohome"></b>
       {% endif %}
       <div class="line"></div>
+      <div id="overlay"></div>
+      <div class="pop" id="pop">
+        <div class="popup">
+      <h3>Share Link: <h4>http://127.0.0.1:8000/postview/{{p.id}}"</h4></h3>
+        <button class="close" id="close" onclick="closePopupimg()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
+      </div>
+        </div>
       <form style="display: block;" action="/comment" method="post">
         {% csrf_token %}
       <div id="bcom" class="bcom">
