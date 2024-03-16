@@ -811,9 +811,35 @@ span .uedit {
   opacity: 60%;
 }
 
-
-
+.postview{
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  gap: 30px;
+}
+.postview>.view>img{
+  width: 400px;
+  border-radius: 10px;
+}
+.view{
+  transform: translateX(0%);
+  width: fit-content;
+}
+.postview>.view>.btn{
+  width: auto;
+  margin: 0;
+}
+.com{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.commentss{
+  margin-top: 10px;
+}
 /* responsive */
+/* responsive for height for Tablet */
 @media only screen and (max-width: 1200px) {
   /* header */
   .header {
@@ -975,8 +1001,67 @@ span .uedit {
     padding: 15px;
     gap: 40px;
   }
+  .postview {
+    flex-direction: column;
+}
 }
 
-/* responsive for height under 750 */
-@media screen and (max-height: 750px) {
+/* responsive for height for mobile */
+@media screen and (max-width: 465px) {
+  .post {
+    display: flex;
+    width: 86px;
+    height: 106px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.post img {
+  height: 108px;
+  width: 106px;
+  object-fit: cover;
+}
+.postview {
+  flex-direction: column;
+}
+.postview>.view>img{
+  width: 350px;
+}
+.view>.btn>.button {
+  width: 70px;
+}
+.bcom>input {
+  width: 0;
+}
+#post img, video {
+  border-radius: 20px;
+  height: 250px;
+  width: 380px;
+  object-fit: contain;
+}
+.statics {
+  grid-template-columns: auto;
+  grid-template-rows: 26vh 20vh;
+}
+.view{
+  transform: translateX(0);
+}
+.commentss{
+  transform: translateX(1%);
+}
+.biohome {
+  display: flex;
+  margin-left: -40px;
+}
+.postcard .line {
+  width: 98%;
+  margin-left: 7px;
+}
+
+.postview>.view>.btn {
+  margin-left: -28px;
+}
+.com {
+  flex-direction: row;
+  justify-content: space-around;
+}
 }

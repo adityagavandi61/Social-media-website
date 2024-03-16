@@ -27,7 +27,7 @@
   
       </div>
       <div id="post">
-        <img src="/Gallery/{{ p.content }}" alt="img" srcset="" />
+        <img src="{{ p.content.url }}" alt="img" srcset="" />
       </div>
       <div class="btn">
         <a style="text-decoration: none;" href="/likepost?post_id={{p.id}}">

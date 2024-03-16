@@ -130,7 +130,6 @@ def pcomment(request):
     else:
         return redirect('/')
 
-
 @login_required(login_url='login')
 def pshare(request):
     username = request.user.username
@@ -167,8 +166,6 @@ def share(request):
     else:
         return redirect('/')
 
-
-
 @login_required(login_url='login')   
 def postview(request,id):
     user_posts = Post.objects.get(id=id)
@@ -186,7 +183,6 @@ def postview(request,id):
     }
 
     return render(request,'postview.html',context)
-
 
 @login_required(login_url='login')
 def home(request):
@@ -220,8 +216,26 @@ def search(request):
 
     return render(request,'search.html',context)
 
+@login_required(login_url='login')
 def account(request):
     user_object=CustomUser.objects.get(id=request.user.id)
+    if request.method == "POST":
+        profile_pic=request.FILES.get('profile_pic')
+        
+        try:
+            customuser=CustomUser.objects.get(id=request.user.id)
+            customuser.profile_pic=profile_pic
+
+            customuser.save()
+            if profile_pic != None and profile_pic !="":
+                customuser.set_profile_pic=profile_pic
+            customuser.save()
+
+            messages.success(request,'Profile Update Successfully.')
+            return redirect('account')
+        except:
+            messages.error(request,'Failed to update profile')
+            return redirect('account')
     if user_object.user_type =='2':
         return redirect('dashboard')
     return render(request,'myaccount.html')
@@ -256,8 +270,6 @@ def pagedetails(request,pk):
   
 def newac(request):
     return render(request,'newac.html')
-
-
 
 def adduser(request):
     if request.method=='POST':
@@ -299,7 +311,6 @@ def adduser(request):
 def userregister(request):
     return render(request, 'userregister.html')
 
-
 def addviewer(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -330,7 +341,6 @@ def addviewer(request):
 
             return redirect('home')
     return render(request,'viewerregister.html')
-
 
 def viewerregister(request):
     return render(request, 'viewerregister.html')
@@ -416,8 +426,6 @@ def editaccount(request):
 
     if user.user_type =='1':
         return redirect('/')
-
-
     return render(request,'dashboardeditaccount.html',context)
 
 @login_required(login_url='login')
@@ -430,10 +438,11 @@ def profileupdate(request):
         
         try:
             customuser=CustomUser.objects.get(id=request.user.id)
-            customuser.bio=bio
-            customuser.profile_pic=profile_pic
             customuser.username=username
-            customuser.location=location
+            customuser.profile_pic=profile_pic
+            profile=Profile.objects.get(id=customuser)
+            profile.bio=bio
+            profile.location=location
 
             customuser.save()
             if username !=None and username !="":
@@ -441,22 +450,22 @@ def profileupdate(request):
             if profile_pic != None and profile_pic !="":
                 customuser.set_profile_pic=profile_pic
             if bio !=None and bio !="":
-                customuser.set_bio(bio)
+                profile.set_bio(bio)
             if location !=None and location !="":
-                customuser.set_location(location)
+                profile.set_location(location)
             customuser.save()
+            profile.save()
 
             messages.success(request,'Profile Update Successfully.')
             return redirect('editaccount')
         except:
             messages.error(request,'Failed to update profile')
             return redirect('editaccount')
-            
-
     return render(request,'dashboardeditaccount.html')
 
 @login_required(login_url='login')
 def userpost(request,id):
+    user=CustomUser.objects.get(id=request.user.id)
     user_posts = Post.objects.get(id=id)
     postlikes = LikePost.objects.filter(post_id=id)
     shareposts = SharePost.objects.filter(post_id=id)
@@ -473,5 +482,7 @@ def userpost(request,id):
         'sharepost':sharepost,
         'shareposts':shareposts,
     }
+    if user.user_type =='1':
+        return redirect('/')
     return render(request,'userpost.html',context)
 

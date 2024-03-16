@@ -2,24 +2,15 @@
 {% block title %}Comments{% endblock title %}
 
 {% block contain %}
-<style>
-    .postview{
-        width: 100%;
-        margin: 20px;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    }
-</style>
 
 <div class="postview" >
     <div class="view" style="margin-bottom: 10px;">
-      <img style="width: 400px; border-radius: 10px;"
+      <img
         src="{{ user_posts.content.url }}"
         alt=""
         srcset=""
       />
-      <div class="btn" style="width: auto; margin: 0;">
+      <div class="btn">
         <a style="text-decoration: none;" href="/plikepost?post_id={{user_posts.id}}">
         <button class="button" id="like">
           <img src="/static/assets/svg/like.svg" alt="" srcset="" />
