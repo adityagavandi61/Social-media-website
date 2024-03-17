@@ -2,10 +2,20 @@
 {% block title %}My Account{% endblock title %}
 
 {% block my-ac %}
+{% if user.profile_pic.url is not None %}
+<div class="imgeselected" id="account">
+  <img style="width: 28px; height: 28px; border-radius: 50%;" src="{{ user.profile_pic.url }}" alt="" srcset="" />
+  <li>My Account</li>
+</div>
+
+{% else %}
+
 <div class="imgeselected" id="account">
   <img src="/static/assets/svg/profileselected.svg" alt="" srcset="" />
   <li>My Account</li>
 </div>
+
+{% endif %}
 {% endblock %}
 
 {% block contain %}
@@ -64,7 +74,6 @@
   </form>
   <div class="alogout">
   <a href="{% url 'logout' %}">Logout</a>
-  <a href="">delete</a>
   </div>
   </div>
 {% endblock %}

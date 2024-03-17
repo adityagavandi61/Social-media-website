@@ -169,10 +169,9 @@ def share(request):
 @login_required(login_url='login')   
 def postview(request,id):
     user_posts = Post.objects.get(id=id)
-
     postlike = len(LikePost.objects.filter(post_id=id))
     sharepost = len(SharePost.objects.filter(post_id=id))
-    post_comments = CommentPost.objects.filter(post_id=id).order_by('-created_at')
+    post_comments = CommentPost.objects.filter(post_id=id)
     lencom=len(post_comments)
     context = {
         'user_posts': user_posts,
@@ -218,6 +217,7 @@ def search(request):
 
 @login_required(login_url='login')
 def account(request):
+    user=request.user
     user_object=CustomUser.objects.get(id=request.user.id)
     if request.method == "POST":
         profile_pic=request.FILES.get('profile_pic')
@@ -238,13 +238,14 @@ def account(request):
             return redirect('account')
     if user_object.user_type =='2':
         return redirect('dashboard')
+    
     return render(request,'myaccount.html')
 
 @login_required(login_url='login')
 def pagedetails(request,pk):
     user_object = CustomUser.objects.get(username=pk)
     user_profile = Profile.objects.get(user=user_object)
-    user_posts = Post.objects.filter(user=pk)
+    user_posts = Post.objects.filter(user=pk).order_by('-created_at')
     user_post_length = len(user_posts)
 
     follower = request.user.username
@@ -305,7 +306,7 @@ def adduser(request):
             )
             profile.save()
 
-            return redirect('editaccount')
+            return redirect('dashboard')
     return render(request, 'userregister.html')
 
 def userregister(request):
@@ -339,7 +340,7 @@ def addviewer(request):
             )
             Viewer.save()
 
-            return redirect('home')
+            return redirect('/')
     return render(request,'viewerregister.html')
 
 def viewerregister(request):
@@ -383,6 +384,7 @@ def uploadpost(request):
         user = request.user.username
         caption=request.POST.get('caption')
         content=request.FILES.get('content')
+        video=request.FILES.get('video')
         
         if content == None:
             messages.warning(request,'Select Media')
@@ -394,6 +396,30 @@ def uploadpost(request):
                 profile=profile,
                 caption=caption,
                 content=content,
+                video=video,
+            )
+            media.save()
+            return redirect('dashboard')
+
+    return render(request,'dashboardstatic.html')
+
+@login_required(login_url='login')
+def uploadvideo(request):
+    if request.method=='POST':
+        user = request.user.username
+        caption=request.POST.get('caption')
+        video=request.FILES.get('video')
+        
+        if video == None:
+            messages.warning(request,'Select Media')
+            return redirect('dashboard')
+        else:
+            profile=Profile.objects.get(user=request.user.id)
+            media=Post(
+                user=user,
+                profile=profile,
+                caption=caption,
+                video=video,
             )
             media.save()
             return redirect('dashboard')
@@ -405,9 +431,11 @@ def seepost(request):
     user=CustomUser.objects.get(username=request.user.username)
     profile = Profile.objects.get(user=user)
     post = Post.objects.filter(profile=profile).order_by('-created_at')
+    lenpost=len(Post.objects.filter(profile=profile))
     context={
         'profile': profile,
         'post':post,
+        'lenpost':lenpost,
     }
 
     if user.user_type =='1':
@@ -426,6 +454,7 @@ def editaccount(request):
 
     if user.user_type =='1':
         return redirect('/')
+
     return render(request,'dashboardeditaccount.html',context)
 
 @login_required(login_url='login')
@@ -439,8 +468,9 @@ def profileupdate(request):
         try:
             customuser=CustomUser.objects.get(id=request.user.id)
             customuser.profile_pic=profile_pic
-
-            customuser.save()
+            profile=Profile.objects.get(user=customuser)
+            profile.bio=bio
+            profile.location=location
 
             if profile_pic != None and profile_pic !="":
                 customuser.set_profile_pic=profile_pic
@@ -468,6 +498,11 @@ def userpost(request,id):
     sharepost = len(SharePost.objects.filter(post_id=id))
     post_comments = CommentPost.objects.filter(post_id=id).order_by('-created_at')
     lencom=len(post_comments)
+
+    if request.method == 'POST':
+        user_posts.delete()
+        return redirect('dashboard')
+
     context = {
         'user_posts': user_posts,
         'post_comments': post_comments,
@@ -480,3 +515,4 @@ def userpost(request,id):
     if user.user_type =='1':
         return redirect('/')
     return render(request,'userpost.html',context)
+    

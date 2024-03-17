@@ -7,15 +7,25 @@
 {% endblock %}
 {% block dashboard %}
 {% if post %}
-  <h3 id="posts-h3">Posts</h3>
+  {% if lenpost == 1 %}
+  <h3 id="posts-h3">Total:&nbsp;{{ lenpost }}&nbsp;Post</h3>
+  {% else %}
+  <h3 id="posts-h3">Total:&nbsp;{{ lenpost }}&nbsp;Posts</h3>
+  {% endif %}
 <div class="post-section">
     {% for p in post %}
     <div class="post">
-      <a href="/userpost/{{p.id}}"><img
-        src="/Gallery/{{ p.content }}"
+      <a href="/userpost/{{p.id}}">
+        {% if p.video %}
+        <video src="{{ p.video.url }}"></video>
+        {% else %}
+        <img
+        src="{{ p.content.url }}"
         alt=""
         srcset=""
-      /></a>
+      />
+        {% endif %}
+    </a>
     </div>
     {% endfor %}
     {% else %}

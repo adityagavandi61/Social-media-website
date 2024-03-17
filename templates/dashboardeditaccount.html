@@ -2,42 +2,24 @@
 {% block title %}Edit Account{% endblock title %}
 
 {% block editaccount %}
-    <div class="imgeselected" id="account">
-        <img src="/static/assets/svg/profileselected.svg" alt="" srcset="" />
-        <li>Edit Account</li>
-    </div>
+{% if user.profile_pic.url is not None %}
+        <a href="/editaccount"><div class="imgeselected" id="account">
+            <img style="width: 28px; height: 28px; border-radius: 50%;" src="{{ user.profile_pic.url}}" alt="" srcset="" />
+            <li>Edit Account</li>
+          </div></a>
+
+        {% else %}
+
+        <a href="/editaccount"><div class="imgeselected" id="account">
+          <img src="/static/assets/svg/profile.svg" alt="" srcset="" />
+          <li>Edit Account</li>
+        </div></a>
+
+        {% endif %}
 {% endblock %}
 
 {% block dashboard %}
 <div class="dashboard">
-  <div class="msgerror">
-    <style>
-        h5{
-            text-align: center;
-            color: rgb(0, 255, 26);
-        }
-    </style>
-    {% if messages %}
-    {% for message in massages %}
-      {% if messages == 'success'%}
-    <h5>{{message}}</h5>
-    {% endif %}
-    {% endfor %}
-    {% endif %}
-</div>
-  <div class="msgerror">
-      <style>
-          h5{
-              text-align: center;
-              color: red;
-          }
-      </style>
-      {% if messages %}
-        {% if messages == 'error'%}
-      <h5>{{message}}</h5>
-      {% endif %}
-      {% endif %}
-  </div>
   <div class="user-account">
       <span class="uinfo"><img
         src="Gallery/{{ user.profile_pic}}"
@@ -71,39 +53,12 @@
           <textarea placeholder="{% for i in profile %}{{i.bio}} {% endfor %}"  name="bio" id="biobox" placeholder="Enter Bio upto 250 worlds."></textarea>
         </p>
       </div>
-      <div id="links" class="tolinks">
-            <div id="whatsapp" class="tolink">
-            <img
-              src="/static/assets/svg/whatsapp.svg"
-              alt=""
-              srcset=""
-            /><input type="text" name="whatsapp" placeholder="Enter Whatsapp Number"></div>
-            <div id="facebook" class="tolink">
-            <img
-              src="/static/assets/svg/facebook.svg"
-              alt=""
-              srcset=""
-            /><input type="text" name="facebook" placeholder="Enter Facebook Link"></div>
-            <div id="Instagram" class="tolink">
-            <img
-              src="/static/assets/svg/instagramlogo.svg"
-              alt=""
-              srcset=""
-            /><input type="text" name="instagram" placeholder="Enter Instagram Link"></div>
-            <div id="Youtube" class="tolink">
-            <img
-              src="/static/assets/svg/youtubelogo.svg"
-              alt=""
-              srcset=""
-            /><input type="text" name="youtube" placeholder="Enter Youtube Link"></div>
-      </div>
     </div>
   </div>
     <button id="uploadim" type="submit">Update Profile</button>
   </form>
   <div class="alogout">
   <a href="{% url 'logout' %}">Logout</a>
-  <a href="">delete</a>
   </div>
   </div>
 {% endblock %}

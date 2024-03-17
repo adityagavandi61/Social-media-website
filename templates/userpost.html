@@ -3,16 +3,48 @@
 {{user.username}}
 {% endblock title %}
 
+{% block editaccount %}
+{% if user.profile_pic.url is not None %}
+        <a href="/editaccount"><div class="imge" id="account">
+            <img style="width: 28px; height: 28px; border-radius: 50%;" src="{{ user.profile_pic.url}}" alt="" srcset="" />
+            <li>Edit Account</li>
+          </div></a>
+
+        {% else %}
+
+        <a href="/editaccount"><div class="imge" id="account">
+          <img src="/static/assets/svg/profile.svg" alt="" srcset="" />
+          <li>Edit Account</li>
+        </div></a>
+
+        {% endif %}
+{% endblock %}
+
 {% block dashboard %}
+{% if user_posts.video %}
+<style>
+  .postview{
+    display: flex;
+    flex-direction: column;
+  }
+  .view{
+    transform: translateX(10%);
+  }
+</style>
+{% endif %}
 
 <div class="postview" >
     <div class="view" style="margin-bottom: 10px;">
+      {% if user_posts.video %}
+      <video src="{{ user_posts.video.url }}" autoplay controls></video>
+      {% else %}
       <img
         src="{{ user_posts.content.url }}"
         alt=""
         srcset=""
       />
-      <div class="com">
+      {% endif %}
+      <div class="ucom">
           <div class="likes">   
           {% if postlikes %}
       <p style="opacity: 50%;">Total Likes:{{postlike}}</p>
@@ -51,6 +83,18 @@
 <p>0 comment</p>
 {% endif %}
 </div>
-
-    </div>
+</div>
+<Button onclick="openPopupimg()" class="delete"><img style="width: 22px; height: 22px;" src="/static/assets/svg/delete.svg" alt="" srcset=""></Button>
+<div id="overlay"></div>
+        <div class="pop" id="pop">
+          <div class="popup">
+            <h1>Delete Post</h1>
+              <p>Are you sure you want to delete?</p>
+                  <form method="post">
+                    {% csrf_token %}
+                  <button class="delete" type="submit">Delete</button>
+                </form>
+          <button class="close" id="close" onclick="closePopupimg()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
+        </div>
+          </div>
 {% endblock %}

@@ -13,12 +13,16 @@
         {% for p in post %}
       <div class="userinfo">
         <a href="/profile/{{p.profile}}">
+          {% if p.profile.user.profile_pic.url is not None %}
           <img
             class="userprofilepic"
             src="{{ p.profile.user.profile_pic.url }}"
             alt=""
             srcset=""
           />
+          {% else %}
+            <img class="userprofilepic" src="/static/assets/svg/profile.svg" alt="" srcset="" />
+          {% endif %}
           <span class="userprofile"
             ><h4 id="username">{{p.profile}}</h4>
             <p id="date">{{ p.created_at }}</p></span
@@ -26,9 +30,15 @@
         </a>
   
       </div>
+      {% if p.video %}
+      <div id="post">
+      <video src="{{ p.video.url }}" controls></video>
+    </div>
+      {% else %}
       <div id="post">
         <img src="{{ p.content.url }}" alt="img" srcset="" />
       </div>
+      {% endif %}
       <div class="btn">
         <a style="text-decoration: none;" href="/likepost?post_id={{p.id}}">
         <button class="button" id="like">
@@ -42,7 +52,7 @@
         <a href="/postview/{{p.id}}"><button class="button" id="comment">
           <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
         </button></a>
-        <a style="text-decoration: none;" href="/share?post_id={{p.id}}"><button onclick="openPopupimg()" class="button" id="share">
+        <a style="text-decoration: none;" href="/share?post_id={{p.id}}"><button class="button" id="share">
           <img src="/static/assets/svg/share.svg" alt="" srcset="" />
           {% if p.no_of_share == 0 %}
           <p></p>
@@ -57,17 +67,10 @@
       <b class="biohome"></b>
       {% endif %}
       <div class="line"></div>
-      <div id="overlay"></div>
-      <div class="pop" id="pop">
-        <div class="popup">
-      <h3>Share Link: <h4>http://127.0.0.1:8000/postview/{{p.id}}"</h4></h3>
-        <button class="close" id="close" onclick="closePopupimg()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
-      </div>
-        </div>
       <form style="display: block;" action="/comment" method="post">
         {% csrf_token %}
       <div id="bcom" class="bcom">
-        <input type="hidden" value="{{user.first_name}}&nbsp;{{user.last_name}}" name="user">
+        <input type="hidden" value="{{user.username}}" name="user">
         <input type="hidden" value="{{p.id}}" name="post_id">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;
         <input placeholder="leave a comment" class="comment-b2" type="text" name="comment" id="comment">

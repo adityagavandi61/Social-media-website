@@ -38,10 +38,20 @@
         </div></a>
         {% endblock %}
         {% block editaccount %}
+        {% if user.profile_pic.url is not None %}
+        <a href="/editaccount"><div class="imge" id="account">
+            <img style="width: 25px; height: 25px; border-radius: 50%;" src="Gallery/{{ user.profile_pic}}" alt="" srcset="" />
+            <li>Edit Account</li>
+          </div></a>
+
+        {% else %}
+
         <a href="/editaccount"><div class="imge" id="account">
           <img src="/static/assets/svg/profile.svg" alt="" srcset="" />
           <li>Edit Account</li>
         </div></a>
+
+        {% endif %}
         {% endblock %}
       </ul>
       <div class="line"></div>

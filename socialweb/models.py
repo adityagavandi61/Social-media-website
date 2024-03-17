@@ -13,7 +13,7 @@ User = settings.AUTH_USER_MODEL
 class CustomUser(AbstractUser):
     user=((1,"viewer"),(2,'profile'))
     user_type = models.CharField(choices=user,max_length=255,default=1)
-    profile_pic=models.FileField(upload_to='profilepic',null=True)
+    profile_pic=models.FileField(upload_to='profilepic',null=True,default="/static/assets/svg/profile.svg")
 
 
 class viewer(models.Model):
@@ -29,12 +29,6 @@ class Profile(models.Model):
     location=models.CharField(max_length=50)
     bio=models.TextField()
     created_at=models.DateTimeField(default=datetime.now)
-    whatsapp=models.CharField(max_length=100,null=True, blank=True)
-    facebook=models.URLField(blank=True,null=True)
-    gmail=models.URLField(blank=True,null=True)
-    instagram=models.URLField(blank=True,null=True)
-    youtube=models.URLField(blank=True,null=True)
-
     def __str__(self):
         return self.user.username
 
@@ -43,6 +37,7 @@ class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     profile=models.ForeignKey(Profile,null=True,on_delete=models.CASCADE)
     content = models.FileField(upload_to='post',null=True)
+    video = models.FileField(upload_to='post',null=True)
     user = models.CharField(max_length=100)
     caption = models.TextField()
     created_at = models.DateTimeField(default=datetime.now)

@@ -39,6 +39,7 @@ urlpatterns = [
     path('myaccount',views.account, name='account'),
     path('dashboard',views.dashboard, name='dashboard'),
     path('uploadpost',views.uploadpost, name='uploadpost'),
+    path('uploadvideo',views.uploadvideo, name='uploadvideo'),
     path('likepost',views.likepost, name='likepost'),
     path('plikepost',views.plikepost, name='plikepost'),
     path('follow',views.follow, name='follow'),

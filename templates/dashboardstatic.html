@@ -22,6 +22,7 @@
     display: flex;
     gap: 5px;
     flex-direction: column;
+    overflow: hidden;
   }
   .s{
     display: flex;
@@ -63,34 +64,10 @@
       </p>
     </div>
     <div id="links" class="links">
-      <a href="mailto:" target="_blank"
+      <a href="https://mail.google.com/mail/u/0/?fs=1&to={{user.email}}&su=Booking Request for Show on [Date] at [Time]&body=Dear {{user.username}},&tf=cm" target="_blank"" target="_blank"
         ><div id="Gmail" class="link">
           <img
             src="/static/assets/svg/gmaillogo.svg"
-            alt=""
-            srcset=""
-          /></div
-      ></a>
-      <a href="tel:+" target="_blank"
-        ><div id="whatsapp" class="link">
-          <img
-            src="/static/assets/svg/whatsapp.svg"
-            alt=""
-            srcset=""
-          /></div
-      ></a>
-      <a href="http://" target="_blank"
-        ><div id="Instagram" class="link">
-          <img
-            src="/static/assets/svg/instagramlogo.svg"
-            alt=""
-            srcset=""
-          /></div
-      ></a>
-      <a href="http://" target="_blank"
-        ><div id="Youtube" class="link">
-          <img
-            src="/static/assets/svg/youtubelogo.svg"
             alt=""
             srcset=""
           /></div
@@ -112,10 +89,15 @@
           </tr>
           {% for ps in user_posts %}
           <tr>
-              <td><a style="text-decoration: none; color: black;" href="/userpost/{{ps.id}}"><img style=" width: 28px; height: 28px; margin: 4px;"
-                src="{{ ps.content.url }}" alt="" srcset=""></a></td>
+              <td><a style="text-decoration: none; color: black;" href="/userpost/{{ps.id}}">
+                {% if ps.video %}
+                <video style="width: 28px; height: 28px; margin: 4px; border-radius: 3px;" src="{{ ps.video.url }}"></video>
+                {% else %}
+                <img style=" width: 28px; height: 28px; margin: 4px; border-radius: 3px;" src="{{ ps.content.url }}" alt="" srcset="">
+                {% endif %}
+              </a></td>
               <td>{{ps.no_of_likes}}</td>
-              <td>{{ps.no_of_shares}}</td>
+              <td>{{ps.no_of_share}}</td>
           </tr>
           {% endfor%}
       </table>
@@ -125,7 +107,7 @@
     {% endif %}
     {% if user_follower %}
       <div class="box2">New Followers <br>
-        <b>{% for f in user_follower %}{{ f.follower }}{% endfor %}</b>
+        <b>{% for f in user_follower %}{{ f.follower }}<br>{% endfor %}</b>
       </div>
       {% else %}
       <div class="box2">No Followers</div>
@@ -140,7 +122,7 @@
         <form action="{% url 'uploadpost' %}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
             <label>Upload an Image</label><br />
-            <label for="">Caption for Photo </label><textarea name="caption" id="caption" cols="24" rows="3"></textarea>
+            <label for="">Caption for Photo </label><textarea name="caption" id="caption"></textarea>
             <input type="file" name="content" id="files" accept=".jpg" /><br/>
             <button id="uploadim" type="submit">Upload</button>
           </form>
@@ -149,11 +131,11 @@
           </div>
           <div class="pop" id="pop1">
             <div class="popup">
-              <form action="{% url 'uploadpost' %}" method="post" enctype="multipart/form-data">
+              <form action="{% url 'uploadvideo' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label>Upload an Video</label><br/>
-                <label for="">Caption for Video </label><textarea name="caption" id="caption" cols="24" rows="3"></textarea>
-                <input type="file" name="content" id="files" accept=".mp4" /><br />
+                <label for="">Caption for Video </label><textarea name="caption" id="caption"></textarea>
+                <input type="file" name="video" id="files" accept=".mp4" /><br />
                 <button id="uploadim" type="submit">Upload</button>
                 </form>
                 <button class="close" id="close" onclick="closePopupvideo()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
