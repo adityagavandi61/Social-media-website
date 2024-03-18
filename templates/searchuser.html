@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+{% block title %}
+{% if len_profile == 1 %}
+        {{ len_profile }} Result
+        {% elif len_profile == 0 %}
+        No Result
+        {% else %}
+            {{ len_profile }} Results
+        {% endif %}
+{% endblock title %}
+
+
+{% block Search %}
+<a href="{% url 'search' %}"><div class="imgeselected" id="search">
+  <img src="/static/assets/svg/searchselected.svg" alt="" srcset="" />
+  <li>Search</li>
+</div></a>
+{% endblock Search %}
+
+{% block my-ac %}
+{% if user.profile_pic.url is not None %}
+<div class="imge" id="account">
+  <img style="width: 25px; height: 25px; border-radius: 50%;" src="{{ user.profile_pic.url }}" alt="" srcset="" />
+  <li>My Account</li>
+</div>
+
+{% else %}
+
+<div class="imge" id="account">
+  <img src="/static/assets/svg/profileselected.svg" alt="" srcset="" />
+  <li>My Account</li>
+</div>
+
+{% endif %}
+{% endblock %}
+
+
+{% block contain %}
+
+<div class="search">
+    <div class="searchoutput">
+    {% if username %}
+    <h4>You search: <i style="color: blue;">{{username}}</i></h4>
+    {% if len_profile == 1 %}
+            <h5>{{ len_profile }} account found</h5>
+            {% elif len_profile == 0 %}
+        {% else %}
+            <h5>{{ len_profile }} account founds</h5>
+        {% endif %}
+    <div style="margin-top: 0;" class="line"></div>
+    {% if profile %}
+    {% for u in profile %}
+    {% if u.user_type == '2' %}
+    <div class="accountbox"><a href="/profile/{{u}}">
+        <img class="userprofilepic" src="{{ u.profile_pic.url }}" alt="" srcset="" />
+          <span class="userprofile">
+            <h4 id="username">{{u}}</h4>
+            <small>created by @{{u.first_name}}&nbsp;{{u.last_name}}</small>
+          </span>
+        </a>
+      </div>
+      {% else %}
+      <span><h5>One more account found</h5>
+        <h6>May be it's viewer account</h6> </span>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      <h4><i style="color: blue; text-decoration:underline;">
+        {{username}}</i> No account with this name
+        </h4>
+      {% endif %}
+    {% else %}
+    <h4>Search valid name</h4>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

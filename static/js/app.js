@@ -5,88 +5,6 @@ let setting = document.querySelector("#setting");
 let postcard = document.querySelector(".postcard");
 let container = document.querySelector(".container");
 
-// main();
-// function main() {
-//   home.classList.add("imgeselected");
-//   home.classList.remove("imge");
-//   home.innerHTML = `<img src="/static/assets/svg/homeselected.svg" alt="" srcset="" /><li>Home</li>`;
-// }
-
-// search.addEventListener("click", () => {
-//   searchselected = true;
-//   search.classList.add("imgeselected");
-//   search.classList.remove("imge");
-//   home.classList.add("imge");
-//   home.classList.remove("imgeselected");
-//   account.classList.remove("imgeselected");
-//   account.classList.add("imge");
-//   search.innerHTML = `<img src="/static/assets/svg/searchselected.svg" alt="" srcset="" /><li>Search</li>`;
-//   home.innerHTML = `<img src="/static/assets/svg/home.svg" alt="" srcset="" /><li>Home</li>`;
-//   account.innerHTML = `<img src="/static/assets/svg/profile.svg" alt="" srcset="" /><li>My Account</li>`;
-//   homeselected = false;
-// });
-
-// home.addEventListener("click", () => {
-//   homeselected = true;
-//   home.classList.add("imgeselected");
-//   search.classList.remove("imgeselected");
-//   search.classList.add("imge");
-//   home.classList.remove("imge");
-//   account.classList.remove("imgeselected");
-//   account.classList.add("imge");
-//   home.innerHTML = `<img src="/static/assets/svg/homeselected.svg" alt="" srcset="" /><li>Home</li>`;
-//   search.innerHTML = `<img src="/static/assets/svg/search.svg" alt="" srcset="" /><li>Search</li>`;
-//   account.innerHTML = `<img src="/static/assets/svg/profile.svg" alt="" srcset="" /><li>My Account</li>`;
-//   searchselected = false;
-// });
-
-// account.addEventListener("click", () => {
-//   accountselected = true;
-//   account.classList.add("imgeselected");
-//   search.classList.remove("imgeselected");
-//   search.classList.add("imge");
-//   account.classList.remove("imge");
-//   home.classList.add("imge");
-//   home.classList.remove("imgeselected");
-//   account.innerHTML = `<img src="/static/assets/svg/profileselected.svg" alt="" srcset="" /><li>My Account</li>`;
-//   search.innerHTML = `<img src="/static/assets/svg/search.svg" alt="" srcset="" /><li>Search</li>`;
-//   home.innerHTML = `<img src="/static/assets/svg/home.svg" alt="" srcset="" /><li>Home</li>`;
-//   accountselected = false;
-// });
-
-// let follow = document.querySelectorAll("#follow");
-// let like = document.querySelectorAll("#like");
-
-// like.forEach((like) => {
-//   let liked = true;
-//   like.addEventListener("click", () => {
-//     if (liked) {
-//       like.innerHTML = `<img src="/static/assets/svg/liked.svg" alt="" srcset="" />${likecount}`;
-//       liked = false;
-//     } else {
-//       like.innerHTML = `<img src="/static/assets/svg/like.svg" alt="" srcset="" />`;
-//       liked = true;
-//     }
-//   });
-// });
-
-
-// follow.forEach((follow) => {
-//   let btn = true;
-//   follow.addEventListener("click", () => {
-//     if (btn) {
-//       follow.classList.add("following1");
-//       follow.classList.remove("btn-follow");
-//       follow.innerHTML = `<img src="/static/assets/svg/followed.svg" alt="" srcset="" />Following`;
-//       btn = false;
-//     } else {
-//       follow.innerHTML = `<img src="/static/assets/svg/follow.svg" alt="" srcset="" />Follow`;
-//       follow.classList.add("btn-follow");
-//       follow.classList.remove("following1");
-//       btn = true;
-//     }
-//   });
-// });
 
 // ----pop-up window----
 
@@ -110,48 +28,13 @@ function openPopupimg() {
     document.getElementById('overlay').style.display = 'none';
   }
 
+  function openPopupfollow() {
+    document.getElementById('pop2').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+  function closePopupfollow() {
+    document.getElementById('pop2').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
 
 
-  // let comment = document.querySelectorAll('#comment');
-  // let comment1 = document.querySelectorAll('#bcom');
- 
-//  function opencommentbox() {
-//    comment1.style.display = "block";
-//  }
-
-//  function closecommentbox() {
-//    comment1.style.display = "none";
-//  }
-
-// comment.forEach((comment) => {
-//   let comment2 = true;
-//   comment.addEventListener("click", () => {
-//     if (comment2) {
-//       comment1.classList.remove("hide");
-//       comment1.classList.add("bcom");
-//       comment2 = false;
-//     } else {
-//       comment1.classList.add("hide");
-//       comment1.classList.remove("bcom");
-//       comment2 = true;
-//     }
-//   });
-// });
-
-// let comments = document.querySelectorAll('#comment');
-// let comment1 = document.querySelectorAll('#bcom');
-
-// comments.forEach((comment, index) => {
-//   let comment2 = true;
-//   comment.addEventListener("click", () => {
-//     if (comment2) {
-//       comment1[index].classList.remove("hide");
-//       comment1[index].classList.add("bcom");
-//       comment2 = false;
-//     } else {
-//       comment1[index].classList.add("hide");
-//       comment1[index].classList.remove("bcom");
-//       comment2 = true;
-//     }
-//   });
-// });

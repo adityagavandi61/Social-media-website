@@ -9,7 +9,8 @@ from socialweb.emailhandle import EmailHandle
 from socialweb.models import *
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as auth_login
-
+from itertools import chain
+import random
 
 def login(request):
     return render(request,'login.html')
@@ -171,7 +172,7 @@ def postview(request,id):
     user_posts = Post.objects.get(id=id)
     postlike = len(LikePost.objects.filter(post_id=id))
     sharepost = len(SharePost.objects.filter(post_id=id))
-    post_comments = CommentPost.objects.filter(post_id=id)
+    post_comments = CommentPost.objects.filter(post_id=id).order_by('-created_at')
     lencom=len(post_comments)
     context = {
         'user_posts': user_posts,
@@ -202,14 +203,43 @@ def home(request):
     return render(request,'home.html',context)
 
 @login_required(login_url='login')
-def search(request):
-    user=CustomUser.objects.get(id=request.user.id)
-    profile=Profile.objects.all()
-    context={
-        'profile':profile,
-    }
+def usersearch(request):
+    user=CustomUser.objects.get(username=request.user.username)
 
+    if request.method == 'POST':
+        username=request.POST['username']
+        profile=CustomUser.objects.filter(username__contains=username)
+
+        len_profile=len(profile)
+
+        if username == "":
+            return redirect('search')
+    
     if user.user_type =='2':
+        return redirect('dashboard')   
+    context={
+        'username':username,
+        'profile':profile,
+        'len_profile':len_profile,
+    }
+    return render(request,'searchuser.html',context)
+
+@login_required(login_url='login')
+def search(request):
+    user_object=CustomUser.objects.get(username=request.user.username)
+    profile=Profile.objects.filter(user=user_object)
+
+    user_follower = FollowersCount.objects.filter(follower=user_object)
+    user_followers = len(FollowersCount.objects.filter(follower=user_object))
+
+
+    context={
+        'user_object': user_object,
+        'profile':profile,
+        'user_follower': user_follower,
+        'user_followers': user_followers,
+    }
+    if user_object.user_type =='2':
         return redirect('dashboard')
 
 
@@ -306,7 +336,14 @@ def adduser(request):
             )
             profile.save()
 
-            return redirect('dashboard')
+            user = EmailHandle.authenticate(request, username=request.POST.get('email'), password=request.POST.get('password'))
+            if user is not None:
+                auth_login(request, user)
+                user_type = user.user_type
+                if user_type == '1':
+                    return redirect('/')
+                elif user_type == '2':
+                    return redirect('dashboard')
     return render(request, 'userregister.html')
 
 def userregister(request):
@@ -339,8 +376,14 @@ def addviewer(request):
                 user = user,
             )
             Viewer.save()
-
-            return redirect('/')
+            user = EmailHandle.authenticate(request, username=request.POST.get('email'), password=request.POST.get('password'))
+            if user is not None:
+                auth_login(request, user)
+                user_type = user.user_type
+                if user_type == '1':
+                    return redirect('/')
+                elif user_type == '2':
+                    return redirect('dashboard')
     return render(request,'viewerregister.html')
 
 def viewerregister(request):
@@ -351,8 +394,7 @@ def dashboard(request):
     user=CustomUser.objects.get(id=request.user.id)
     profile=Profile.objects.filter(user=user)
 
-    follower = request.user.id
-    user_follower = FollowersCount.objects.filter(user=user)
+    user_follower = FollowersCount.objects.filter(user=user).order_by('follower').reverse()
     user_followers = len(FollowersCount.objects.filter(user=user))
 
 
@@ -460,27 +502,35 @@ def editaccount(request):
 @login_required(login_url='login')
 def profileupdate(request):
     if request.method == "POST":
+        customuser=CustomUser.objects.get(id=request.user.id)
+        profile = Profile.objects.get(user_id=request.user.id)
+        bio = request.POST.get('bio')
         profile_pic=request.FILES.get('profile_pic')
-        bio=request.POST.get('bio')
-        location=request.POST.get('location')
-        instagram=request.POST.get('instagram')
+        
+
+        if profile_pic == None and profile_pic =="":
+            customuser.set_profile_pic=profile_pic
+            customuser.save()
+
+        if bio ==None and bio=="":
+            profile.set_bio = bio
+            profile.save()
+
+        profile.bio = bio
+        profile.save()
+
+    if request.method == "POST":
+        profile_pic=request.FILES.get('profile_pic')
         
         try:
             customuser=CustomUser.objects.get(id=request.user.id)
             customuser.profile_pic=profile_pic
-            profile=Profile.objects.get(user=customuser)
-            profile.bio=bio
-            profile.location=location
 
-            if profile_pic != None and profile_pic !="":
+            if profile_pic == None and profile_pic =="":
                 customuser.set_profile_pic=profile_pic
-            if bio !=None and bio !="":
-                profile.set_bio(bio)
-            if location !=None and location !="":
-                profile.set_location(location)
-            customuser.save()
-            profile.save()
+                customuser.save()
 
+            customuser.save()
             messages.success(request,'Profile Update Successfully.')
             return redirect('editaccount')
         except:

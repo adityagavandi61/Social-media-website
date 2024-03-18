@@ -137,7 +137,7 @@ body {
   min-height: 600px;
   left: 386px;
   margin: 35px;
-  overflow: hidden;
+  overflow-y: scroll;
   padding-right: 20px;
   border-radius: 25px 25px 0px 0px;
   background-color: #e4f9ff;
@@ -367,7 +367,7 @@ img.viewerprofilepic {
   outline: none;
 }
 .searchbar .btn-search {
-  width: 36px;
+  width: 47px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -401,11 +401,10 @@ img.viewerprofilepic {
 }
 .searchoutput {
   display: grid;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: start;
   grid-gap: 33px;
   padding-top: 30px;
+  padding-left: 30px;
 }
 .searchoutput .accountbox {
   width: 545px;
@@ -576,6 +575,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: start;
 }
 form > label {
   font-size: large;
@@ -971,14 +971,14 @@ span .uedit {
     justify-content: none;
   }
   .inputsearch {
-    width: 60%;
+    width: 60vh;
   }
   .inputsearch:focus {
-    width: 60%;
+    width: 61vh;
     padding-left: 12px;
   }
   .inputsearch:hover {
-    width: 60%;
+    width: 61vh;
     padding-left: 12px;
   }
   .searchbar .btn-search:hover {

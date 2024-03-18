@@ -36,6 +36,7 @@ urlpatterns = [
     path('viewerregister',views.viewerregister,name='viewerregister'),
     path('',views.home, name='home'),
     path('search',views.search, name='search'),
+    path('usersearch',views.usersearch, name='usersearch'),
     path('myaccount',views.account, name='account'),
     path('dashboard',views.dashboard, name='dashboard'),
     path('uploadpost',views.uploadpost, name='uploadpost'),

@@ -106,12 +106,25 @@
     <div class="box1">No Posts</div>
     {% endif %}
     {% if user_follower %}
-      <div class="box2">New Followers <br>
+      <div onclick="openPopupfollow()" class="box2">New Followers <br>
         <b>{% for f in user_follower %}{{ f.follower }}<br>{% endfor %}</b>
       </div>
       {% else %}
-      <div class="box2">No Followers</div>
+      <div onclick="openPopupfollow()" class="box2">No Followers</div>
       {% endif %}
+      <div style="width: auto;" class="pop" id="pop2">
+        <div class="popup">
+          {% if user_followers == 0 %}
+      <b>No Follower</b>
+      {% elif user_followers == 1 %}
+      <b>Total: {{user_followers}} Follower</b>
+      {% else %}
+      <b>Total: {{user_followers}} Followers</b>
+      {% endif %}
+      {% for f in user_follower %}{{ f.follower }}<br>{% endfor %}
+            <button class="close" id="close" onclick="closePopupfollow()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
+        </div>
+      </div>
       <div class="box4">Upload a Post
         <div class="btnadd">
         <button onclick="openPopupimg()" class="addimage" ><img src="static/assets/svg/uploadimg.svg" alt="" srcset=""></button>

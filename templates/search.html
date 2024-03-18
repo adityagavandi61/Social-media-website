@@ -12,22 +12,31 @@
 {% block contain %}
 <div class="search">
   <div class="searchbar">
-    <input class="inputsearch" id="searchtext" type="search" placeholder="Search...">
-    <button class="btn-search" id="search"><img src="/static/assets/svg/search.svg" alt="" srcset=""></button>
+    <form style="flex-direction: row;" action="/usersearch" method="post">
+      {% csrf_token %}
+    <input class="inputsearch" id="searchtext" type="search" name="username" placeholder="Search...">
+    <button type="submit" class="btn-search" id="search">
+      <img src="/static/assets/svg/search.svg" alt="" srcset="">
+    </button>
+  </form>
   </div>
   <div class="line"></div>
   <div class="searchoutput">
-    {% for i in profile %}
-    <div class="accountbox"><a href="/profile/{{i.user}}">
-      {% if i.user.profile_pic.url is not None %}
-      <img class="userprofilepic" src="{{ i.user.profile_pic.url }}" alt="" srcset="" />
-      {% else %}
-      <img class="userprofilepic" src="/static/assets/svg/profile.svg" alt="" srcset="" />
-      {% endif %}
-        <span class="userprofile"></span>
-          <h4 id="username">{{i.user}}</h4>
-      </a></div>
-      {% endfor %}
+   <span style="display: flex;
+   justify-content: space-between;"><h3>My Followings</h3>
+   <h5>Total {{user_followers}} Following</h5></span>
+   <div style="display: flex; 
+              flex-direction: column;
+              gap: 10px;">
+    {% for u in user_follower %}
+    <div class="accountbox"><a href="/profile/{{u}}">
+        <span class="userprofile">
+          <h4 id="username">{{u}}</h4>
+        </span>
+      </a>
     </div>
-  </div>
+    {% endfor %}
+   </div>
+    </div>
+    </div>
 {% endblock %}

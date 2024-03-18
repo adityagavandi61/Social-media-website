@@ -58,35 +58,6 @@
   width: 100vh;
 }
 
-
-/* .com-post{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40%;
-  margin-right: 10px;
-  padding: 10px;
-  border: 2px solid blue;
-  border-radius: 10px 0px 0px 10px;
-  background-color: #c8c0c17b;
-}
-.com-post>.cap{
-  padding-top: 8px;
-}
-.com-post>img{
- height: 450px;
- border: 3px solid red;
- border-radius: 10px;
-} */
-/* .combox{
-  border: 2px solid blue;
-  width: 100%;
-  border-radius: 20px ;
-  padding: 10px;
-  background-color: #c8c0c17b;
-}
- */
-
 .hide{
   display: none;
 }
@@ -117,15 +88,3 @@
   width: 22px;
   height: 22px;
 }
-/* .com-show{
-  width: 90%;
-  margin: 10px;
-  margin-left: 10%;
-}
-.com-show>p{
-  padding-top: 10px;
-}
-.com-show>p>a{
-  text-decoration: none;
-  color: black;
-} */
