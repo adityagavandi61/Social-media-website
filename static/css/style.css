@@ -901,7 +901,7 @@ span .uedit {
     position: fixed;
     transition: all ease-in-out 0.3s;
     z-index: 5;
-    transform: translateY(93vh);
+    transform: translateY(95vh);
     justify-content: flex-start;
     bottom: 0;
   }
@@ -945,7 +945,7 @@ span .uedit {
     overflow-y: scroll;
     margin: 0px;
     border-radius: 10px;
-    bottom: 7vh;
+    bottom: 4vh;
     height: auto;
   }
   .container:hover {
