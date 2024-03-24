@@ -44,15 +44,35 @@
         <span>Natymandal Name <input disabled type="text" name="username" id="username" placeholder="Update Natya Mandal Name" value="{{ user.username}} " ></span>
         <span>First Name <input disabled type="text" name="first_name" id="first_name" placeholder="Update First Name" value="{{ user.first_name}} " ></span>
         <span>Last Name <input disabled type="text" name="last_name" id="last_name" placeholder="Update Last Name" value="{{ user.last_name}} " > </span>
-        <span>Profile Picture <input type="file"  name="profile_pic" id="profile_pic" accept=".jpg" ></span>
+        <span>Profile Picture <input type="file" name="profile_pic" id="profile_pic" accept=".jpg" ></span>
         <span>Location <input disabled type="text" name="location" id="location" placeholder="Update Location" value="{% for i in profile %}{{i.location}} {% endfor %}"></span>
       </div>
       <div>
       <div class="bio">
         <p>
-          <textarea placeholder="{% for i in profile %}{{i.bio}} {% endfor %}"  name="bio" id="biobox" placeholder="Enter Bio upto 250 worlds."></textarea>
+          <textarea placeholder="Enter bio"  name="bio" id="biobox">{% for i in profile %}{{i.bio}} {% endfor %}</textarea>
         </p>
       </div>
+      <div id="links" class="tolinks">
+        <div id="facebook" class="tolink">
+          <img
+            src="/static/assets/svg/facebook.svg"
+            alt=""
+            srcset=""
+          /><input type="text" name="facebook" placeholder="Update facebook Link"></div>
+          <div id="Instagram" class="tolink">
+          <img
+            src="/static/assets/svg/instagramlogo.svg"
+            alt=""
+            srcset=""
+          /><input type="text" name="instagram" placeholder="Update Instagram Link"></div>
+          <div id="Youtube" class="tolink">
+          <img
+            src="/static/assets/svg/youtubelogo.svg"
+            alt=""
+            srcset=""
+          /><input type="text" name="youtube" placeholder="Update Youtube Link"></div>
+    </div>
     </div>
   </div>
     <button id="uploadim" type="submit">Update Profile</button>

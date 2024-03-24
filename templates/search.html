@@ -12,7 +12,7 @@
 {% block contain %}
 <div class="search">
   <div class="searchbar">
-    <form style="flex-direction: row;" action="/usersearch" method="post">
+    <form style="flex-direction: row;" action="/usersearch" method="get">
       {% csrf_token %}
     <input class="inputsearch" id="searchtext" type="search" name="username" placeholder="Search...">
     <button type="submit" class="btn-search" id="search">

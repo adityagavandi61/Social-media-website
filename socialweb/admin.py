@@ -6,6 +6,9 @@ from django.contrib.auth.admin import UserAdmin
 class Posts(admin.ModelAdmin):
     list_display=('profile','created_at')
 
+class Followers(admin.ModelAdmin):
+    list_display=('user','follower')
+
 class UserModel(UserAdmin):
     list_display=('username','user_type')
 
@@ -18,4 +21,4 @@ admin.site.register(LikePost),
 admin.site.register(CommentPost),
 admin.site.register(SharePost),
 admin.site.register(Post,Posts),
-admin.site.register(FollowersCount)
+admin.site.register(FollowersCount,Followers)

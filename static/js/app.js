@@ -37,4 +37,15 @@ function openPopupimg() {
     document.getElementById('overlay').style.display = 'none';
   }
 
+  document.addEventListener("DOMContentLoaded", startLoading);
+  window.addEventListener("load", finishLoading);
+
+  function startLoading() {
+     document.getElementById("loading-bar").style.display = "block";
+  }
+
+  function finishLoading() {
+     document.getElementById("loading-bar").style.display = "none";
+  }
+
 

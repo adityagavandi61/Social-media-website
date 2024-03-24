@@ -14,8 +14,8 @@
     <title>{% block title %}{% endblock title %} | Dashavatar Social media Website</title>
   </head>
 
-
   <body>
+    <div id="loading-bar"></div>
     <header class="header">
       <a href="{% url 'home' %}"><div class="logo">
         <h1 id="wname">DASHAVATAR</h1>
@@ -67,5 +67,6 @@
       <p>&copy; 2024 Dashavatar Social Media Website.</p>
     </footer>
   </body>
+
   <script src="{% static 'js/app.js' %}"></script>
   </html>

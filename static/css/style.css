@@ -22,7 +22,7 @@ body {
   position: fixed;
   top: 0;
   z-index: 1;
-  background-color: #55b8bf;
+  background-color: #8deff6;
 }
 .header a {
   text-decoration: none;
@@ -54,10 +54,12 @@ body {
 }
 .logo h1 {
   font-size: 24px;
+  color: blueviolet;
 }
 .logo h4 {
   font-size: 13px;
   letter-spacing: 2px;
+  color: blue;
 }
 /* ----------------Navbar-------------------- */
 .navbar {
@@ -856,6 +858,16 @@ span .uedit {
 .delete:hover{
   border-radius: 4px;
 }
+/* -------Loading bar------------ */
+#loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px; 
+  background-color: #abff3d;
+  z-index: 9999;
+}
 
 /* responsive */
 /* responsive for height for Tablet */
@@ -884,13 +896,14 @@ span .uedit {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: end;
     top: 0;
-    height: 100%;
     width: 100%;
-    position:fixed;
-    bottom: 10px;
+    position: fixed;
     transition: all ease-in-out 0.3s;
+    z-index: 5;
+    transform: translateY(93vh);
+    justify-content: flex-start;
+    bottom: 0;
   }
   .navbar div {
     width: 80px;
@@ -929,10 +942,11 @@ span .uedit {
     width: 98%;
     top: 76px;
     left: 0px;
-    height: 80vh;
     overflow-y: scroll;
     margin: 0px;
     border-radius: 10px;
+    bottom: 7vh;
+    height: auto;
   }
   .container:hover {
     box-shadow: none;
@@ -988,8 +1002,7 @@ span .uedit {
     width: 40vh;
   }
   .search .line {
-    width: 90%;
-    margin-left: 15px;
+    width: 98%;
   }
 
   /* Dashboard */
@@ -1034,6 +1047,55 @@ span .uedit {
     border-radius: 20px;
     overflow: hidden;
 }
+.navbar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  transition: all ease-in-out 0.3s;
+  z-index: 5;
+  transform: translateY(93vh);
+  justify-content: flex-start;
+  bottom: 0;
+}
+.container {
+  width: 98%;
+  top: 76px;
+  left: 0px;
+  overflow-y: scroll;
+  margin: 0px;
+  border-radius: 10px;
+  bottom: 7vh;
+  height: auto;
+}
+.searchoutput .accountbox {
+  width: 30vh;
+}
+.inputsearch {
+  width: 30vh;
+}
+.inputsearch:focus {
+  width: 31vh;
+  padding-left: 12px;
+}
+.inputsearch:hover {
+  width: 31vh;
+  padding-left: 12px;
+}
+.search .line {
+  width: 105%;
+  margin-left: 0;
+}
+.user-account>.uinfo> img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.user-account>.uinfo>h3{
+  font-size: medium;
+}
 .post img {
   height: 108px;
   width: 106px;
@@ -1051,7 +1113,13 @@ span .uedit {
 .bcom>input {
   width: 0;
 }
-#post img, video {
+#post video {
+  border-radius: 20px;
+  height: 250px;
+  width: 380px;
+  object-fit: cover;
+}
+#post img {
   border-radius: 20px;
   height: 250px;
   width: 380px;

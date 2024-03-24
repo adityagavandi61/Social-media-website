@@ -31,7 +31,12 @@
   table{
     text-align: center;
   }
-  
+  .fpopup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
 </style>
 <div class="welname"><h3>Welcome&nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}</h3></div>
 <div class="dashboard">
@@ -46,15 +51,15 @@
       <p class="user-name">&nbsp;created by @{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
     </h3>
   </span>
-    <span class="followers-count"
-      >{% if user_followers == 0 or user_followers == 1 %}
-      <b style="display: flex;
-      flex-direction: column;
-      text-align: center;">{{user_followers}} <span>Follower</span></b>
+    <span class="followers-count">
+      {% if user_followers == 0 or user_followers == 1 %}
+        <b style="display: flex; flex-direction: column; text-align: center;">
+          {{user_followers}} <span>Follower</span>
+        </b>
       {% else %}
-      <b style="display: flex;
-      flex-direction: column;
-      text-align: center;">{{user_followers}} <span>Followers</span></b>
+        <b style="display: flex; flex-direction: column; text-align: center;">
+          {{user_followers}} <span>Followers</span>
+        </b>
       {% endif %}
     </span>
   </div>
@@ -64,7 +69,8 @@
       </p>
     </div>
     <div id="links" class="links">
-      <a href="https://mail.google.com/mail/u/0/?fs=1&to={{user.email}}&su=Booking Request for Show on [Date] at [Time]&body=Dear {{user.username}},&tf=cm" target="_blank"" target="_blank"
+      {% for i in profile %}
+      <a href="https://mail.google.com/mail/u/0/?fs=1&to={{user.email}}&su=Booking Request for Show on [Date] at [Time]&body=Dear {{user.username}},&tf=cm" target="_blank"
         ><div id="Gmail" class="link">
           <img
             src="/static/assets/svg/gmaillogo.svg"
@@ -72,6 +78,41 @@
             srcset=""
           /></div
       ></a>
+      {% if i.facebook %}
+      <a href="{{i.facebook}}" target="_blank"
+        ><div id="facebook" class="link">
+          <img
+            style="width: 24px; height: 24px;"
+            src="/static/assets/svg/facebook.svg"
+            alt=""
+            srcset=""
+          /></div
+      ></a>
+      {% else %}
+      {% endif %}
+      {% if i.instagram %}
+      <a href="{{i.instagram}}" target="_blank"
+        ><div id="Instagram" class="link">
+          <img
+            src="/static/assets/svg/instagramlogo.svg"
+            alt=""
+            srcset=""
+          /></div
+      ></a>
+      {% else %}
+      {% endif %}
+      {% if i.youtube %}
+      <a href="{{i.youtube}}" target="_blank"
+        ><div id="Youtube" class="link">
+          <img
+            src="/static/assets/svg/youtubelogo.svg"
+            alt=""
+            srcset=""
+          /></div
+      ></a>
+      {% else %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div class="address">
       <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />
@@ -91,9 +132,9 @@
           <tr>
               <td><a style="text-decoration: none; color: black;" href="/userpost/{{ps.id}}">
                 {% if ps.video %}
-                <video style="width: 28px; height: 28px; margin: 4px; border-radius: 3px;" src="{{ ps.video.url }}"></video>
+                  <video style="width: 28px; height: 28px; margin: 4px; border-radius: 3px;" src="{{ ps.video.url }}"></video>
                 {% else %}
-                <img style=" width: 28px; height: 28px; margin: 4px; border-radius: 3px;" src="{{ ps.content.url }}" alt="" srcset="">
+                  <img style=" width: 28px; height: 28px; margin: 4px; border-radius: 3px;" src="{{ ps.content.url }}" alt="" srcset="">
                 {% endif %}
               </a></td>
               <td>{{ps.no_of_likes}}</td>
@@ -112,18 +153,20 @@
       {% else %}
       <div onclick="openPopupfollow()" class="box2">No Followers</div>
       {% endif %}
-      <div style="width: auto;" class="pop" id="pop2">
-        <div class="popup">
+      <div style="width: 70%; height: 70%; overflow-y: scroll;" class="pop" id="pop2">
+        <div class="fpopup">
           {% if user_followers == 0 %}
-      <b>No Follower</b>
-      {% elif user_followers == 1 %}
-      <b>Total: {{user_followers}} Follower</b>
-      {% else %}
-      <b>Total: {{user_followers}} Followers</b>
-      {% endif %}
-      {% for f in user_follower %}{{ f.follower }}<br>{% endfor %}
-            <button class="close" id="close" onclick="closePopupfollow()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button>
+            <b>No Follower</b>
+          {% elif user_followers == 1 %}
+            <b>Total: {{user_followers}} Follower</b>
+          {% else %}
+            <b>Total: {{user_followers}} Followers</b>
+          {% endif %}
+            <button class="close" id="close" onclick="closePopupfollow()">
+              <img src="/static/assets/svg/cancel.svg" alt="" srcset="">
+            </button>
         </div>
+        {% for f in user_follower %}{{ f.follower }}<br>{% endfor %}
       </div>
       <div class="box4">Upload a Post
         <div class="btnadd">

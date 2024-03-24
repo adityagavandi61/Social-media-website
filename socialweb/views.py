@@ -206,8 +206,8 @@ def home(request):
 def usersearch(request):
     user=CustomUser.objects.get(username=request.user.username)
 
-    if request.method == 'POST':
-        username=request.POST['username']
+    if request.method == 'GET':
+        username=request.GET['username']
         profile=CustomUser.objects.filter(username__contains=username)
 
         len_profile=len(profile)
@@ -505,37 +505,46 @@ def profileupdate(request):
         customuser=CustomUser.objects.get(id=request.user.id)
         profile = Profile.objects.get(user_id=request.user.id)
         bio = request.POST.get('bio')
+        facebook = request.POST.get('facebook')
+        instagram = request.POST.get('instagram')
+        youtube = request.POST.get('youtube')
+
+        if bio ==None or bio=="":
+            profile.set_bio = bio
+            profile.save()
+
+        if facebook ==None or facebook=="":
+            profile.set_facebook = facebook
+            profile.save()
+
+        if instagram ==None or instagram=="":
+            profile.set_instagram = instagram
+            profile.save()
+
+        if youtube ==None or youtube=="":
+            profile.set_youtube = youtube
+            profile.save()
+
+
+        profile.bio = bio
+        profile.facebook = facebook
+        profile.instagram = instagram
+        profile.youtube = youtube
+        profile.save()
+
+    if request.method == "POST":
+        customuser=CustomUser.objects.get(id=request.user.id)
         profile_pic=request.FILES.get('profile_pic')
         
 
         if profile_pic == None and profile_pic =="":
-            customuser.set_profile_pic=profile_pic
-            customuser.save()
-
-        if bio ==None and bio=="":
-            profile.set_bio = bio
-            profile.save()
-
-        profile.bio = bio
-        profile.save()
-
-    if request.method == "POST":
-        profile_pic=request.FILES.get('profile_pic')
-        
-        try:
-            customuser=CustomUser.objects.get(id=request.user.id)
-            customuser.profile_pic=profile_pic
-
-            if profile_pic == None and profile_pic =="":
                 customuser.set_profile_pic=profile_pic
                 customuser.save()
 
-            customuser.save()
-            messages.success(request,'Profile Update Successfully.')
-            return redirect('editaccount')
-        except:
-            messages.error(request,'Failed to update profile')
-            return redirect('editaccount')
+        customuser.profile_pic=profile_pic
+        customuser.save()
+        return redirect('editaccount')      
+
     return render(request,'dashboardeditaccount.html')
 
 @login_required(login_url='login')

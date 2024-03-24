@@ -3,17 +3,17 @@
 
 {% block my-ac %}
 {% if user.profile_pic.url is not None %}
-<div class="imge" id="account">
+<a href="{% url 'account' %}"><div class="imge" id="account">
   <img style="width: 28px; height: 28px; border-radius: 50%;" src="{{ user.profile_pic.url }}" alt="" srcset="" />
   <li>My Account</li>
-</div>
+</div></a>
 
 {% else %}
 
-<div class="imge" id="account">
+<a href="{% url 'account' %}"><div class="imge" id="account">
   <img src="/static/assets/svg/profileselected.svg" alt="" srcset="" />
   <li>My Account</li>
-</div>
+</div></a>
 
 {% endif %}
 {% endblock %}
@@ -59,6 +59,40 @@
               srcset=""
             /></div
         ></a>
+        {% if user_profile.facebook %}
+        <a href="{{ user_profile.facebook}}" target="_blank"
+          ><div id="facebook" class="link">
+            <img
+              style="width: 24px; height: 24px;"
+              src="/static/assets/svg/facebook.svg"
+              alt=""
+              srcset=""
+            /></div
+        ></a>
+        {% else %}
+        {% endif %}
+        {% if user_profile.instagram %}
+        <a href="{{ user_profile.instagram}}" target="_blank"
+          ><div id="Instagram" class="link">
+            <img
+              src="/static/assets/svg/instagramlogo.svg"
+              alt=""
+              srcset=""
+            /></div
+        ></a>
+        {% else %}
+        {% endif %}
+        {% if user_profile.youtube %}
+        <a href="{{ user_profile.youtube}}" target="_blank"
+          ><div id="Youtube" class="link">
+            <img
+              src="/static/assets/svg/youtubelogo.svg"
+              alt=""
+              srcset=""
+            /></div
+        ></a>
+        {% else %}
+        {% endif %}
       </div>
       <div class="address">
         <img src="/static/assets/svg/locationlogo.svg" alt="" srcset="" />

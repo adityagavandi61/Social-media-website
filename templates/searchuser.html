@@ -1,12 +1,6 @@
 {% extends "index.html" %}
 {% block title %}
-{% if len_profile == 1 %}
-        {{ len_profile }} Result
-        {% elif len_profile == 0 %}
-        No Result
-        {% else %}
-            {{ len_profile }} Results
-        {% endif %}
+{{username}} Searched
 {% endblock title %}
 
 
@@ -19,17 +13,17 @@
 
 {% block my-ac %}
 {% if user.profile_pic.url is not None %}
-<div class="imge" id="account">
+<a href="{% url 'account' %}"><div class="imge" id="account">
   <img style="width: 25px; height: 25px; border-radius: 50%;" src="{{ user.profile_pic.url }}" alt="" srcset="" />
   <li>My Account</li>
-</div>
+</div></a>
 
 {% else %}
 
-<div class="imge" id="account">
+<a href="{% url 'account' %}"><div class="imge" id="account">
   <img src="/static/assets/svg/profileselected.svg" alt="" srcset="" />
   <li>My Account</li>
-</div>
+</div></a>
 
 {% endif %}
 {% endblock %}
@@ -40,13 +34,7 @@
 <div class="search">
     <div class="searchoutput">
     {% if username %}
-    <h4>You search: <i style="color: blue;">{{username}}</i></h4>
-    {% if len_profile == 1 %}
-            <h5>{{ len_profile }} account found</h5>
-            {% elif len_profile == 0 %}
-        {% else %}
-            <h5>{{ len_profile }} account founds</h5>
-        {% endif %}
+    <h4>You searched: <i style="color: blue;">{{username}}</i></h4>
     <div style="margin-top: 0;" class="line"></div>
     {% if profile %}
     {% for u in profile %}
@@ -59,14 +47,11 @@
           </span>
         </a>
       </div>
-      {% else %}
-      <span><h5>One more account found</h5>
-        <h6>May be it's viewer account</h6> </span>
       {% endif %}
       {% endfor %}
       {% else %}
       <h4><i style="color: blue; text-decoration:underline;">
-        {{username}}</i> No account with this name
+        {{username}}</i> No account found
         </h4>
       {% endif %}
     {% else %}
