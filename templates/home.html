@@ -25,10 +25,8 @@
           {% endif %}
           <span class="userprofile"
             ><h4 id="username">{{p.profile}}</h4>
-            <p id="date">{{ p.created_at }}</p></span
-          >
-        </a>
-  
+            <p id="date">{{ p.created_at|time:"h:i a"}} | {{ p.created_at|date:"d-b-Y"}}</p></span>
+        </a>  
       </div>
       {% if p.video %}
       <div id="post">
@@ -52,14 +50,27 @@
         <a href="/postview/{{p.id}}"><button class="button" id="comment">
           <img src="/static/assets/svg/comment.svg" alt="" srcset="" />
         </button></a>
-        <a style="text-decoration: none;" href="/share?post_id={{p.id}}"><button class="button" id="share">
+        <button onclick="openPopupimg()" class="button" id="share">
           <img src="/static/assets/svg/share.svg" alt="" srcset="" />
           {% if p.no_of_share == 0 %}
           <p></p>
           {% else %}
           <p>&nbsp;{{p.no_of_share}}</p>
           {% endif %}
-        </button></a>
+        </button>
+        <div id="overlay"></div>
+        <div class="pop" id="pop">
+          <div class="popup">
+            {% load social_share %}
+              <button class="button" id="share">
+              <p style="text-decoration: none;">{% post_to_twitter "Check out new post on Dashvatar Social media website http://127.0.0.1:8000/postview/{{p.id}}" %}</p>
+              </button><br>
+             <button class="button" id="share">
+          {% post_to_telegram "Check out new post on Dashvatar Social media website http://127.0.0.1:8000/postview/{{p.id}}" object_or_url %}</button>
+          <a style="text-decoration: none;" href="/share?post_id={{p.id}}">
+            <button class="close" id="close" onclick="closePopupimg()"><img src="/static/assets/svg/cancel.svg" alt="" srcset=""></button></a>
+        </div>
+          </div>
       </div>
       {% if p.caption  %}
       <b class="biohome"><span style="opacity: 70%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@{{p.profile}}&nbsp;&nbsp;</span>{{p.caption}} </b>
